@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/15 18:01:05 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/17 21:40:36 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int		ft_printf(const char *read, ...);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char *s, int fd);
+typedef struct s_flag
+{
+	int wildcard;
+	int minus;
+	int dot;
+	int zero;
+	int number;
+	char type;
+}		t_flag;
+
+int		ft_printf(const char *str, ...);
