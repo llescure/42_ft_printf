@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/18 17:12:06 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/18 22:59:31 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,25 @@ int		ft_space_number(const char *str, t_flag all_flag, int compt)
 	int start;
 	int end;
 	int rslt;
+	char *temp;
 
 	start = 0;
 	while (ft_isdigit(str[i]) != 1)
 		start++;
+	end = start;
 	while (ft_isdigit(str[i]) == 1)
 		end++;
-	rslt = ft_atoi(str( // To be updated, find the good function to truncate
-	}
+	temp = ft_trim((char *)str, start, end);
+	rslt = ft_atoi(temp);
+	if (rslt > 1)
+		rslt --;
+	//Display the space and update compt
+	//Before displaying cara
 }
 
 int		ft_space_minus(const char *str, t_flag all_flag, int compt)
 {
-	
+	//After displaying cara
 }
 
 int		ft_print_cara(const char *str, t_flag all_flag, int compt, int cara)
