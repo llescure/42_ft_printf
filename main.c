@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/15 17:51:16 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/18 12:37:54 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@
 
 int		main(void)
 {
-	printf("coucou les loulous");
-	ft_printf("coucou les loulous");
+	t_flag all_flag;
+
+	all_flag.wildcard = 0;
+	all_flag.minus = -1;
+	all_flag.dot = -1;
+	all_flag.zero = -1;
+	all_flag.number = -1;
+	all_flag.type = '0';	
+	all_flag = ft_initialisation(all_flag);
+	printf("%d", all_flag.wildcard);
+	printf("%d", all_flag.minus);
+	printf("%d", all_flag.dot);
+	printf("%d", all_flag.zero);
+	printf("%d", all_flag.number);
+	printf("%c", all_flag.type);
+	return (0);
 }

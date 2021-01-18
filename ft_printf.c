@@ -6,24 +6,24 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/17 22:39:00 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/18 12:49:38 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		ft_initialisation(t_flag all_flag)
+t_flag		ft_initialisation(t_flag all_flag)
 {
-	all_flag->wildcard = -1;
-	all_flag->minus = -1;
-	all_flag->dot = -1;
-	all_flag->zero = -1;
-	all_flag->number = -1;
-	all_flag->type = '0';
+	all_flag.wildcard = 0;
+	all_flag.minus = -1;
+	all_flag.dot = -1;
+	all_flag.zero = -1;
+	all_flag.number = -1;
+	all_flag.type = '0';
 	return (all_flag);
 }
 
-int		ft_where_type_is(const star *str, int i)
+int		ft_where_type_is(const char *str, int i)
 {
 	int compt;
 
@@ -41,7 +41,7 @@ int		ft_where_type_is(const star *str, int i)
 	return (i - compt);
 }
 
-t_flag		ft_parse_flag(const star *str, int start, int end, 
+t_flag		ft_parse_flag(const char *str, int start, int end, 
 		t_flag all_flag)
 {
 	int i;
@@ -50,18 +50,18 @@ t_flag		ft_parse_flag(const star *str, int start, int end,
 	while (i < end)
 	{
 		if (str[i] == '*')
-			all_flag->wildcard = wildcard * -1;
+			all_flag.wildcard = all_flag.wildcard + 1;
 		else if (str[i] == '-')
-			all_flag->minus = minus * -1;
+			all_flag.minus = all_flag.minus * -1;
 		else if (str[i] == '.')
-			all_flag->dot = dot * -1;
+			all_flag.dot = all_flag.dot * -1;
 		else if (str[i] == '0')
-			all_flag->zero = zero * -1;
+			all_flag.zero = all_flag.zero * -1;
 		else if (ft_isdigit(str[i]) == 1)
-			all_flag->number = 1;
+			all_flag.number = 1;
 		i++;
 	}
-	all_flag->types = str[i];
+	all_flag.type = str[i];
 	return (all_flag);
 }
 
@@ -93,29 +93,35 @@ int		ft_printf(const char *str, ...)
 {
 	va_list arguments;
 	int compt;
+	int number_wildcard;
 	t_flag all_flag;
 
-	va_start(arguments, read);
-	ft_initialisation(all_flag);
+	va_start(arguments, str);
+	all_flag = ft_initialisation(all_flag);
 	compt = ft_parsing(str, all_flag);
-	if (compt == ft_strlen(str) || all_flag->type == '0')
+	number_wildcard = all_flag.wildcard;
+	if (compt == ft_strlen(str) || all_flag.type == '0')
 		ft_putstr_fd(str);
-	if (va_arg(arguments, int) && all_flag->wildcard > 0)
-		//To be completed in cases where we have a wildcard
-	else if (all_flag->type == 'c')
-		ft_print_cara(str, all_flag, compt, va_arg(arguments, char));
-	else if (all_flag->type == 's')
+	/*
+	while (number_wildcard > 0)
+	{
+		ft_sub_wildcard(str, all_flag, compt, va_arg(arguments, int));
+		number_wildcard --;
+	}
+	if (all_flag.type == 'c')
+		ft_print_cara(str, all_flag, compt, va_arg(arguments, int));
+	else if (all_flag.type == 's')
 		ft_print_string(str, all_flag, compt, va_arg(arguments, char*));
-	else if (all_flag->type == 'p')
+	else if (all_flag.type == 'p')
 		ft_print_pointer(str, all_flag, compt, va_arg(arguments, void*));
-	else if (all_flag->type == 'x')
+	else if (all_flag.type == 'x')
 		ft_print_lower_hexa(str, all_flag, compt, va_arg(arguments, int));
-	else if (all_flag->type == 'X')
+	else if (all_flag.type == 'X')
 		ft_print_upper_hexa(str, all_flag, compt, va_arg(arguments, int));
-	else if (all_flag->type == 'u')
+	else if (all_flag.type == 'u')
 		ft_print_signed_int(str, all_flag, compt, va_arg(arguments, unsigned int));
-	else if (all_flag->type == 'i' || all_flag->type == 'd')
+	else if (all_flag.type == 'i' || all_flag.type == 'd')
 		ft_print_unsigned_int(str, all_flag, compt, va_arg(arguments, int));
-	va_end(arguments);
+	va_end(arguments);*/
 	return (compt);
 }
