@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 20:40:18 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 23:11:01 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 typedef struct s_flag
 {
 	int wildcard;
-	int wilcard_value1;
-	int wilcard_value2;
+	int wildcard_value1;
+	int wildcard_value2;
 	int minus;
 	int dot;
 	int zero;
@@ -36,9 +36,10 @@ int			ft_parsing(const char *str, t_flag *all_flag);
 size_t			ft_strlen(const char *str);
 int			ft_isdigit(int c);
 void		ft_putstr_fd(char *s, int fd);
+int			ft_atoi(const char *str);
+char		*ft_strjoin(char const *s1, char const *s2);
 int			error_case(t_flag all_flag);
-int			ft_extract_number(const char *str, t_flag all_flag,
-		int compt);
+int			ft_extract_number(const char *str, int compt);
 int			ft_space(const char *str, t_flag all_flag, int compt,
 		char **buf, int cara);
 int			ft_space_minus(const char *str, t_flag all_flag,
@@ -46,8 +47,8 @@ int			ft_space_minus(const char *str, t_flag all_flag,
 int			ft_print_cara(const char *str, t_flag all_flag, int compt,
 		int cara, char **buf);
 char		*ft_trim(char *str, int start, int end);
-int			ft_get_buf_start(char *str, int compt, char **buf);
-char		*ft_join_buf_space_after(char *str, char **buf, int start,
-		int number_of_spaces);
-char		*ft_join_buf_space_before(char *str, char **buf, int start,
-		int number_of_spaces);
+int			ft_get_buf_start(const char *str, int compt, char **buf);
+char		*ft_join_buf_space_after(char **buf, int number_of_spaces);
+char		*ft_join_buf_space_before(char **buf, int number_of_spaces);
+void		ft_convert_wildcard(int arguments, int number_wildcard,
+		t_flag *all_flag);
