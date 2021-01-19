@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/18 17:02:13 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 12:58:22 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ t_flag		ft_initialisation(t_flag *all_flag)
 	return (*all_flag);
 }
 
-int		ft_where_type_is(const char *str, int i)
+int			ft_where_type_is(const char *str, int i)
 {
 	int compt;
 
 	compt = i;
 	while (str[compt] != '\0')
 	{
-		if ((str[compt] == 'c') || (str[compt] == 's') || 
+		if ((str[compt] == 'c') || (str[compt] == 's') ||
 				(str[compt] == 'p') || (str[compt] == 'x') ||
-				(str[compt] == 'X') || (str[compt] == 'X') || 
+				(str[compt] == 'X') || (str[compt] == 'X') ||
 				(str[compt] == 'i') || (str[compt] == 'd') ||
 				(str[compt] == 'u'))
 			return (compt);
@@ -41,7 +41,7 @@ int		ft_where_type_is(const char *str, int i)
 	return (-1);
 }
 
-t_flag		ft_parse_flag(const char *str, int start, int end, 
+t_flag		ft_parse_flag(const char *str, int start, int end,
 		t_flag *all_flag)
 {
 	int i;
@@ -65,14 +65,13 @@ t_flag		ft_parse_flag(const char *str, int start, int end,
 	return (*all_flag);
 }
 
-int		ft_parsing(const char *str, t_flag *all_flag)
+int			ft_parsing(const char *str, t_flag *all_flag)
 {
 	int i;
 	int pos_percent;
 
 	i = 0;
 	pos_percent = 0;
-
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
@@ -81,8 +80,9 @@ int		ft_parsing(const char *str, t_flag *all_flag)
 			i = ft_where_type_is(str, i);
 			if (i > pos_percent)
 			{
-				*all_flag = ft_parse_flag(str, pos_percent, 
+				*all_flag = ft_parse_flag(str, pos_percent,
 						i, all_flag);
+				return (pos_percent);
 			}
 			return (i);
 		}
@@ -91,39 +91,40 @@ int		ft_parsing(const char *str, t_flag *all_flag)
 	return (i);
 }
 
-int		ft_printf(const char *str, ...)
+int			ft_printf(const char *str, ...)
 {
-	va_list arguments;
-	int compt;
-	int number_wildcard;
-	t_flag all_flag;
+	va_list					arguments;
+	int						compt;
+	int						number_wildcard;
+	t_flag					all_flag;
+	char					*buf;
 
 	va_start(arguments, str);
 	all_flag = ft_initialisation(&all_flag);
 	compt = ft_parsing(str, &all_flag);
 	number_wildcard = all_flag.wildcard;
-	if (compt == (int)ft_strlen(str) || all_flag.type == '0')
-		ft_putstr_fd((char *)str, 1);
-
+	if (ft_get_buf_start(str, compt, &buf) == -1)
+		return (-1);
 	while (number_wildcard > 0)
 	{
 		ft_sub_wildcard(str, all_flag, compt, va_arg(arguments, int));
-		number_wildcard --;
+		number_wildcard--;
 	}
 	if (all_flag.type == 'c')
-		ft_print_cara(str, all_flag, compt, va_arg(arguments, int));
+		compt = ft_print_cara(str, all_flag, compt, va_arg(arguments, int), &buf);
 	else if (all_flag.type == 's')
-		ft_print_string(str, all_flag, compt, va_arg(arguments, char*));
+		compt = ft_print_string(str, all_flag, compt, va_arg(arguments, char*), &buf);
 	else if (all_flag.type == 'p')
-		ft_print_pointer(str, all_flag, compt, va_arg(arguments, void*));
+		compt = ft_print_pointer(str, all_flag, compt, va_arg(arguments, void*), &buf);
 	else if (all_flag.type == 'x')
-		ft_print_lower_hexa(str, all_flag, compt, va_arg(arguments, int));
+		compt = ft_print_lower_hexa(str, all_flag, compt, va_arg(arguments, int), &buf);
 	else if (all_flag.type == 'X')
-		ft_print_upper_hexa(str, all_flag, compt, va_arg(arguments, int));
+		compt = ft_print_upper_hexa(str, all_flag, compt, va_arg(arguments, int), &buf);
 	else if (all_flag.type == 'u')
-		ft_print_signed_int(str, all_flag, compt, va_arg(arguments, unsigned int));
+		compt = ft_print_signed_int(str, all_flag, compt, va_arg(arguments, unsigned int), &buf);
 	else if (all_flag.type == 'i' || all_flag.type == 'd')
-		ft_print_unsigned_int(str, all_flag, compt, va_arg(arguments, int));
+		compt = ft_print_unsigned_int(str, all_flag, compt, va_arg(arguments, int), &buf);
 	va_end(arguments);
+	ft_putstr_fd(buf, 1);
 	return (compt);
 }
