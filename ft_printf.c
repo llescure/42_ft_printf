@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 12:58:22 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:02:46 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 t_flag		ft_initialisation(t_flag *all_flag)
 {
 	all_flag->wildcard = 0;
+	all_flag->wildcard_value1 = 0;
+	all_flag->wildcard_value2 = 0;
 	all_flag->minus = 0;
 	all_flag->dot = 0;
 	all_flag->zero = 0;
@@ -105,9 +107,10 @@ int			ft_printf(const char *str, ...)
 	number_wildcard = all_flag.wildcard;
 	if (ft_get_buf_start(str, compt, &buf) == -1)
 		return (-1);
-	while (number_wildcard > 0)
+	while (number_wildcard > 0 && number_wildcard < 3)
 	{
-		ft_sub_wildcard(str, all_flag, compt, va_arg(arguments, int));
+		ft_convert_wildcard(str, va_arg(arguments, int), int number_wildcard,
+				t_flag *all_flag);
 		number_wildcard--;
 	}
 	if (all_flag.type == 'c')

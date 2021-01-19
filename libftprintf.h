@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 10:21:18 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 16:54:04 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 typedef struct s_flag
 {
 	int wildcard;
+	int wilcard_value1;
+	int wilcard_value2;
 	int minus;
 	int dot;
 	int zero;
