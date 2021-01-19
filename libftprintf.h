@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 23:11:01 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 23:32:01 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int			ft_atoi(const char *str);
 char		*ft_strjoin(char const *s1, char const *s2);
 int			error_case(t_flag all_flag);
 int			ft_extract_number(const char *str, int compt);
-int			ft_space(const char *str, t_flag all_flag, int compt,
-		char **buf, int cara);
+int			ft_space(const char *str, t_flag all_flag, char **buf,
+		int cara);
 int			ft_space_minus(const char *str, t_flag all_flag,
-		int compt,char **buf, int cara);
-int			ft_print_cara(const char *str, t_flag all_flag, int compt,
-		int cara, char **buf);
+		char **buf, int cara);
+int			ft_print_cara(const char *str, t_flag all_flag, int cara,
+		char **buf);
 char		*ft_trim(char *str, int start, int end);
 int			ft_get_buf_start(const char *str, int compt, char **buf);
 char		*ft_join_buf_space_after(char **buf, int number_of_spaces);

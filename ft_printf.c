@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 23:09:03 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 23:43:07 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,19 +114,19 @@ int			ft_printf(const char *str, ...)
 		number_wildcard--;
 	}
 	if (all_flag.type == 'c')
-		compt = ft_print_cara(str, all_flag, compt, va_arg(arguments, int), &buf);
+		compt = ft_print_cara(str, all_flag, va_arg(arguments, int), &buf);
 	/*else if (all_flag.type == 's')
-		compt = ft_print_string(str, all_flag, compt, va_arg(arguments, char*), &buf);
+		compt = ft_print_string(str, all_flag, va_arg(arguments, char*), &buf);
 	else if (all_flag.type == 'p')
-		compt = ft_print_pointer(str, all_flag, compt, va_arg(arguments, void*), &buf);
+		compt = ft_print_pointer(str, all_flag, va_arg(arguments, void*), &buf);
 	else if (all_flag.type == 'x')
-		compt = ft_print_lower_hexa(str, all_flag, compt, va_arg(arguments, int), &buf);
+		compt = ft_print_lower_hexa(str, all_flag, va_arg(arguments, int), &buf);
 	else if (all_flag.type == 'X')
-		compt = ft_print_upper_hexa(str, all_flag, compt, va_arg(arguments, int), &buf);
+		compt = ft_print_upper_hexa(str, all_flag, va_arg(arguments, int), &buf);
 	else if (all_flag.type == 'u')
-		compt = ft_print_signed_int(str, all_flag, compt, va_arg(arguments, unsigned int), &buf);
+		compt = ft_print_signed_int(str, all_flag, va_arg(arguments, unsigned int), &buf);
 	else if (all_flag.type == 'i' || all_flag.type == 'd')
-		compt = ft_print_unsigned_int(str, all_flag, compt, va_arg(arguments, int), &buf);*/
+		compt = ft_print_unsigned_int(str, all_flag, va_arg(arguments, int), &buf);*/
 	va_end(arguments);
 	ft_putstr_fd(buf, 1);
 	return (compt);
