@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 20:31:20 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 23:09:03 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int			ft_printf(const char *str, ...)
 		return (-1);
 	while (number_wildcard > 0 && number_wildcard < 3)
 	{
-		ft_convert_wildcard(str, va_arg(arguments, int), number_wildcard,
+		ft_convert_wildcard(va_arg(arguments, int), number_wildcard,
 				&all_flag);
 		number_wildcard--;
 	}

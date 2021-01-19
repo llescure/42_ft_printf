@@ -6,20 +6,20 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:48:24 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 16:59:56 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 23:05:53 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_convert_wildcard(const char *str, va_arg(arguments, int),
-		int number_wildcard, t_flag *all_flag);
+#include "libftprintf.h"
+
+void	ft_convert_wildcard(int arguments, int number_wildcard, t_flag *all_flag)
 {
 	int rslt;
 
-	rslt = va_arg(arguments, int);
+	rslt = arguments;
 	if (number_wildcard == 2 || all_flag->wildcard == 1)
-		all_flag->wilcard_value1 = rslt;
+		all_flag->wildcard_value1 = rslt;
 	if (number_wildcard == 1 && all_flag->wildcard == 2)
-		all_flag->wilcard_value2 = rslt;
+		all_flag->wildcard_value2 = rslt;
 	return ;
 }
-
