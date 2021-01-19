@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 17:02:46 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 20:31:20 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,13 @@ int			ft_printf(const char *str, ...)
 		return (-1);
 	while (number_wildcard > 0 && number_wildcard < 3)
 	{
-		ft_convert_wildcard(str, va_arg(arguments, int), int number_wildcard,
-				t_flag *all_flag);
+		ft_convert_wildcard(str, va_arg(arguments, int), number_wildcard,
+				&all_flag);
 		number_wildcard--;
 	}
 	if (all_flag.type == 'c')
 		compt = ft_print_cara(str, all_flag, compt, va_arg(arguments, int), &buf);
-	else if (all_flag.type == 's')
+	/*else if (all_flag.type == 's')
 		compt = ft_print_string(str, all_flag, compt, va_arg(arguments, char*), &buf);
 	else if (all_flag.type == 'p')
 		compt = ft_print_pointer(str, all_flag, compt, va_arg(arguments, void*), &buf);
@@ -126,7 +126,7 @@ int			ft_printf(const char *str, ...)
 	else if (all_flag.type == 'u')
 		compt = ft_print_signed_int(str, all_flag, compt, va_arg(arguments, unsigned int), &buf);
 	else if (all_flag.type == 'i' || all_flag.type == 'd')
-		compt = ft_print_unsigned_int(str, all_flag, compt, va_arg(arguments, int), &buf);
+		compt = ft_print_unsigned_int(str, all_flag, compt, va_arg(arguments, int), &buf);*/
 	va_end(arguments);
 	ft_putstr_fd(buf, 1);
 	return (compt);

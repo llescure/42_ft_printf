@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 15:33:52 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 20:28:57 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@ int		ft_get_buf_start(char *str, int compt, char **buf)
 	char *temp;
 	char *str_trimmed
 
-	if(!(buf = malloc(sizeof(char))))
+	if(!(*buf = malloc(sizeof(char))))
 		return (-1);
-	buf[0] = "";
-	temp = buf;
+	*buf[0] = "";
+	temp = *buf;
 	str_trimmed = ft_trim(str, 0, compt);
-	ft_strjoin(buf, str_trimmed);
+	ft_strjoin(*buf, str_trimmed);
 	free(temp);
+	return (0);
 }
 
-void	ft_join_buf_space_after(char *str, char **buf, int start,
+char	*ft_join_buf_space_after(char *str, char **buf, int start,
 		int number_of_spaces)
 {
 	char *temp;
@@ -43,7 +44,7 @@ void	ft_join_buf_space_after(char *str, char **buf, int start,
 	free(temp);
 }
 
-void	ft_join_buf_space_before(char *str, char **buf, int start,
+char	*ft_join_buf_space_before(char *str, char **buf, int start,
 		int number_of_spaces)
 {
 	char *temp;
@@ -61,5 +62,3 @@ void	ft_join_buf_space_before(char *str, char **buf, int start,
 	*buf = ft_strjoin(spaces, *buf);
 	free(temp);
 }
-
-int		ft_get_buf_end(char *str, char **buf, int compt)

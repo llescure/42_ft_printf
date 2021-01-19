@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 16:54:04 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 20:40:18 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,27 @@ typedef struct s_flag
 	char type;
 }		t_flag;
 
-int		ft_printf(const char *str, ...);
-t_flag	ft_initialisation(t_flag *all_flag);
-int		ft_where_type_is(const char *str, int i);
-t_flag	ft_parse_flag(const char *str, int start, int end, t_flag *all_flag);
-int		ft_parsing(const char *str, t_flag *all_flag);
+int			ft_printf(const char *str, ...);
+t_flag		ft_initialisation(t_flag *all_flag);
+int			ft_where_type_is(const char *str, int i);
+t_flag		ft_parse_flag(const char *str, int start, int end,
+		t_flag *all_flag);
+int			ft_parsing(const char *str, t_flag *all_flag);
 size_t			ft_strlen(const char *str);
-int				ft_isdigit(int c);
-void			ft_putstr_fd(char *s, int fd);
+int			ft_isdigit(int c);
+void		ft_putstr_fd(char *s, int fd);
+int			error_case(t_flag all_flag);
+int			ft_extract_number(const char *str, t_flag all_flag,
+		int compt);
+int			ft_space(const char *str, t_flag all_flag, int compt,
+		char **buf, int cara);
+int			ft_space_minus(const char *str, t_flag all_flag,
+		int compt,char **buf, int cara);
+int			ft_print_cara(const char *str, t_flag all_flag, int compt,
+		int cara, char **buf);
+char		*ft_trim(char *str, int start, int end);
+int			ft_get_buf_start(char *str, int compt, char **buf);
+char		*ft_join_buf_space_after(char *str, char **buf, int start,
+		int number_of_spaces);
+char		*ft_join_buf_space_before(char *str, char **buf, int start,
+		int number_of_spaces);

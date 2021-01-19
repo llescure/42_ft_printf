@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/19 16:35:52 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 17:02:43 by llescure         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_print_cara.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 16:06:44 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/19 20:34:30 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +52,8 @@ int		ft_space(const char *str, t_flag all_flag, int compt, char **buf,
 		number_of_spaces = all_flag.wildcard_value1;
 	else
 		number_of_spaces = ft_extract_number(str, all_flag, compt);
-	buf = ft_join_buf_space_before(str, buf, compt, number_of_spaces);
-	buf[number_of_spaces] = 'cara';
+	*buf = ft_join_buf_space_before(str, buf, compt, number_of_spaces);
+	*buf[number_of_spaces] = 'cara';
 	return (compt + number_of_spaces);
 }
 
@@ -81,15 +69,15 @@ int		ft_space_minus(const char *str, t_flag all_flag, int compt, char **buf,
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
 	{
 		number_of_spaces = ft_extract_number(str, all_flag, compt);
-		buf = ft_join_buf_space_after(str, buf, compt, number_of_spaces);
-		buf[compt] = 'cara';
+		*buf = ft_join_buf_space_after(str, buf, compt, number_of_spaces);
+		*buf[compt] = 'cara';
 		return (compt + number_of_spaces);
 	}
 	if (str[i] == '-' && str[i + 1] == '*')
 	{
 		number_of_spaces = all_flag.wildcard_value1;
-		buf = ft_join_buf_space_after(str, buf, compt, number_of_spaces);
-		buf[compt] = 'cara';
+		*buf = ft_join_buf_space_after(str, buf, compt, number_of_spaces);
+		*buf[compt] = 'cara';
 		return (compt + number_of_spaces);
 	}
 	return (-1);
