@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 23:43:07 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/20 15:23:45 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int			ft_printf(const char *str, ...)
 		number_wildcard--;
 	}
 	if (all_flag.type == 'c')
-		compt = ft_print_cara(str, all_flag, va_arg(arguments, int), &buf);
+		compt = ft_print_cara(str, all_flag, (char)va_arg(arguments, int), &buf);
 	/*else if (all_flag.type == 's')
 		compt = ft_print_string(str, all_flag, va_arg(arguments, char*), &buf);
 	else if (all_flag.type == 'p')

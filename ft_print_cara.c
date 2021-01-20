@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 23:44:19 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/20 16:11:08 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_extract_number(const char *str, int compt)
 }
 
 int		ft_space(const char *str, t_flag all_flag, char **buf,
-		int cara)
+		char cara)
 {
 	int i;
 	int number_of_spaces;
@@ -58,13 +58,14 @@ int		ft_space(const char *str, t_flag all_flag, char **buf,
 		number_of_spaces = all_flag.wildcard_value1;
 	else
 		number_of_spaces = ft_extract_number(str, i);
-	*buf = ft_join_buf_space_before(buf, number_of_spaces);
-	*buf[number_of_spaces] = 'cara';
+	if ((ft_join_buf_space_before(buf, number_of_spaces)) == -1)
+		return (-1);
+	*buf[number_of_spaces] = cara;
 	return (number_of_spaces);
 }
 
 int		ft_space_minus(const char *str, t_flag all_flag, char **buf,
-		int cara)
+		char cara)
 {
 	int i;
 	int number_of_spaces;
@@ -75,23 +76,28 @@ int		ft_space_minus(const char *str, t_flag all_flag, char **buf,
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
 	{
 		number_of_spaces = ft_extract_number(str, i);
-		*buf = ft_join_buf_space_after(buf, number_of_spaces);
-		*buf[i] = 'cara';
+		if ((ft_join_buf_space_after(buf, number_of_spaces)) == -1)
+			return (-1);
+		*buf[i] = cara;
 		return (number_of_spaces);
 	}
 	if (str[i] == '-' && str[i + 1] == '*')
 	{
 		number_of_spaces = all_flag.wildcard_value1;
-		*buf = ft_join_buf_space_after(buf, number_of_spaces);
-		*buf[i] = 'cara';
+		if ((ft_join_buf_space_after(buf, number_of_spaces)) == -1)
+			return (-1);
+		*buf[i] = cara;
 		return (number_of_spaces);
 	}
 	return (-1);
 }
 
-int		ft_print_cara(const char *str, t_flag all_flag, int cara,
+int		ft_print_cara(const char *str, t_flag all_flag, char cara,
 	char **buf)
 {
+	char *str_cara;
+	char *temp;
+
 	if (error_case(all_flag) < 0)
 		return (-1);
 	if (all_flag.number > 0 && all_flag.minus == 0)
@@ -100,6 +106,12 @@ int		ft_print_cara(const char *str, t_flag all_flag, int cara,
 		all_flag.wildcard > 0))
 		return (ft_space_minus(str, all_flag, buf, cara));
 	else
-		*buf[ft_strlen(*buf)] = 'cara';
-	return (ft_strlen(*buf));
+	{
+		if ((ft_allocate_char_to_str(&str_cara, cara)) == -1)
+			return (-1);
+		temp = *buf;
+		*buf = ft_strjoin(*buf, str_cara);
+		free(temp);
+	}
+	return ((int)ft_strlen(*buf));
 }
