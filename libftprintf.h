@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/20 16:06:52 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/20 19:05:43 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char		*ft_trim(char *str, int start, int end);
 int			ft_get_buf_start(const char *str, int compt, char **buf);
 int		ft_join_buf_space_after(char **buf, int number_of_spaces);
 int		ft_join_buf_space_before(char **buf, int number_of_spaces);
-int		ft_allocate_char_to_str(char **str, char cara);
+char		*ft_allocate_char_to_str(char *str, char cara);
 void		ft_convert_wildcard(int arguments, int number_wildcard,
 		t_flag *all_flag);
 int		ft_isascii(int c);

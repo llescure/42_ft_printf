@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 22:50:43 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/20 09:49:58 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/20 23:17:25 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_trim(char *str, int start, int end)
 {
-	char *new;
-	int i;
-	int j;
-	
+	char		*new;
+	int			i;
+	int			j;
+
 	if (end <= start)
 		return (NULL);
 	if (!(new = malloc(sizeof(char) * (end - start))))
