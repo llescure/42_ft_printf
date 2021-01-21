@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/20 15:23:45 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/21 19:28:47 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_flag		ft_parse_flag(const char *str, int start, int end,
 			all_flag->minus = all_flag->minus + 1;
 		else if (str[i] == '.')
 			all_flag->dot = all_flag->dot + 1;
-		else if (str[i] == '0')
+		else if (str[i] == '0' && ft_isdigit(str[i - 1]) == 0)
 			all_flag->zero = all_flag->zero + 1;
 		else if (ft_isdigit(str[i]) == 1)
 			all_flag->number = all_flag->number + 1;

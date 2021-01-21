@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/20 23:18:52 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/21 19:35:48 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_join_buf_space(char **buf, int number_of_spaces)
 	i = 0;
 	if (number_of_spaces <= 0)
 		return (-1);
-	if (!(spaces = malloc(sizeof(char) * number_of_spaces)))
+	if (!(spaces = malloc(sizeof(char) * number_of_spaces + 1)))
 		return (-1);
 	while (i < number_of_spaces)
 	{
@@ -85,10 +85,7 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag)
 		total_number_cara++;
 	if (total_number_cara == i)
 		return (0);
-	printf("%d\n", total_number_cara);
-	printf("%d\n", i);
 	str_trimmed = ft_trim((char *)str, i, total_number_cara);
-	printf("%s\n", str_trimmed);
 	temp = *buf;
 	*buf = ft_strjoin(*buf, str_trimmed);
 	free(temp);

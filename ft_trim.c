@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 22:50:43 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/20 23:17:25 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/21 18:42:15 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ char	*ft_trim(char *str, int start, int end)
 		i++;
 		j++;
 	}
-	new[end] = '\0';
+	new[end - start] = '\0';
 	return (new);
 }

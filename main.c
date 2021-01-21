@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/20 23:13:26 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/21 19:36:53 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@ int		main(void)
 
 	t_flag all_flag;
 	ft_initialisation(&all_flag);
-	ft_parsing("%cabc", &all_flag);
-	printf("flag%c\n", all_flag.type);
-	ft_get_buf_start("%cabc", 3, &test);
-	ft_print_cara("%cabc", all_flag, 'a', &test);
+	ft_parsing("%10cabc\n", &all_flag);
+	printf("error%d\n", error_case(all_flag));
+	ft_get_buf_start("%10cabc\n", 0, &test);
+	ft_space("%10cabc\n", all_flag, &test, 't');
+	printf("%s\n", test);
+	ft_print_cara("%10cabc\n", all_flag, 't', &test);
 	printf("%s\n", test);*/
 	//printf("%d\n", printf("%c", 'a'));
-	ft_printf("myprintf%%abc\n");
-	//printf("printf%%abc\n");
-	//ft_printf("myprintf%-10cabc\n", 't');
-	//printf("printf%-10cabc\n", 't');
+	ft_printf("abc%-10cabc\n", 't');
+	printf("abc%-10cabc\n", 't');
+	//ft_printf("coucou\n");
+	//printf("coucou\n");
 	//printf("%d\n", ft_printf("%c", 'a'));
 }
