@@ -16,14 +16,17 @@
 
 int		main(void)
 {
-	char *test;
+	/*char *test;
 
 	t_flag all_flag;
 	ft_initialisation(&all_flag);
-	ft_parsing("abc%c", &all_flag);
-	ft_get_buf_start("abc%c", 3, &test);
-	ft_print_cara("abc%c", all_flag, 'a', &test);
-	printf("%s\n", test);
-	//printf("%d\n", printf("abc%c", 'a'));
-	printf("%d\n", ft_printf("abc%c", 'a'));
+	ft_parsing("%cabc", &all_flag);
+	printf("flag%c\n", all_flag.type);
+	ft_get_buf_start("%cabc", 3, &test);
+	ft_print_cara("%cabc", all_flag, 'a', &test);
+	printf("%s\n", test);*/
+	//printf("%d\n", printf("%c", 'a'));
+	printf("%d\n", ft_printf("abc%-3cabc", 'a'));
+	printf("%d\n", printf("abc%-3cabc", 'a'));
+	//printf("%d\n", ft_printf("%c", 'a'));
 }

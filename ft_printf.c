@@ -36,7 +36,7 @@ int			ft_where_type_is(const char *str, int i)
 				(str[compt] == 'p') || (str[compt] == 'x') ||
 				(str[compt] == 'X') || (str[compt] == 'X') ||
 				(str[compt] == 'i') || (str[compt] == 'd') ||
-				(str[compt] == 'u') || (str[compt] == '%'))
+				(str[compt] == 'u'))
 			return (compt);
 		compt++;
 	}
@@ -70,20 +70,20 @@ t_flag		ft_parse_flag(const char *str, int start, int end,
 int			ft_parsing(const char *str, t_flag *all_flag)
 {
 	int i;
-	int pos_percent;
+	int pos_after_percent;
 
 	i = 0;
-	pos_percent = 0;
+	pos_after_percent = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 		{
-			pos_percent = i;
+			pos_after_percent = i;
 			i = ft_where_type_is(str, i);
-			if (i > pos_percent)
+			if (i > pos_after_percent)
 			{
-				*all_flag = ft_parse_flag(str, pos_percent, i, all_flag);
-				return (pos_percent);
+				*all_flag = ft_parse_flag(str, pos_after_percent, i, all_flag);
+				return (pos_after_percent);
 			}
 			return (i);
 		}
