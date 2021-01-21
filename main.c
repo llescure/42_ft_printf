@@ -16,5 +16,14 @@
 
 int		main(void)
 {
-	printf("%d\n", ft_printf("abc%-*c", 2 , 'a'));
+	char *test;
+
+	t_flag all_flag;
+	ft_initialisation(&all_flag);
+	ft_parsing("abc%c", &all_flag);
+	ft_get_buf_start("abc%c", 3, &test);
+	ft_print_cara("abc%c", all_flag, 'a', &test);
+	printf("%s\n", test);
+	//printf("%d\n", printf("abc%c", 'a'));
+	printf("%d\n", ft_printf("abc%c", 'a'));
 }

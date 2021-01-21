@@ -36,7 +36,7 @@ int			ft_where_type_is(const char *str, int i)
 				(str[compt] == 'p') || (str[compt] == 'x') ||
 				(str[compt] == 'X') || (str[compt] == 'X') ||
 				(str[compt] == 'i') || (str[compt] == 'd') ||
-				(str[compt] == 'u'))
+				(str[compt] == 'u') || (str[compt] == '%'))
 			return (compt);
 		compt++;
 	}
@@ -82,8 +82,7 @@ int			ft_parsing(const char *str, t_flag *all_flag)
 			i = ft_where_type_is(str, i);
 			if (i > pos_percent)
 			{
-				*all_flag = ft_parse_flag(str, pos_percent,
-						i, all_flag);
+				*all_flag = ft_parse_flag(str, pos_percent, i, all_flag);
 				return (pos_percent);
 			}
 			return (i);
@@ -115,6 +114,8 @@ int			ft_printf(const char *str, ...)
 	}
 	if (all_flag.type == 'c')
 		compt = ft_print_cara(str, all_flag, (char)va_arg(arguments, int), &buf);
+	/*if (all_flag.type == '%')
+		compt = ft_print_percent(str, all_flag, &buf);*/
 	/*else if (all_flag.type == 's')
 		compt = ft_print_string(str, all_flag, va_arg(arguments, char*), &buf);
 	else if (all_flag.type == 'p')
@@ -127,6 +128,7 @@ int			ft_printf(const char *str, ...)
 		compt = ft_print_signed_int(str, all_flag, va_arg(arguments, unsigned int), &buf);
 	else if (all_flag.type == 'i' || all_flag.type == 'd')
 		compt = ft_print_unsigned_int(str, all_flag, va_arg(arguments, int), &buf);*/
+	compt = compt + ft_get_buf_end(str, &buf, all_flag);
 	va_end(arguments);
 	ft_putstr_fd(buf, 1);
 	return (compt);

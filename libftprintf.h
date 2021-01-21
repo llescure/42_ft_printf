@@ -48,9 +48,13 @@ int			ft_print_cara(const char *str, t_flag all_flag, char cara,
 		char **buf);
 char		*ft_trim(char *str, int start, int end);
 int			ft_get_buf_start(const char *str, int compt, char **buf);
-int		ft_join_buf_space_after(char **buf, int number_of_spaces);
-int		ft_join_buf_space_before(char **buf, int number_of_spaces);
+int		ft_join_buf_space(char **buf, int number_of_spaces);
 char		*ft_allocate_char_to_str(char *str, char cara);
+int			ft_get_buf_end(const char *str, char **buf, t_flag all_flag);
 void		ft_convert_wildcard(int arguments, int number_wildcard,
 		t_flag *all_flag);
 int		ft_isascii(int c);
+int			ft_space_percent(const char *str, t_flag all_flag, char **buf);
+int			ft_space_minus_percent(const char *str, t_flag all_flag,
+		char **buf);
+int			ft_print_percent(const char *str, t_flag all_flag, char **buf);

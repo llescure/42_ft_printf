@@ -29,7 +29,7 @@ int		ft_extract_number(const char *str, int compt)
 {
 	int									start;
 	int									end;
-	int									rslt;
+	long								rslt;
 	char								*temp;
 
 	start = compt;
@@ -43,7 +43,7 @@ int		ft_extract_number(const char *str, int compt)
 	if (rslt > 1)
 	{
 		rslt--;
-		return (rslt);
+		return ((int)rslt);
 	}
 	return (0);
 }
@@ -64,7 +64,7 @@ int		ft_space(const char *str, t_flag all_flag, char **buf,
 		number_of_spaces = all_flag.wildcard_value1 - 1;
 	else
 		number_of_spaces = ft_extract_number(str, i);
-	if ((ft_join_buf_space_before(buf, number_of_spaces)) == -1)
+	if ((ft_join_buf_space(buf, number_of_spaces)) == -1)
 		return (-1);
 	if ((str_cara = ft_allocate_char_to_str(str_cara, cara)) == NULL)
 		return (-1);
@@ -98,7 +98,7 @@ int		ft_space_minus(const char *str, t_flag all_flag, char **buf,
 	else if (str[i] == '-' && str[i + 1] == '*')
 		number_of_spaces = all_flag.wildcard_value1 - 1;
 	free(str_cara);
-	if ((ft_join_buf_space_after(buf, number_of_spaces)) == -1)
+	if ((ft_join_buf_space(buf, number_of_spaces)) == -1)
 		return (-1);
 	return (ft_strlen(*buf));
 }

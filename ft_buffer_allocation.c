@@ -40,7 +40,7 @@ char	*ft_allocate_char_to_str(char *str, char cara)
 	return (str);
 }
 
-int		ft_join_buf_space_after(char **buf, int number_of_spaces)
+int		ft_join_buf_space(char **buf, int number_of_spaces)
 {
 	char				*temp;
 	char				*spaces;
@@ -64,26 +64,30 @@ int		ft_join_buf_space_after(char **buf, int number_of_spaces)
 	return (1);
 }
 
-int		ft_join_buf_space_before(char **buf, int number_of_spaces)
+int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag)
 {
-	char				*temp;
-	char				*spaces;
-	int					i;
+	char						*temp;
+	char						*str_trimmed;
+	int							i;
+	int							total_number_cara;
 
+	if (all_flag.type == '0')
+		return (0);
 	i = 0;
-	if (number_of_spaces <= 0)
-		return (-1);
-	if (!(spaces = malloc(sizeof(char) * number_of_spaces)))
-		return (-1);
-	while (i < number_of_spaces)
-	{
-		spaces[i] = ' ';
+	while (str[i] != '%')
 		i++;
-	}
-	spaces[number_of_spaces] = '\0';
+	while (str[i] != all_flag.type)
+		i++;
+	i++;
+	total_number_cara = i;
+	while (str[total_number_cara] != '\0')
+		total_number_cara++;
+	if (total_number_cara == i)
+		return (0);
+	str_trimmed = ft_trim((char *)str, i, total_number_cara);
 	temp = *buf;
-	*buf = ft_strjoin(spaces, *buf);
+	*buf = ft_strjoin(*buf, str_trimmed);
 	free(temp);
-	free(spaces);
-	return (1);
+	free(str_trimmed);
+	return (total_number_cara - i);
 }
