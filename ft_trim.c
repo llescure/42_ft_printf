@@ -20,7 +20,7 @@ char	*ft_trim(char *str, int start, int end)
 
 	if (end <= start)
 		return (NULL);
-	if (!(new = malloc(sizeof(char) * (end - start))))
+	if (!(new = malloc(sizeof(char) * (end - start) + 1)))
 		return (NULL);
 	i = start;
 	j = 0;

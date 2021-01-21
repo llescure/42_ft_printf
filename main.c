@@ -16,5 +16,5 @@
 
 int		main(void)
 {
-	printf("%d\n", ft_printf("abc%c", 'a'));
+	printf("%d\n", ft_printf("abc%-*c", 2 , 'a'));
 }
