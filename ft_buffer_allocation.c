@@ -76,6 +76,7 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag)
 	i = 0;
 	while (str[i] != '%')
 		i++;
+	i++;
 	while (str[i] != all_flag.type)
 		i++;
 	i++;
@@ -84,7 +85,10 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag)
 		total_number_cara++;
 	if (total_number_cara == i)
 		return (0);
+	printf("%d\n", total_number_cara);
+	printf("%d\n", i);
 	str_trimmed = ft_trim((char *)str, i, total_number_cara);
+	printf("%s\n", str_trimmed);
 	temp = *buf;
 	*buf = ft_strjoin(*buf, str_trimmed);
 	free(temp);

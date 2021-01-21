@@ -40,6 +40,7 @@ int		ft_extract_number(const char *str, int compt)
 		end++;
 	temp = ft_trim((char *)str, start, end);
 	rslt = ft_atoi((const char *)temp);
+	free(temp);
 	if (rslt > 1)
 	{
 		rslt--;

@@ -26,7 +26,9 @@ int		main(void)
 	ft_print_cara("%cabc", all_flag, 'a', &test);
 	printf("%s\n", test);*/
 	//printf("%d\n", printf("%c", 'a'));
-	printf("%d\n", ft_printf("abc%-3cabc", 'a'));
-	printf("%d\n", printf("abc%-3cabc", 'a'));
+	ft_printf("myprintf%%abc\n");
+	//printf("printf%%abc\n");
+	//ft_printf("myprintf%-10cabc\n", 't');
+	//printf("printf%-10cabc\n", 't');
 	//printf("%d\n", ft_printf("%c", 'a'));
 }

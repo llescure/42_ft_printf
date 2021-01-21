@@ -38,6 +38,8 @@ int			ft_where_type_is(const char *str, int i)
 				(str[compt] == 'i') || (str[compt] == 'd') ||
 				(str[compt] == 'u'))
 			return (compt);
+		if ((str[compt + 1] == '%'))
+			return (compt + 1);
 		compt++;
 	}
 	return (-1);
@@ -70,20 +72,20 @@ t_flag		ft_parse_flag(const char *str, int start, int end,
 int			ft_parsing(const char *str, t_flag *all_flag)
 {
 	int i;
-	int pos_after_percent;
+	int pos_percent;
 
 	i = 0;
-	pos_after_percent = 0;
+	pos_percent = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 		{
-			pos_after_percent = i;
+			pos_percent = i;
 			i = ft_where_type_is(str, i);
-			if (i > pos_after_percent)
+			if (i > pos_percent)
 			{
-				*all_flag = ft_parse_flag(str, pos_after_percent, i, all_flag);
-				return (pos_after_percent);
+				*all_flag = ft_parse_flag(str, pos_percent, i, all_flag);
+				return (pos_percent);
 			}
 			return (i);
 		}
@@ -114,8 +116,8 @@ int			ft_printf(const char *str, ...)
 	}
 	if (all_flag.type == 'c')
 		compt = ft_print_cara(str, all_flag, (char)va_arg(arguments, int), &buf);
-	/*if (all_flag.type == '%')
-		compt = ft_print_percent(str, all_flag, &buf);*/
+	if (all_flag.type == '%')
+		compt = ft_print_percent(str, all_flag, &buf);
 	/*else if (all_flag.type == 's')
 		compt = ft_print_string(str, all_flag, va_arg(arguments, char*), &buf);
 	else if (all_flag.type == 'p')
@@ -131,5 +133,6 @@ int			ft_printf(const char *str, ...)
 	compt = compt + ft_get_buf_end(str, &buf, all_flag);
 	va_end(arguments);
 	ft_putstr_fd(buf, 1);
+	free(buf);
 	return (compt);
 }
