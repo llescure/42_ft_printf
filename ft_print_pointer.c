@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:47:19 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/21 19:39:57 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 15:32:16 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_space(const char *str, t_flag all_flag, char **buf,
 	while (ft_isdigit(str[i] != 1))
 		i++;
 	if (all_flag.wildcard == 1)
-		number_of_spaces = all_flag.wildcard_value1 - 1;
+		number_of_spaces = all_flag.wildcard_value1;
 	else
 		number_of_spaces = ft_extract_number(str, i);
 	if ((ft_join_buf_space(buf, number_of_spaces)) == -1)
@@ -58,7 +58,7 @@ int		ft_space_minus(const char *str, t_flag all_flag, char **buf,
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
 		number_of_spaces = ft_extract_number(str, i);
 	else if (str[i] == '-' && str[i + 1] == '*')
-		number_of_spaces = all_flag.wildcard_value1 - 1;
+		number_of_spaces = all_flag.wildcard_value1;
 	free(str_cara);
 	if ((ft_join_buf_space(buf, number_of_spaces)) == -1)
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/21 23:00:13 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 16:20:56 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 
 int		main(void)
 {
-	int a = 6;
-	int *test = &a;
-	
+	//int compt = 0;
+
 	/*t_flag all_flag;
 	ft_initialisation(&all_flag);
 	ft_parsing("%10cabc\n", &all_flag);
@@ -30,9 +29,8 @@ int		main(void)
 	printf("%s\n", test);*/
 	//printf("%d\n", printf("%c", 'a'));
 	//ft_printf("abc%-10cabc\n", 't');
-	printf("%p\n", test);
-	printf("%x\n", test);
-	//ft_printf("coucou\n");
-	//printf("coucou\n");
+	//printf("%d\n", printf("%s", test));
+	printf("abc%*.*s", 4, 3, "coucou");
+	//ft_putstr_fd("(null)\0", 1);
 	//printf("%d\n", ft_printf("%c", 'a'));
 }

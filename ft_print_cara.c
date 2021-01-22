@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/21 18:53:33 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 15:28:25 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ int		ft_extract_number(const char *str, int compt)
 	rslt = ft_atoi((const char *)temp);
 	free(temp);
 	if (rslt > 1)
-	{
-		rslt--;
 		return ((int)rslt);
-	}
 	return (0);
 }
 
@@ -64,7 +61,7 @@ int		ft_space(const char *str, t_flag all_flag, char **buf,
 	if (all_flag.wildcard == 1)
 		number_of_spaces = all_flag.wildcard_value1 - 1;
 	else
-		number_of_spaces = ft_extract_number(str, i);
+		number_of_spaces = ft_extract_number(str, i) - 1;
 	if ((ft_join_buf_space(buf, number_of_spaces)) == -1)
 		return (-1);
 	if ((str_cara = ft_allocate_char_to_str(str_cara, cara)) == NULL)
@@ -95,7 +92,7 @@ int		ft_space_minus(const char *str, t_flag all_flag, char **buf,
 	*buf = ft_strjoin(*buf, str_cara);
 	free(temp);
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
-		number_of_spaces = ft_extract_number(str, i);
+		number_of_spaces = ft_extract_number(str, i) - 1;
 	else if (str[i] == '-' && str[i + 1] == '*')
 		number_of_spaces = all_flag.wildcard_value1 - 1;
 	free(str_cara);

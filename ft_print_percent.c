@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 19:38:22 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/21 19:38:27 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 15:28:49 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_space_percent(const char *str, t_flag all_flag, char **buf)
 	if (all_flag.wildcard == 1)
 		number_of_spaces = all_flag.wildcard_value1 - 1;
 	else
-		number_of_spaces = ft_extract_number(str, i);
+		number_of_spaces = ft_extract_number(str, i) - 1;
 	if ((ft_join_buf_space(buf, number_of_spaces)) == -1)
 		return (-1);
 	if ((str_cara = ft_allocate_char_to_str(str_cara, '%')) == NULL)
@@ -56,7 +56,7 @@ int		ft_space_minus_percent(const char *str, t_flag all_flag, char **buf)
 	*buf = ft_strjoin(*buf, str_cara);
 	free(temp);
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
-		number_of_spaces = ft_extract_number(str, i);
+		number_of_spaces = ft_extract_number(str, i) - 1;
 	else if (str[i] == '-' && str[i + 1] == '*')
 		number_of_spaces = all_flag.wildcard_value1 - 1;
 	free(str_cara);
