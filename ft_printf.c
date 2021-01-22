@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/21 19:28:47 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 17:12:12 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,9 @@ int			ft_printf(const char *str, ...)
 		compt = ft_print_cara(str, all_flag, (char)va_arg(arguments, int), &buf);
 	if (all_flag.type == '%')
 		compt = ft_print_percent(str, all_flag, &buf);
-	/*else if (all_flag.type == 's')
+	else if (all_flag.type == 's')
 		compt = ft_print_string(str, all_flag, va_arg(arguments, char*), &buf);
-	else if (all_flag.type == 'p')
+	/*else if (all_flag.type == 'p')
 		compt = ft_print_pointer(str, all_flag, va_arg(arguments, void*), &buf);
 	else if (all_flag.type == 'x')
 		compt = ft_print_lower_hexa(str, all_flag, va_arg(arguments, int), &buf);

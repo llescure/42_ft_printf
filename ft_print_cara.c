@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/22 15:28:25 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 17:06:46 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		error_case(t_flag all_flag)
 {
 	if ((all_flag.zero > 0) || (all_flag.dot > 0) || (all_flag.wildcard > 1))
 		return (-1);
-	if (all_flag.minus > 0 && (all_flag.wildcard < 0 ||
-		all_flag.number < 0))
+	if (all_flag.minus > 0 && (all_flag.wildcard == 0 ||
+		all_flag.number == 0))
 		return (-1);
 	if ((all_flag.wildcard > 1) || (all_flag.minus > 1) || (all_flag.dot > 1) ||
 		(all_flag.zero > 1))

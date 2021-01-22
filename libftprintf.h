@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/22 11:56:57 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 17:14:53 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,6 @@ int			ft_space_minus_string(const char *str, t_flag all_flag,
 		char **buf, char *user_str);
 int			ft_print_string(const char *str, t_flag all_flag, char *user_str,
 		char **buf);
+int			ft_precision_string(const char *str, t_flag all_flag);
+int			str_error_case(t_flag all_flag);
+
