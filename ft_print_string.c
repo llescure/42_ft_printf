@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:47:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/22 17:19:43 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 19:19:41 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,25 +108,24 @@ int		ft_space_minus_string(const char *str, t_flag all_flag, char **buf,
 int		ft_print_string(const char *str, t_flag all_flag, char *user_str,
 	char **buf)
 {
-	char *temp;
+	char *temp1;
+	char *temp2;
 
+	temp2 = user_str;
 	if (str_error_case(all_flag) < 0)
 		return (-1);
 	if (user_str == NULL)
-	{
-		ft_putstr_fd("(null)\0", 1);
-		return (6);
-	}
+		temp2 = "(null)\0";
 	if ((all_flag.number > 0 || all_flag.wildcard > 0) && (all_flag.minus == 0))
-		return (ft_space_string(str, all_flag, buf, user_str));
+		return (ft_space_string(str, all_flag, buf, temp2));
 	else if (all_flag.minus > 0  && (all_flag.number > 0 ||
 				   	all_flag.wildcard > 0))
-		return (ft_space_minus_string(str, all_flag, buf, user_str));
+		return (ft_space_minus_string(str, all_flag, buf, temp2));
 	else
 	{
-		temp = *buf;
-		*buf = ft_strjoin(*buf, user_str);
-		free(temp);
+		temp1 = *buf;
+		*buf = ft_strjoin(*buf, temp2);
+		free(temp1);
 	}
 	return ((int)ft_strlen(*buf));
 }

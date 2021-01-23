@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/22 17:19:31 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/22 19:21:34 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,18 @@
 
 int		main(void)
 {
-	//int compt = 0;
+	char *test = NULL;
 
-	printf("%-*.*s\n", 7, 2, "coucou");
-	ft_printf("%-*.*s\n", 7, 2, "coucou");
+	//Test string
+	//printf("%d", printf("abc%.3s\n", "coucou"));
+	//printf("%d", ft_printf("abc%.3s\n", "coucou"));
+	printf("%d\n", printf("%-10s\n", test));
+	printf("%d\n", ft_printf("%-10s\n", test));
+	//printf("%d", printf("%s\n", "coucou"));
+	//printf("%d", ft_printf("%s\n", "coucou"));
+	
+	//Test char
+	
+
+	//Test %
 }
