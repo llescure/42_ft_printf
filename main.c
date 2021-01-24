@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/23 17:12:10 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/24 22:04:54 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 int		main(void)
 {
+
+
 //	char *test = NULL;
 	/*t_flag all_flag;
 	int compt;
@@ -29,9 +31,12 @@ int		main(void)
 	printf("%s\n", test);
 	printf("%d\n", compt);*/
 
+	//Test x and X
+	printf("%5.5x\n", 42);
+
 	//Test string
-	printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));
-	printf("%d\n", ft_printf("%*.abc10s\n", 10, "coucou"));
+	//printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));
+	//printf("%d\n", ft_printf("%*.abc10s\n", 10, "coucou"));
 	/*printf("%d\n", printf("%*.10s\n", 10, "coucou"));
 	printf("%d\n", ft_printf("%*.10s\n", 10, "coucou"));
 	printf("%d\n", printf("%10.*s\n", 2, "coucou"));
@@ -50,6 +55,6 @@ int		main(void)
 	printf("%d", ft_printf("%s\n", "coucou"));*/
 
 	//Test char
-
+	
 	//Test %
 }

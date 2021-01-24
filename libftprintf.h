@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/24 11:00:58 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/24 21:43:32 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,10 @@ int			ft_print_string(const char *str, t_flag all_flag, char *user_str,
 		char **buf);
 int			ft_precision(const char *str, t_flag all_flag);
 int			str_error_case(t_flag all_flag);
-
+int			ft_find_size(int n);
+char		*ft_convert_lower_hexa(int user_nbr);
+char		*ft_convert_upper_hexa(int user_nbr);
+int		int_error_case(t_flag all_flag);
+int		ft_space_int(const char *str, t_flag all_flag, char **buf, char *user_nbr);
+int		ft_space_minus_int(const char *str, t_flag all_flag, char **buf, char *user_nbr);
+int		ft_print_low_hexa(const char *str, t_flag all_flag, int user_nbr, char **buf);
