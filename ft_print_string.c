@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:47:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/23 16:57:42 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/23 19:33:57 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		str_error_case(t_flag all_flag)
 	return (0);
 }
 
-int		ft_precision_string(const char *str, t_flag all_flag)
+int		ft_precision(const char *str, t_flag all_flag)
 {
 	int								i;
 	int								number_of_char;
@@ -56,7 +56,7 @@ int		ft_space_string(const char *str, t_flag all_flag, char **buf,
 	number_of_char = ft_strlen(user_str);
 	number_of_spaces = 0;
 	if (all_flag.dot > 0)
-		number_of_char = ft_precision_string(str, all_flag);
+		number_of_char = ft_precision(str, all_flag);
 	while (ft_isdigit(str[i] != 1))
 		i++;
 	if (number_of_char > (int)ft_strlen(user_str))
@@ -90,7 +90,7 @@ int		ft_space_minus_string(const char *str, t_flag all_flag, char **buf,
 	number_of_spaces = 0;
 	number_of_char = ft_strlen(user_str);
 	if (all_flag.dot > 0)
-		number_of_char = ft_precision_string(str, all_flag);
+		number_of_char = ft_precision(str, all_flag);
 	temp1 = *buf;
 	temp2 = ft_trim(user_str, 0, number_of_char);
 	*buf = ft_strjoin(*buf, temp2);

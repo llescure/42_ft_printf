@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/23 15:11:43 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/24 11:01:31 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,30 @@ int		ft_join_buf_space(char **buf, int number_of_spaces)
 	*buf = ft_strjoin(*buf, spaces);
 	free(temp);
 	free(spaces);
+	return (1);
+}
+
+int		ft_join_buf_zero(char **buf, int number_of_zeros)
+{
+	char				*temp;
+	char				*zeros;
+	int					i;
+
+	i = 0;
+	if (number_of_zeros <= 0)
+		return (-1);
+	if (!(zeros = malloc(sizeof(char) * number_of_zeros + 1)))
+		return (-1);
+	while (i < number_of_zeros)
+	{
+		zeros[i] = '0';
+		i++;
+	}
+	zeros[number_of_zeros] = '\0';
+	temp = *buf;
+	*buf = ft_strjoin(*buf, zeros);
+	free(temp);
+	free(zeros);
 	return (1);
 }
 
