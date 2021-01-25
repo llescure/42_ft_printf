@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/25 12:32:42 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/25 17:20:49 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,35 @@ int		main(void)
 {
 
 
-//	char *test = NULL;
-	/*t_flag all_flag;
+	char *test = NULL;
+	t_flag all_flag;
 	int compt;
 
-	ft_get_buf_start("%10.*s\n", 0,  &test);
+	ft_get_buf_start("%0*.3x\n", 0,  &test);
 	ft_initialisation(&all_flag);
-	ft_parsing("%10.*s\n", &all_flag);
-	all_flag.wildcard_value1 = 2;
-	//compt = ft_print_string("%10.*s\n", all_flag, "coucou" ,&test);
-	compt = ft_space_string("%10.*s\n", all_flag ,&test, "coucou");
+	ft_parsing("%0*.3x\n", &all_flag);
+	all_flag.wildcard_value1 = 5;
+	//compt = ft_print_low_hexa("%0*.3x\n", all_flag, 42 ,&test);
+	//compt = ft_zero_int("%0*.3x\n", all_flag ,&test, "2a");
+	compt = ft_space_int("%0*.3x\n", all_flag ,&test, "2a");
 	printf("%s\n", test);
-	printf("%d\n", compt);*/
+	printf("%d\n", compt);
 
 	//Test x and X
-	printf("%d\n", printf("%x\n", 42));
+/*	printf("%d\n", printf("%x\n", 42));
 	printf("%d\n", ft_printf("%x\n", 42));
+	printf("%d\n", printf("%3x\n", 42));
+	printf("%d\n", ft_printf("%3x\n", 42));
+	printf("%d\n", printf("%3.4xabc\n", 42));
+	printf("%d\n", ft_printf("%3.4xabc\n", 42));
+	printf("%d\n", printf("%10.4x\n", 42));
+	printf("%d\n", ft_printf("%10.4x\n", 42));
+	printf("%d\n", printf("%3.5x\n", 42));
+	printf("%d\n", ft_printf("%3.5x\n", 42));*/
+	//printf("%d\n", printf("%-3.5xabc\n", 42));
+	//printf("%d\n", ft_printf("%-3.5xabc\n", 42));
+	//printf("%d\n", printf("%0*.3xabc\n", 5, 42));
+	//printf("%d\n", ft_printf("%0*.3xabc\n", 5, 42));
 
 	//Test string
 	//printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));

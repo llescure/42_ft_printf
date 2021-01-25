@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/25 12:36:43 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/25 15:36:29 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,5 @@ int		ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 		char *user_nbr);
 int		ft_print_low_hexa(const char *str, t_flag all_flag, int user_nbr,
 		char **buf);
-int		ft_zero_string(const char *str, t_flag all_flag, char **buf,
+int		ft_zero_int(const char *str, t_flag all_flag, char **buf,
 		char *user_nbr);
