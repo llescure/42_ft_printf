@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:49:00 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/25 17:20:46 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/25 23:19:10 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,24 @@ int		ft_space_int(const char *str, t_flag all_flag, char **buf,
 	if (all_flag.dot > 0)
 		number_of_char = ft_precision(str, all_flag);
 	while (str[i] == '0' || ft_isdigit(str[i]) != 1)
+	{
+		if (str[i] == '*')
+			break;
 		i++;
+	}
 	if (number_of_char < (int)ft_strlen(user_nbr))
 			number_of_char = ft_strlen(user_nbr);
-	if (all_flag.number > 0)
+	if (all_flag.number > 0 && ft_isdigit(str[i]) == 1)
 		number_of_spaces = ft_extract_number(str, i) - number_of_char;
 	else if (all_flag.wildcard > 0)
 		number_of_spaces = all_flag.wildcard_value1 - number_of_char;
+	//printf("%s\n", user_nbr);
+	//printf("%s\n", *buf);
 	ft_join_buf_space(buf, number_of_spaces);
 	ft_join_buf_zero(buf, number_of_char - ft_strlen(user_nbr));
 	temp1 = *buf;
 	*buf = ft_strjoin(*buf, user_nbr);
+	printf("%s\n", *buf);
 	free(temp1);
 	return (ft_strlen(*buf));
 }
@@ -104,7 +111,7 @@ int		ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 		i++;
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
 		number_of_spaces = ft_extract_number(str, i) - number_of_char;
-	else if (str[i] == '-' && str[i + 1] == '*')
+	if ((str[i] == '-' && str[i + 1] == '*') || (ft_extract_number(str, i) == 0))
 		number_of_spaces = all_flag.wildcard_value1 - number_of_char;
 	ft_join_buf_space(buf, number_of_spaces);
 	return (ft_strlen(*buf));
@@ -117,7 +124,7 @@ int		ft_print_low_hexa(const char *str, t_flag all_flag, int user_nbr,
 	char *nbr_convert;
 
 	nbr_convert = ft_convert_lower_hexa(user_nbr);
-	if (str_error_case(all_flag) < 0)
+	if (int_error_case(all_flag) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0 || all_flag.dot > 0) &&
 			(all_flag.minus == 0) && (all_flag.zero == 0))

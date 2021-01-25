@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/25 16:05:59 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/25 22:27:57 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ int			ft_printf(const char *str, ...)
 		compt = ft_print_string(str, all_flag, va_arg(arguments, char*), &buf);
 	else if (all_flag.type == 'x')
 		compt = ft_print_low_hexa(str, all_flag, va_arg(arguments, int), &buf);
-	//else if (all_flag.type == 'X')
-	//	compt = ft_print_up_hexa(str, all_flag, va_arg(arguments, int), &buf);
+	else if (all_flag.type == 'X')
+		compt = ft_print_up_hexa(str, all_flag, va_arg(arguments, int), &buf);
 	/*else if (all_flag.type == 'p')
 		compt = ft_print_pointer(str, all_flag, va_arg(arguments, void*), &buf);
 	else if (all_flag.type == 'u')
