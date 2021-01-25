@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/24 22:04:54 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/25 12:32:42 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int		main(void)
 	printf("%d\n", compt);*/
 
 	//Test x and X
-	printf("%5.5x\n", 42);
+	printf("%d\n", printf("%x\n", 42));
+	printf("%d\n", ft_printf("%x\n", 42));
 
 	//Test string
 	//printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));
@@ -55,6 +56,5 @@ int		main(void)
 	printf("%d", ft_printf("%s\n", "coucou"));*/
 
 	//Test char
-	
 	//Test %
 }
