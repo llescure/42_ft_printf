@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:32:35 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 17:16:47 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 21:32:06 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		ft_print_int(const char *str, t_flag all_flag, int user_nbr,
 	else if (all_flag.minus > 0 && (all_flag.number > 0 ||
 				all_flag.wildcard > 0) && all_flag.zero == 0)
 		return (ft_space_minus_int(str, all_flag, buf, nbr_convert));
-	else if (all_flag.zero > 0  && (all_flag.number > 0 ||
-			all_flag.wildcard > 0))
+	else if (all_flag.zero > 0 && (all_flag.number > 0 ||
+				all_flag.wildcard > 0))
 		return (ft_zero_int(str, all_flag, buf, nbr_convert));
 	else
 	{

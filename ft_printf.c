@@ -6,13 +6,13 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 17:00:43 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 22:20:25 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-t_flag		ft_initialisation(t_flag *all_flag)
+void		ft_initialisation(t_flag *all_flag)
 {
 	all_flag->wildcard = 0;
 	all_flag->wildcard_value1 = 0;
@@ -22,7 +22,7 @@ t_flag		ft_initialisation(t_flag *all_flag)
 	all_flag->zero = 0;
 	all_flag->number = 0;
 	all_flag->type = '0';
-	return (*all_flag);
+	return ;
 }
 
 int			ft_where_type_is(const char *str, int i)
@@ -45,7 +45,7 @@ int			ft_where_type_is(const char *str, int i)
 	return (-1);
 }
 
-t_flag		ft_parse_flag(const char *str, int start, int end,
+void		ft_parse_flag(const char *str, int start, int end,
 		t_flag *all_flag)
 {
 	int i;
@@ -66,7 +66,7 @@ t_flag		ft_parse_flag(const char *str, int start, int end,
 		i++;
 	}
 	all_flag->type = str[i];
-	return (*all_flag);
+	return ;
 }
 
 int			ft_parsing(const char *str, t_flag *all_flag)
@@ -84,7 +84,7 @@ int			ft_parsing(const char *str, t_flag *all_flag)
 			i = ft_where_type_is(str, i);
 			if (i > pos_percent)
 			{
-				*all_flag = ft_parse_flag(str, pos_percent, i, all_flag);
+				ft_parse_flag(str, pos_percent, i, all_flag);
 				return (pos_percent);
 			}
 			return (i);
@@ -103,7 +103,7 @@ int			ft_printf(const char *str, ...)
 	char					*buf;
 
 	va_start(arguments, str);
-	all_flag = ft_initialisation(&all_flag);
+	ft_initialisation(&all_flag);
 	compt = ft_parsing(str, &all_flag);
 	number_wildcard = all_flag.wildcard;
 	if (ft_get_buf_start(str, compt, &buf) == -1)

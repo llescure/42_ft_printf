@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 17:12:35 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 22:34:42 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int		main(void)
 {
 	//char *test = NULL;
-	void *address = "coucou";
+	//void *address = "coucou";
 	/*t_flag all_flag;
 	int compt;
 
@@ -37,8 +37,8 @@ int		main(void)
 
 	//Test p
 	//printf("%d\n", printf("%p\n", test));
-	printf("%d\n", printf("%p\n", address));
-	printf("%d\n", ft_printf("%p\n", address));
+	//printf("%d\n", printf("%p\n", address));
+	//printf("%d\n", ft_printf("%p\n", address));
 	//printf("%d\n", printf("%p\n", test));
 	//printf("%d\n", ft_printf("%p\n", test));
 
@@ -76,7 +76,7 @@ int		main(void)
 	printf("%d\n", ft_printf("%-5u\n", -1));*/
 
 	//Test x and X
-	/*printf("%d\n", printf("%x\n", 42));
+	printf("%d\n", printf("%x\n", 42));
 	printf("%d\n", ft_printf("%x\n", 42));
 	printf("%d\n", printf("%3x\n", 42));
 	printf("%d\n", ft_printf("%3x\n", 42));
@@ -101,9 +101,9 @@ int		main(void)
 	printf("%d\n", printf("%-0*x\n", 6, 42));
 	printf("%d\n", ft_printf("%-0*x\n", 6, 42));
 	printf("%d\n", printf("%-03x\n", 42));
-	printf("%d\n", ft_printf("%-03x\n", 42));*/
-	//printf("%d\n", printf("%-5X\n", 123456789));
-	//printf("%d\n", ft_printf("%-5X\n", 123456789));
+	printf("%d\n", ft_printf("%-03x\n", 42));
+	printf("%d\n", printf("%-5X\n", 123456789));
+	printf("%d\n", ft_printf("%-5X\n", 123456789));
 
 	//Test string
 	//printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));

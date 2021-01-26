@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:49:44 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 17:20:49 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 22:30:06 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		find_size(int n)
 {
-		int compt;
+	int compt;
 
 	compt = 0;
 	if (n < 0)
@@ -30,19 +30,17 @@ int		find_size(int n)
 	return (compt);
 }
 
-char	*ft_convert_lower_hexa(int user_nbr)
+char	*ft_convert_lower_hexa(int user_nbr, char *base)
 {
 	char							*rslt;
-	char							*base;
 	int								temp;
 	int								i;
 	int								j;
 
 	temp = user_nbr;
-	base = "0123456789abcdef";
-	if (!(rslt = malloc(sizeof(char) * ft_find_size(user_nbr) + 1)))
+	if (!(rslt = malloc(sizeof(char) * find_size(user_nbr) + 1)))
 		return (NULL);
-	i = ft_find_size(user_nbr) - 1;
+	i = find_size(user_nbr) - 1;
 	j = 0;
 	if (temp < 0)
 	{
@@ -56,23 +54,21 @@ char	*ft_convert_lower_hexa(int user_nbr)
 		temp = temp / 16;
 		i--;
 	}
-	rslt[ft_find_size(user_nbr)] = '\0';
+	rslt[find_size(user_nbr)] = '\0';
 	return (rslt);
 }
 
-char	*ft_convert_upper_hexa(int user_nbr)
+char	*ft_convert_upper_hexa(int user_nbr, char *base)
 {
 	char							*rslt;
-	char							*base;
 	int								temp;
 	int								i;
 	int								j;
 
 	temp = user_nbr;
-	base = "0123456789ABCDEF";
-	if (!(rslt = malloc(sizeof(char) * ft_find_size(user_nbr) + 1)))
+	if (!(rslt = malloc(sizeof(char) * find_size(user_nbr) + 1)))
 		return (NULL);
-	i = ft_find_size(user_nbr) - 1;
+	i = find_size(user_nbr) - 1;
 	j = 0;
 	if (temp < 0)
 	{
@@ -86,6 +82,6 @@ char	*ft_convert_upper_hexa(int user_nbr)
 		temp = temp / 16;
 		i--;
 	}
-	rslt[ft_find_size(user_nbr)] = '\0';
+	rslt[find_size(user_nbr)] = '\0';
 	return (rslt);
 }
