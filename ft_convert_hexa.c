@@ -6,13 +6,13 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:49:44 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 16:33:30 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:20:49 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	find_size(int n)
+int		find_size(int n)
 {
 		int compt;
 
@@ -32,11 +32,11 @@ int	find_size(int n)
 
 char	*ft_convert_lower_hexa(int user_nbr)
 {
-	char *rslt;
-	char *base;
-	int temp;
-	int i;
-	int j;
+	char							*rslt;
+	char							*base;
+	int								temp;
+	int								i;
+	int								j;
 
 	temp = user_nbr;
 	base = "0123456789abcdef";
@@ -62,11 +62,11 @@ char	*ft_convert_lower_hexa(int user_nbr)
 
 char	*ft_convert_upper_hexa(int user_nbr)
 {
-	char *rslt;
-	char *base;
-	int temp;
-	int i;
-	int j;
+	char							*rslt;
+	char							*base;
+	int								temp;
+	int								i;
+	int								j;
 
 	temp = user_nbr;
 	base = "0123456789ABCDEF";

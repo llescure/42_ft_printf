@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 16:34:35 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:24:55 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ char	*ft_itoa_unsigned(unsigned int n)
 int		ft_print_unsigned_int(const char *str, t_flag all_flag, int user_nbr,
 	char **buf)
 {
-	char *temp1;
-	unsigned int signed_to_unsigned;
-	char *nbr_convert;
+	char								*temp1;
+	unsigned int						signed_to_unsigned;
+	char								*nbr_convert;
 
-	signed_to_unsigned = (unsigned int) user_nbr;
+	signed_to_unsigned = (unsigned int)user_nbr;
 	nbr_convert = ft_itoa_unsigned(signed_to_unsigned);
 	if (int_error_case(all_flag) < 0)
 		return (-1);

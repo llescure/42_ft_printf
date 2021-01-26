@@ -6,13 +6,14 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:48:24 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/19 23:05:53 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:21:01 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_convert_wildcard(int arguments, int number_wildcard, t_flag *all_flag)
+void	ft_convert_wildcard(int arguments, int number_wildcard,
+		t_flag *all_flag)
 {
 	int rslt;
 

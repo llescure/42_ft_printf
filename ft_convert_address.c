@@ -6,13 +6,13 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:55:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 17:12:23 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:18:57 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	find_hexa_unsigned_size(long unsigned n)
+int		find_hexa_unsigned_size(long unsigned n)
 {
 		int compt;
 
@@ -32,11 +32,11 @@ int	find_hexa_unsigned_size(long unsigned n)
 
 char	*ft_convert_address_hexa(long unsigned user_nbr)
 {
-	char *rslt;
-	char *base;
-	long unsigned temp;
-	int i;
-	int j;
+	char										*rslt;
+	char										*base;
+	long unsigned								temp;
+	int											i;
+	int											j;
 
 	temp = user_nbr;
 	base = "0123456789abcdef";
@@ -69,8 +69,8 @@ char	*ft_convert_address(long unsigned user_nbr)
 
 	if (user_nbr == 0)
 		return ("0x0");
-	if(!(address = malloc(sizeof(char) * 10)))
-	   return (NULL);
+	if (!(address = malloc(sizeof(char) * 10)))
+		return (NULL);
 	address[9] = '\0';
 	beginning = "0x";
 	address = ft_convert_address_hexa(user_nbr);
