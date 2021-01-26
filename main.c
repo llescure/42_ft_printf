@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 10:44:12 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:04:26 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,38 @@ int		main(void)
 	//compt = ft_space_int("%.0x\n", all_flag ,&test, "2a");
 	printf("%s\n", test);
 	printf("%d\n", compt);*/
+
+	//Test u and U
+	printf("%d\n", printf("%u\n", 42));
+	printf("%d\n", ft_printf("%u\n", 42));
+	printf("%d\n", printf("%3u\n", 42));
+	printf("%d\n", ft_printf("%3u\n", 42));
+	printf("%d\n", printf("%3.4uabc\n", 42));
+	printf("%d\n", ft_printf("%3.4uabc\n", 42));
+	printf("%d\n", printf("%10.4u\n", 42));
+	printf("%d\n", ft_printf("%10.4u\n", 42));
+	printf("%d\n", printf("%3.5u\n", 42));
+	printf("%d\n", ft_printf("%3.5u\n", 42));
+	printf("%d\n", printf("%-3.5uabc\n", 42));
+	printf("%d\n", ft_printf("%-3.5uabc\n", 42));
+	printf("%d\n", printf("%0*.3uabc\n", 5, 42));
+	printf("%d\n", ft_printf("%0*.3uabc\n", 5, 42));
+	printf("%d\n", printf("%0*.*u\n", 3, 3, 42));
+	printf("%d\n", ft_printf("%0*.*u\n", 3, 3, 42));
+	printf("%d\n", printf("%0.u\n", 42));
+	printf("%d\n", ft_printf("%0.u\n", 42));
+	printf("%d\n", printf("%.0u\n", 42));
+	printf("%d\n", ft_printf("%.0u\n", 42));
+	printf("%d\n", printf("%0*u\n", 6, 42));
+	printf("%d\n", ft_printf("%0*u\n", 6, 42));
+	printf("%d\n", printf("%-0*u\n", 6, 42));
+	printf("%d\n", ft_printf("%-0*u\n", 6, 42));
+	printf("%d\n", printf("%-03u\n", 42));
+	printf("%d\n", ft_printf("%-03u\n", 42));
+	printf("%d\n", printf("%-5u\n", 123456789));
+	printf("%d\n", ft_printf("%-5u\n", 123456789));
+	printf("%d\n", printf("%-5u\n", -1));
+	printf("%d\n", ft_printf("%-5u\n", -1));
 
 	//Test x and X
 	/*printf("%d\n", printf("%x\n", 42));
@@ -61,8 +93,8 @@ int		main(void)
 	printf("%d\n", ft_printf("%-0*x\n", 6, 42));
 	printf("%d\n", printf("%-03x\n", 42));
 	printf("%d\n", ft_printf("%-03x\n", 42));*/
-	printf("%d\n", printf("%-5X\n", 123456789));
-	printf("%d\n", ft_printf("%-5X\n", 123456789));
+	//printf("%d\n", printf("%-5X\n", 123456789));
+	//printf("%d\n", ft_printf("%-5X\n", 123456789));
 
 	//Test string
 	//printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));

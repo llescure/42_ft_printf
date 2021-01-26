@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/25 22:40:06 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:11:53 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ size_t			ft_strlen(const char *str);
 int			ft_isdigit(int c);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_atoi(const char *str);
+char		*ft_itoa(int n);
+char		*ft_itoa_unsigned(unsigned int n);
 char		*ft_strjoin(char const *s1, char const *s2);
 int			error_case(t_flag all_flag);
 int			ft_extract_number(const char *str, int compt);
@@ -67,6 +69,8 @@ int			ft_print_string(const char *str, t_flag all_flag, char *user_str,
 		char **buf);
 int			ft_precision(const char *str, t_flag all_flag);
 int			str_error_case(t_flag all_flag);
+int			find_size(int n);
+int			find_unsigned_size(unsigned int n);
 int			ft_find_size(int n);
 char		*ft_convert_lower_hexa(int user_nbr);
 char		*ft_convert_upper_hexa(int user_nbr);
@@ -80,4 +84,8 @@ int		ft_print_low_hexa(const char *str, t_flag all_flag, int user_nbr,
 int		ft_zero_int(const char *str, t_flag all_flag, char **buf,
 		char *user_nbr);
 int		ft_print_up_hexa(const char *str, t_flag all_flag, int user_nbr,
+		char **buf);
+int		ft_print_int(const char *str, t_flag all_flag, int user_nbr,
+		char **buf);
+int		ft_print_unsigned_int(const char *str, t_flag all_flag, int user_nbr,
 		char **buf);
