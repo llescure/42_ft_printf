@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:49:00 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/25 23:19:10 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 10:44:48 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 int		int_error_case(t_flag all_flag)
 {
 	if (all_flag.minus > 0 && all_flag.wildcard == 0 &&
-		all_flag.number == 0)
-		return (-1);
-	if (all_flag.zero > 0 && all_flag.wildcard == 0 &&
 		all_flag.number == 0)
 		return (-1);
 	if ((all_flag.wildcard > 2) || (all_flag.minus > 1) || (all_flag.dot > 1) ||
@@ -41,7 +38,7 @@ int		ft_space_int(const char *str, t_flag all_flag, char **buf,
 		number_of_char = ft_precision(str, all_flag);
 	while (str[i] == '0' || ft_isdigit(str[i]) != 1)
 	{
-		if (str[i] == '*')
+		if (str[i] == '*' || str[i] == '\0')
 			break;
 		i++;
 	}
@@ -51,13 +48,10 @@ int		ft_space_int(const char *str, t_flag all_flag, char **buf,
 		number_of_spaces = ft_extract_number(str, i) - number_of_char;
 	else if (all_flag.wildcard > 0)
 		number_of_spaces = all_flag.wildcard_value1 - number_of_char;
-	//printf("%s\n", user_nbr);
-	//printf("%s\n", *buf);
 	ft_join_buf_space(buf, number_of_spaces);
 	ft_join_buf_zero(buf, number_of_char - ft_strlen(user_nbr));
 	temp1 = *buf;
 	*buf = ft_strjoin(*buf, user_nbr);
-	printf("%s\n", *buf);
 	free(temp1);
 	return (ft_strlen(*buf));
 }
@@ -76,7 +70,11 @@ int		ft_zero_int(const char *str, t_flag all_flag, char **buf,
 	if (all_flag.dot > 0)
 		return (ft_space_int(str, all_flag, buf, user_nbr));
 	while (str[i] == '0' || ft_isdigit(str[i]) != 1)
+	{
+		if (str[i] == '\0')
+			break;
 		i++;
+	}
 	if (all_flag.number > 0)
 		number_of_spaces = ft_extract_number(str, i) - ft_strlen(user_nbr);
 	else if (all_flag.wildcard > 0)

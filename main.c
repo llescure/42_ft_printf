@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/25 23:22:13 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 10:44:12 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int		main(void)
 	//printf("zero%d\n", all_flag.zero);
 	//printf("wildcard%d\n", all_flag.wildcard);
 	//printf("number%d\n", all_flag.number);
-	//compt = ft_print_low_hexa("%0*x\n", all_flag, 42 ,&test);
-	//compt = ft_zero_int("%0*x\n", all_flag ,&test, "2a");
-	compt = ft_space_int("%.0x\n", all_flag ,&test, "2a");*/
-	//printf("%s\n", test);
-	//printf("%d\n", compt);
+	compt = ft_print_low_hexa("%.0x\n", all_flag, 42 ,&test);
+	//compt = ft_zero_int("%.0x\n", all_flag ,&test, "2a");
+	//compt = ft_space_int("%.0x\n", all_flag ,&test, "2a");
+	printf("%s\n", test);
+	printf("%d\n", compt);*/
 
 	//Test x and X
 	/*printf("%d\n", printf("%x\n", 42));
@@ -50,9 +50,9 @@ int		main(void)
 	printf("%d\n", printf("%0*.3xabc\n", 5, 42));
 	printf("%d\n", ft_printf("%0*.3xabc\n", 5, 42));
 	printf("%d\n", printf("%0*.*x\n", 3, 3, 42));
-	printf("%d\n", ft_printf("%0*.*x\n", 3, 3, 42));*/
-	//printf("%d\n", printf("%0.x\n", 42));
-	//printf("%d\n", ft_printf("%0.x\n", 42));
+	printf("%d\n", ft_printf("%0*.*x\n", 3, 3, 42));
+	printf("%d\n", printf("%0.x\n", 42));
+	printf("%d\n", ft_printf("%0.x\n", 42));
 	printf("%d\n", printf("%.0x\n", 42));
 	printf("%d\n", ft_printf("%.0x\n", 42));
 	printf("%d\n", printf("%0*x\n", 6, 42));
@@ -60,7 +60,9 @@ int		main(void)
 	printf("%d\n", printf("%-0*x\n", 6, 42));
 	printf("%d\n", ft_printf("%-0*x\n", 6, 42));
 	printf("%d\n", printf("%-03x\n", 42));
-	printf("%d\n", ft_printf("%-03x\n", 42));
+	printf("%d\n", ft_printf("%-03x\n", 42));*/
+	printf("%d\n", printf("%-5X\n", 123456789));
+	printf("%d\n", ft_printf("%-5X\n", 123456789));
 
 	//Test string
 	//printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));
