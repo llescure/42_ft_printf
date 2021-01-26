@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:36:12 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 12:55:55 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:06:19 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,16 @@ int		ft_space_minus_pointer(const char *str, t_flag all_flag, char **buf,
 	return (ft_strlen(*buf));
 }
 
-int		ft_print_pointer(const char *str, t_flag all_flag, void *user_nbr,
+int		ft_print_pointer(const char *str, t_flag all_flag, long unsigned user_nbr,
 	char **buf)
 {
 	char *temp1;
 	char *nbr_convert;
-
 	nbr_convert = ft_convert_address(user_nbr);
 	if (error_case(all_flag) < 0)
 		return (-1);
-	if ((all_flag.number > 0 || all_flag.wildcard > 0 ||) &&
-			(all_flag.minus == 0) &&)
+	if ((all_flag.number > 0 || all_flag.wildcard > 0) &&
+			(all_flag.minus == 0))
 		return (ft_space_pointer(str, all_flag, buf, nbr_convert));
 	else if (all_flag.minus > 0 && (all_flag.number > 0 ||
 				all_flag.wildcard > 0))

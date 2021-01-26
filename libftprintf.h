@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 12:11:53 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:12:30 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ int			str_error_case(t_flag all_flag);
 int			find_size(int n);
 int			find_unsigned_size(unsigned int n);
 int			ft_find_size(int n);
+int			find_hexa_unsigned_size(long unsigned n);
 char		*ft_convert_lower_hexa(int user_nbr);
 char		*ft_convert_upper_hexa(int user_nbr);
+char		*ft_convert_address_hexa(long unsigned user_nbr);
 int		int_error_case(t_flag all_flag);
 int		ft_space_int(const char *str, t_flag all_flag, char **buf, char
 		*user_nbr);
@@ -88,4 +90,7 @@ int		ft_print_up_hexa(const char *str, t_flag all_flag, int user_nbr,
 int		ft_print_int(const char *str, t_flag all_flag, int user_nbr,
 		char **buf);
 int		ft_print_unsigned_int(const char *str, t_flag all_flag, int user_nbr,
+		char **buf);
+char	*ft_convert_address(long unsigned user_nbr);
+int		ft_print_pointer(const char *str, t_flag all_flag, long unsigned user_nbr,
 		char **buf);

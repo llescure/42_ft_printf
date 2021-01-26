@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 12:44:15 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:00:43 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,8 @@ int			ft_printf(const char *str, ...)
 		compt = ft_print_unsigned_int(str, all_flag, va_arg(arguments, unsigned int), &buf);
 	else if (all_flag.type == 'i' || all_flag.type == 'd')
 		compt = ft_print_int(str, all_flag, va_arg(arguments, int), &buf);
-	/*else if (all_flag.type == 'p')
-		compt = ft_print_pointer(str, all_flag, va_arg(arguments, void*), &buf);*/
+	else if (all_flag.type == 'p')
+		compt = ft_print_pointer(str, all_flag, va_arg(arguments, long unsigned), &buf);
 	compt = compt + ft_get_buf_end(str, &buf, all_flag);
 	va_end(arguments);
 	ft_putstr_fd(buf, 1);
