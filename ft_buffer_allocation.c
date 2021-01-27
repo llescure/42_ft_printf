@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/25 15:48:43 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/27 23:33:02 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,17 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag)
 
 	if (all_flag.type == '0')
 		return (0);
-	i = 0;
-	while (str[i] != '%')
-		i++;
+	i = ft_strlen(str);
+	while (str[i] != all_flag.type && i > 0)
+		i--;
 	i++;
-	while (str[i] != all_flag.type)
-		i++;
-	i++;
-	total_number_cara = i;
-	while (str[total_number_cara] != '\0')
-		total_number_cara++;
-	if (total_number_cara == i)
+	total_number_cara = (int)ft_strlen(str) - i;
+	if (total_number_cara == (int)ft_strlen(str))
 		return (0);
-	str_trimmed = ft_trim((char *)str, i, total_number_cara);
+	str_trimmed = ft_trim((char *)str, i, i + total_number_cara);
 	temp = *buf;
 	*buf = ft_strjoin(*buf, str_trimmed);
 	free(temp);
 	free(str_trimmed);
-	return (total_number_cara - i);
+	return (total_number_cara);
 }

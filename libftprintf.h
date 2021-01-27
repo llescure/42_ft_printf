@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 22:19:37 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/27 23:41:20 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			ft_initialisation(t_flag *all_flag);
 int				ft_where_type_is(const char *str, int i);
 void			ft_parse_flag(const char *str, int start, int end,
 		t_flag *all_flag);
-int				ft_parsing(const char *str, t_flag *all_flag);
+int				ft_parsing(const char *str, t_flag *all_flag, int start);
 size_t			ft_strlen(const char *str);
 int				ft_isdigit(int c);
 void			ft_putstr_fd(char *s, int fd);

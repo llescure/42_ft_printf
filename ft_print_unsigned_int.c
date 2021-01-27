@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 21:37:49 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/27 15:42:14 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_itoa_unsigned(unsigned int n)
 		store = store / 10;
 		i--;
 	}
-	rslt[find_unsigned_size(n) + 1] = '\0';
+	rslt[find_unsigned_size(n)] = '\0';
 	return (rslt);
 }
 
