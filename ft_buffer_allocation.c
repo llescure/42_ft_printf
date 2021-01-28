@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 15:03:58 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 19:07:32 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,13 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag, int start)
 
 	if (all_flag.type == '0')
 		return (0);
-	i = start;
-	while (str[i] != '\0')
+	i = start - 1;
+	while (str[++i] != '\0')
 	{
 		if (str[i] == '%')
-			break;
-		i++;
+			break ;
 	}
-	total_number_cara =  i - start;
+	total_number_cara = i - start;
 	str_trimmed = ft_trim((char *)str, start, i);
 	if (str_trimmed == NULL)
 	{

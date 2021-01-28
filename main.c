@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 16:51:02 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 22:12:18 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int		main(void)
 	printf("%d\n", ft_printf("%-5X\n", 123456789));*/
 
 	// MULTIPLE TYPES
-	printf("%d\n", printf("%dabc%X%u%xabc\n", 1, 2, 3, 4));
+	/*printf("%d\n", printf("%dabc%X%u%xabc\n", 1, 2, 3, 4));
 	printf("%d\n", ft_printf("%dabc%X%u%xabc\n", 1, 2, 3, 4));
 	printf("%d\n", printf("%d%%abc\n", 1));
 	printf("%d\n", ft_printf("%d%%abc\n", 1));
@@ -120,7 +120,7 @@ int		main(void)
 	printf("%d\n", printf("%*dabc\n", 5, 1));
 	printf("%d\n", ft_printf("%*dabc\n", 5, 1));
 	printf("%d\n", printf("%*dabc%*c\n", 5, 1, 10, 'a'));
-	printf("%d\n", ft_printf("%*dabc%*c\n", 5, 1, 10, 'a'));
+	printf("%d\n", ft_printf("%*dabc%*c\n", 5, 1, 10, 'a'));*/
 
 	//TEST STRING
 	//printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));
@@ -143,4 +143,8 @@ int		main(void)
 	printf("%d", ft_printf("%s\n", "coucou"));*/
 	//TEST CHAR
 	//Test %
+
+	//TEST mega testeur
+	printf("%05%\n");
+	ft_printf("%05%\n");
 }

@@ -6,13 +6,14 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 19:38:22 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/22 15:28:49 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 23:01:40 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_space_percent(const char *str, t_flag all_flag, char **buf)
+int		ft_zero_percent(const char *str, t_flag all_flag, char **buf,
+		char cara)
 {
 	int						i;
 	int						number_of_spaces;
@@ -21,47 +22,23 @@ int		ft_space_percent(const char *str, t_flag all_flag, char **buf)
 
 	i = 0;
 	str_cara = NULL;
-	while (ft_isdigit(str[i] != 1))
-		i++;
-	if (all_flag.wildcard == 1)
-		number_of_spaces = all_flag.wildcard_value1 - 1;
-	else
-		number_of_spaces = ft_extract_number(str, i) - 1;
-	if ((ft_join_buf_space(buf, number_of_spaces)) == -1)
-		return (-1);
-	if ((str_cara = ft_allocate_char_to_str(str_cara, '%')) == NULL)
-		return (-1);
-	temp = *buf;
-	*buf = ft_strjoin(*buf, str_cara);
-	free(temp);
-	free(str_cara);
-	return (ft_strlen(*buf));
-}
-
-int		ft_space_minus_percent(const char *str, t_flag all_flag, char **buf)
-{
-	int								i;
-	int								number_of_spaces;
-	char							*str_cara;
-	char							*temp;
-
-	i = 0;
-	str_cara = NULL;
 	number_of_spaces = 0;
-	while (str[i] != '-')
+	while (str[i] == '0' || ft_isdigit(str[i]) != 1)
+	{
+		if (str[i] == '\0')
+			break ;
 		i++;
-	if ((str_cara = ft_allocate_char_to_str(str_cara, '%')) == NULL)
-		return (-1);
+	}
+	if (all_flag.number > 0)
+		number_of_spaces = ft_extract_number(str, i) - 1;
+	else if (all_flag.wildcard > 0)
+		number_of_spaces = all_flag.wildcard_value1 - 1;
+	ft_join_buf_zero(buf, number_of_spaces);
+	str_cara = ft_allocate_char_to_str(str_cara, cara);
 	temp = *buf;
 	*buf = ft_strjoin(*buf, str_cara);
 	free(temp);
-	if (str[i] == '-' && ft_isdigit(str[i + 1]))
-		number_of_spaces = ft_extract_number(str, i) - 1;
-	else if (str[i] == '-' && str[i + 1] == '*')
-		number_of_spaces = all_flag.wildcard_value1 - 1;
 	free(str_cara);
-	if ((ft_join_buf_space(buf, number_of_spaces)) == -1)
-		return (-1);
 	return (ft_strlen(*buf));
 }
 
@@ -71,14 +48,17 @@ int		ft_print_percent(const char *str, t_flag all_flag, char **buf)
 	char *temp;
 
 	str_cara = NULL;
-	if (error_case(all_flag) < 0)
+	if (int_error_case(all_flag) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0) &&
-			all_flag.minus == 0)
+			all_flag.minus == 0 && all_flag.zero == 0)
 		return (ft_space(str, all_flag, buf, '%'));
 	else if (all_flag.minus > 0 && (all_flag.number > 0 ||
-		all_flag.wildcard > 0))
+		all_flag.wildcard > 0) && all_flag.zero == 0)
 		return (ft_space_minus(str, all_flag, buf, '%'));
+	else if (all_flag.zero > 0 && (all_flag.number > 0 ||
+				all_flag.wildcard > 0))
+		return (ft_zero_percent(str, all_flag, buf, '%'));
 	else
 	{
 		if ((str_cara = ft_allocate_char_to_str(str_cara, '%')) == NULL)

@@ -6,17 +6,33 @@
 #    By: llescure <llescure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 17:06:48 by llescure          #+#    #+#              #
-#    Updated: 2021/01/15 16:37:10 by llescure         ###   ########.fr        #
+#    Updated: 2021/01/28 21:20:11 by llescure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = main.c
+SRCS = ft_buffer_allocation.c \
+       ft_convert_address.c \
+       ft_convert_hexa.c \
+       ft_parsing.c \
+       ft_print_cara.c \
+       ft_print_int.c \
+       ft_print_lower_hexa.c \
+       ft_print_percent.c \
+       ft_print_pointer.c \
+       ft_print_string.c \
+       ft_print_unsigned_int.c \
+       ft_print_up_hexa.c \
+       ft_printf.c \
+       ft_sub_wildcard.c \
+       ft_trim.c \
 
 SUBDIR = libft
 
-HEADER = printf.h
+LIBRARY = libft.a
+
+HEADER = libftprintf.h
 
 OBJS = $(SRCS:.c=.o)
 
@@ -30,6 +46,7 @@ all:	$(NAME)
 
 $(NAME) : $(OBJS)
 			make -C $(SUBDIR)
+			cp ${SUBDIR}/${LIBRARY} ${NAME}
 			ar rcs $(NAME) $(OBJS)
 
 %.o : %.c $(HEADER)

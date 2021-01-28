@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 16:06:52 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 19:41:38 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		ft_precision(const char *str, t_flag all_flag, char *user_str)
 		return ((int)ft_strlen(user_str));
 }
 
-int		ft_print_unsigned_int(const char *str, t_flag all_flag, int user_nbr,
+int		print_unsign(const char *str, t_flag all_flag, int user_nbr,
 	char **buf)
 {
 	char								*temp1;

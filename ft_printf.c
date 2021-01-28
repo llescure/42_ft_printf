@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 15:35:16 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 19:41:12 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ int			ft_printf(const char *str, ...)
 	start = 0;
 	va_start(arguments, str);
 	ft_initialisation(&all_flag);
-	compt = ft_parsing(str, &all_flag, start);
+	compt = ft_parsing_part1(str, &all_flag, start);
 	ft_get_buf_start(str, compt, &buf);
 	while (start < (int)ft_strlen(str))
 	{
 		ft_initialisation(&all_flag);
-		//printf("wildcard%d\n", all_flag.wildcard);
-		compt = ft_parsing(str, &all_flag, start);
+		compt = ft_parsing_part1(str, &all_flag, start);
 		start = ft_where_type_is(str, compt);
 		if (start == -1)
 		{
@@ -40,7 +39,7 @@ int			ft_printf(const char *str, ...)
 		number_wildcard = all_flag.wildcard;
 		while (number_wildcard > 0 && number_wildcard < 3)
 		{
-			ft_convert_wildcard(va_arg(arguments, int), number_wildcard, &all_flag);
+			conv_wildcard(va_arg(arguments, int), number_wildcard, &all_flag);
 			number_wildcard--;
 		}
 		if (all_flag.type == 'c')
@@ -54,12 +53,12 @@ int			ft_printf(const char *str, ...)
 		else if (all_flag.type == 'X')
 			ft_print_up_hexa(str, all_flag, va_arg(arguments, int), &buf);
 		else if (all_flag.type == 'u')
-			ft_print_unsigned_int(str, all_flag, va_arg(arguments, unsigned int), &buf);
+			print_unsign(str, all_flag, va_arg(arguments, unsigned int), &buf);
 		else if (all_flag.type == 'i' || all_flag.type == 'd')
 			ft_print_int(str, all_flag, va_arg(arguments, int), &buf);
 		else if (all_flag.type == 'p')
-			ft_print_pointer(str, all_flag, va_arg(arguments, long unsigned), &buf);
-	compt = ft_strlen(buf) + ft_get_buf_end(str, &buf, all_flag, start + 1);
+			print_point(str, all_flag, va_arg(arguments, long unsigned), &buf);
+		compt = ft_strlen(buf) + ft_get_buf_end(str, &buf, all_flag, start + 1);
 	}
 	va_end(arguments);
 	ft_putstr_fd(buf, 1);

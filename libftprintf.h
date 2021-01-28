@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 16:23:56 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 22:36:47 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,17 @@ int				ft_print_low_hexa(const char *str, t_flag all_flag,
 		int user_nbr, char **buf);
 int				ft_print_int(const char *str, t_flag all_flag, int user_nbr,
 		char **buf);
-int				ft_print_unsigned_int(const char *str, t_flag all_flag,
+int				print_unsign(const char *str, t_flag all_flag,
 		int user_nbr, char **buf);
-int				ft_print_pointer(const char *str, t_flag all_flag,
+int				print_point(const char *str, t_flag all_flag,
 		long unsigned user_nbr, char **buf);
 
 void			ft_initialisation(t_flag *all_flag);
 int				ft_where_type_is(const char *str, int i);
 void			ft_parse_flag(const char *str, int start, int end,
 		t_flag *all_flag);
-int				ft_parsing(const char *str, t_flag *all_flag, int start);
+int				ft_parsing_part1(const char *str, t_flag *all_flag, int start);
+int				ft_parsing_part2(const char *str, t_flag *all_flag, int start);
 size_t			ft_strlen(const char *str);
 int				ft_isdigit(int c);
 void			ft_putstr_fd(char *s, int fd);
@@ -85,6 +86,8 @@ int				ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 		char *user_nbr);
 int				ft_zero_int(const char *str, t_flag all_flag, char **buf,
 		char *user_nbr);
+int				ft_zero_percent(const char *str, t_flag all_flag, char **buf,
+		char cara);
 int				ft_precision(const char *str, t_flag all_flag, char *user_nbr);
 int				ft_precision_string(const char *str, t_flag all_flag,
 		char *user_str);
@@ -100,7 +103,7 @@ int				ft_get_buf_end(const char *str, char **buf, t_flag all_flag,
 		int start);
 
 char			*ft_convert_address(long unsigned user_nbr);
-void			ft_convert_wildcard(int arguments, int number_wildcard,
+void			conv_wildcard(int arguments, int number_wildcard,
 		t_flag *all_flag);
 char			*ft_convert_lower_hexa(int user_nbr, char *base);
 char			*ft_convert_upper_hexa(int user_nbr, char *base);
