@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/27 23:41:20 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 16:23:56 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int				find_size(int n);
 int				find_unsigned_size(unsigned int n);
 int				ft_find_size(int n);
 int				find_hexa_unsigned_size(long unsigned n);
+int				valid_type(const char *str);
 
 int				ft_space(const char *str, t_flag all_flag, char **buf,
 		char cara);
@@ -85,6 +86,8 @@ int				ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 int				ft_zero_int(const char *str, t_flag all_flag, char **buf,
 		char *user_nbr);
 int				ft_precision(const char *str, t_flag all_flag, char *user_nbr);
+int				ft_precision_string(const char *str, t_flag all_flag,
+		char *user_str);
 int				error_case(t_flag all_flag);
 int				int_error_case(t_flag all_flag);
 int				str_error_case(t_flag all_flag);
@@ -93,7 +96,8 @@ int				ft_get_buf_start(const char *str, int compt, char **buf);
 int				ft_join_buf_space(char **buf, int number_of_spaces);
 int				ft_join_buf_zero(char **buf, int number_of_zeros);
 char			*ft_allocate_char_to_str(char *str, char cara);
-int				ft_get_buf_end(const char *str, char **buf, t_flag all_flag);
+int				ft_get_buf_end(const char *str, char **buf, t_flag all_flag,
+		int start);
 
 char			*ft_convert_address(long unsigned user_nbr);
 void			ft_convert_wildcard(int arguments, int number_wildcard,

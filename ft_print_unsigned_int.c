@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/27 15:42:14 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 16:06:52 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		find_unsigned_size(unsigned int n)
 	int compt;
 
 	compt = 0;
-	while (n / 10 != 0)
+	while (n > 0)
 	{
 		n = n / 10;
 		compt++;
@@ -35,7 +35,7 @@ char	*ft_itoa_unsigned(unsigned int n)
 	store = n;
 	if (!(rslt = malloc(sizeof(char) * find_unsigned_size(n) + 1)))
 		return (NULL);
-	i = find_unsigned_size(n);
+	i = find_unsigned_size(n) - 1;
 	j = 0;
 	while (i >= j)
 	{
@@ -45,6 +45,27 @@ char	*ft_itoa_unsigned(unsigned int n)
 	}
 	rslt[find_unsigned_size(n)] = '\0';
 	return (rslt);
+}
+
+int		ft_precision(const char *str, t_flag all_flag, char *user_str)
+{
+	int								i;
+	int								number_of_char;
+
+	i = 0;
+	number_of_char = 0;
+	while (str[i] != '.')
+		i++;
+	if (str[i] == '.' && ft_isdigit(str[i + 1]))
+		number_of_char = ft_extract_number(str, i);
+	else if (str[i - 1] == '*' && str[i] == '.' && str[i + 1] == '*')
+		number_of_char = all_flag.wildcard_value2;
+	else if (str[i] == '.' && str[i + 1] == '*')
+		number_of_char = all_flag.wildcard_value1;
+	if (number_of_char > (int)ft_strlen(user_str))
+		return (number_of_char);
+	else
+		return ((int)ft_strlen(user_str));
 }
 
 int		ft_print_unsigned_int(const char *str, t_flag all_flag, int user_nbr,

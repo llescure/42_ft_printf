@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:47:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 21:54:39 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 16:45:40 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		str_error_case(t_flag all_flag)
 	return (0);
 }
 
-int		ft_precision(const char *str, t_flag all_flag, char *user_str)
+int		ft_precision_string(const char *str, t_flag all_flag, char *user_str)
 {
 	int								i;
 	int								number_of_char;
@@ -41,9 +41,8 @@ int		ft_precision(const char *str, t_flag all_flag, char *user_str)
 	else if (str[i] == '.' && str[i + 1] == '*')
 		number_of_char = all_flag.wildcard_value1;
 	if (number_of_char > (int)ft_strlen(user_str))
-		return (number_of_char);
-	else
-		return ((int)ft_strlen(user_str));
+			return(ft_strlen(user_str));
+	return (number_of_char);
 }
 
 int		ft_space_string(const char *str, t_flag all_flag, char **buf,
@@ -59,7 +58,7 @@ int		ft_space_string(const char *str, t_flag all_flag, char **buf,
 	number_of_char = ft_strlen(user_str);
 	number_of_spaces = 0;
 	if (all_flag.dot > 0)
-		number_of_char = ft_precision(str, all_flag, user_str);
+		number_of_char = ft_precision_string(str, all_flag, user_str);
 	if (all_flag.number > 0)
 		number_of_spaces = ft_extract_number(str, i) - number_of_char;
 	else if (all_flag.wildcard > 0)
@@ -89,7 +88,7 @@ int		ft_space_minus_string(const char *str, t_flag all_flag, char **buf,
 	number_of_spaces = 0;
 	number_of_char = ft_strlen(user_str);
 	if (all_flag.dot > 0)
-		number_of_char = ft_precision(str, all_flag, user_str);
+		number_of_char = ft_precision_string(str, all_flag, user_str);
 	temp1 = *buf;
 	temp2 = ft_trim(user_str, 0, number_of_char);
 	*buf = ft_strjoin(*buf, temp2);

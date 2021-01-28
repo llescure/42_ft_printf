@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:55:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 19:20:23 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/28 15:44:19 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char	*ft_convert_address_hexa(long unsigned user_nbr, char *base)
 		temp = temp / 16;
 		i--;
 	}
-	find_hexa_unsigned_size(user_nbr);
 	rslt[find_hexa_unsigned_size(user_nbr)] = '\0';
 	return (rslt);
 }
