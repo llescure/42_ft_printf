@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:23:07 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 19:29:24 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 22:57:14 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int			ft_where_type_is(const char *str, int i)
 	return (-1);
 }
 
-int			valid_type(const char *str)
+int			valid_type(const char *str, int compt)
 {
 	int i;
 	int pos_percent;
 
-	i = 0;
+	i = compt;
 	pos_percent = 0;
 	while (str[i] != '\0')
 	{
@@ -59,7 +59,9 @@ int			valid_type(const char *str)
 			pos_percent = i;
 			i = ft_where_type_is(str, i);
 			if (i > pos_percent)
-				return (pos_percent);
+				return (i);
+			else
+				return (-1);
 		}
 		i++;
 	}
@@ -90,14 +92,14 @@ void		ft_parse_flag(const char *str, int start, int end,
 	return ;
 }
 
-int			ft_parsing_part1(const char *str, t_flag *all_flag, int start)
+int			ft_parsing(const char *str, t_flag *all_flag)
 {
 	int i;
 	int pos_percent;
 
-	i = start;
+	i = 0;
 	pos_percent = 0;
-	while (str[i] != '\0' && start > 0)
+	while (str[i] != '\0')
 	{
 		if (str[i] == '%' && str[i - 1] != '%')
 		{
@@ -112,32 +114,6 @@ int			ft_parsing_part1(const char *str, t_flag *all_flag, int start)
 		}
 		i++;
 	}
-	if (start == 0)
-		return (ft_parsing_part2(str, all_flag, start));
-	return (i);
+	return (-1);
 }
 
-int			ft_parsing_part2(const char *str, t_flag *all_flag, int start)
-{
-	int i;
-	int pos_percent;
-
-	i = start;
-	pos_percent = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '%')
-		{
-			pos_percent = i;
-			i = ft_where_type_is(str, i);
-			if (i > pos_percent)
-			{
-				ft_parse_flag(str, pos_percent, i, all_flag);
-				return (pos_percent);
-			}
-			return (i);
-		}
-		i++;
-	}
-	return (i);
-}

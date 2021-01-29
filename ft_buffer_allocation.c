@@ -6,24 +6,28 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 19:07:32 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 23:22:06 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_get_buf_start(const char *str, int compt, char **buf)
+int		ft_get_buf_start(const char *str, char **buf)
 {
 	char *temp;
 	char *str_trimmed;
+	int i;
 
+	i = 0;
 	if (!(*buf = malloc(sizeof(char))))
 		return (-1);
 	*buf[0] = '\0';
-	if (compt > 0)
+	while (str[i] != '\0' && str[i] != '%')
+		i++;
+	if (i > 0)
 	{
 		temp = *buf;
-		str_trimmed = ft_trim((char *)str, 0, compt);
+		str_trimmed = ft_trim((char *)str, 0, i);
 		*buf = ft_strjoin(*buf, str_trimmed);
 		free(temp);
 		free(str_trimmed);
@@ -88,7 +92,7 @@ int		ft_join_buf_zero(char **buf, int number_of_zeros)
 	return (1);
 }
 
-int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag, int start)
+int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag)
 {
 	char						*temp;
 	char						*str_trimmed;
@@ -97,14 +101,14 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag, int start)
 
 	if (all_flag.type == '0')
 		return (0);
-	i = start - 1;
+	i = - 1;
 	while (str[++i] != '\0')
 	{
 		if (str[i] == '%')
 			break ;
 	}
-	total_number_cara = i - start;
-	str_trimmed = ft_trim((char *)str, start, i);
+	total_number_cara = i;
+	str_trimmed = ft_trim((char *)str, 0, i);
 	if (str_trimmed == NULL)
 	{
 		free(str_trimmed);
@@ -116,3 +120,4 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag, int start)
 	free(str_trimmed);
 	return (total_number_cara);
 }
+
