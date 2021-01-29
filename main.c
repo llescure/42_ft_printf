@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 22:12:18 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 12:08:29 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ int		main(void)
 	//Test %
 
 	//TEST mega testeur
-	printf("%05%\n");
-	ft_printf("%05%\n");
+	printf("%d\n", printf("%.i\n", 0));
+	printf("%d\n", ft_printf("%.i\n", 0));
 }
+

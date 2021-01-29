@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/26 12:51:37 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 12:21:26 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int		error_case(t_flag all_flag)
 {
-	if ((all_flag.zero > 0) || (all_flag.dot > 0) || (all_flag.wildcard > 1))
-		return (-1);
-	if (all_flag.minus > 0 && (all_flag.wildcard == 0 ||
-		all_flag.number == 0))
+	if ((all_flag.zero > 0) || (all_flag.wildcard > 1))
 		return (-1);
 	if ((all_flag.wildcard > 1) || (all_flag.minus > 1) || (all_flag.dot > 1) ||
 		(all_flag.zero > 1))
@@ -41,7 +38,7 @@ int		ft_extract_number(const char *str, int compt)
 	temp = ft_trim((char *)str, start, end);
 	rslt = ft_atoi((const char *)temp);
 	free(temp);
-	if (rslt > 1)
+	if (rslt > 0)
 		return ((int)rslt);
 	return (0);
 }
