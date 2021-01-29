@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 22:36:47 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:09:45 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int				ft_zero_int(const char *str, t_flag all_flag, char **buf,
 		char *user_nbr);
 int				ft_zero_percent(const char *str, t_flag all_flag, char **buf,
 		char cara);
-int				ft_precision(const char *str, t_flag all_flag, char *user_nbr);
+int				ft_precision(const char *str, t_flag all_flag, char **user_nbr);
 int				ft_precision_string(const char *str, t_flag all_flag,
 		char *user_str);
 int				error_case(t_flag all_flag);
@@ -102,7 +102,7 @@ char			*ft_allocate_char_to_str(char *str, char cara);
 int				ft_get_buf_end(const char *str, char **buf, t_flag all_flag,
 		int start);
 
-char			*ft_convert_address(long unsigned user_nbr);
+char			*ft_convert_address(long unsigned user_nbr, t_flag all_flag);
 void			conv_wildcard(int arguments, int number_wildcard,
 		t_flag *all_flag);
 char			*ft_convert_lower_hexa(int user_nbr, char *base);

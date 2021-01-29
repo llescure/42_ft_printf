@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 12:25:21 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:14:42 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		find_unsigned_size(unsigned int n)
 	int compt;
 
 	compt = 0;
-	while (n > 0)
+	while (n / 10 != 0)
 	{
 		n = n / 10;
 		compt++;
@@ -35,7 +35,7 @@ char	*ft_itoa_unsigned(unsigned int n)
 	store = n;
 	if (!(rslt = malloc(sizeof(char) * find_unsigned_size(n) + 1)))
 		return (NULL);
-	i = find_unsigned_size(n) - 1;
+	i = find_unsigned_size(n);
 	j = 0;
 	while (i >= j)
 	{
@@ -43,11 +43,11 @@ char	*ft_itoa_unsigned(unsigned int n)
 		store = store / 10;
 		i--;
 	}
-	rslt[find_unsigned_size(n)] = '\0';
+	rslt[find_unsigned_size(n) + 1] = '\0';
 	return (rslt);
 }
 
-int		ft_precision(const char *str, t_flag all_flag, char *user_str)
+int		ft_precision(const char *str, t_flag all_flag, char **user_str)
 {
 	int								i;
 	int								number_of_char;
@@ -62,11 +62,11 @@ int		ft_precision(const char *str, t_flag all_flag, char *user_str)
 		number_of_char = all_flag.wildcard_value2;
 	else if (str[i] == '.' && str[i + 1] == '*')
 		number_of_char = all_flag.wildcard_value1;
-	if (number_of_char > (int)ft_strlen(user_str))
+	if (number_of_char == 0)
+		*user_str = "";
+	if (number_of_char > (int)ft_strlen(*user_str))
 		return (number_of_char);
-	else if (number_of_char == 0)
-		return (0);
-	return ((int)ft_strlen(user_str));
+	return ((int)ft_strlen(*user_str));
 }
 
 int		print_unsign(const char *str, t_flag all_flag, int user_nbr,

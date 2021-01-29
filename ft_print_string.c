@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:47:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 12:03:35 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 14:47:58 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,13 @@ int		ft_space_minus_string(const char *str, t_flag all_flag, char **buf,
 	number_of_char = ft_strlen(user_str);
 	if (all_flag.dot > 0)
 		number_of_char = ft_precision_string(str, all_flag, user_str);
-	temp1 = *buf;
 	temp2 = ft_trim(user_str, 0, number_of_char);
-	*buf = ft_strjoin(*buf, temp2);
-	free(temp1);
+	if (temp2 != NULL)
+	{
+		temp1 = *buf;
+		*buf = ft_strjoin(*buf, temp2);
+		free(temp1);
+	}
 	free(temp2);
 	while (str[i] != '-')
 		i++;

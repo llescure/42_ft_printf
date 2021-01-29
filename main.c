@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 12:08:29 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:13:28 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,15 @@ int		main(void)
 	//Test %
 
 	//TEST mega testeur
-	printf("%d\n", printf("%.i\n", 0));
-	printf("%d\n", ft_printf("%.i\n", 0));
+	//printf("%d\n", printf("%.3s%.7s\n", "hola", "bitch"));
+	//printf("%d\n", ft_printf("%.3s%.7s\n", "hola", "bitch"));
+	//printf("%i\n", printf("%6.d", 0));
+	//printf("%d\n", ft_printf("%6.d", 0));
+	//printf("%d\n", printf("%.i\n", 0));
+	//printf("%d\n", ft_printf("%.i\n", 0));
+	//printf("%d\n", printf("%.i\n", 0));
+	//printf("%d\n", ft_printf("%.i\n", 0));
+	printf("%d\n", printf("%6.i\n", -3));
+	printf("%d\n", ft_printf("%6.i\n", -3));
 }
 

@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:49:00 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 12:33:32 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:08:25 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_space_int(const char *str, t_flag all_flag, char **buf,
 	number_of_char = ft_strlen(user_nbr);
 	number_of_spaces = 0;
 	if (all_flag.dot > 0)
-		number_of_char = ft_precision(str, all_flag, user_nbr);
+		number_of_char = ft_precision(str, all_flag, &user_nbr);
 	while (str[++i] == '0' || ft_isdigit(str[i]) != 1)
 	{
 		if (str[i] == '\0' || str[i] == '*')
@@ -93,7 +93,7 @@ int		ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 	number_of_char = ft_strlen(user_nbr);
 	if (all_flag.dot > 0)
 	{
-		number_of_char = ft_precision(str, all_flag, user_nbr);
+		number_of_char = ft_precision(str, all_flag, &user_nbr);
 		ft_join_buf_zero(buf, number_of_char - ft_strlen(user_nbr));
 	}
 	temp1 = *buf;

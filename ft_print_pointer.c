@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:36:12 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 22:23:46 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 15:21:06 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int		ft_space_minus_pointer(const char *str, t_flag all_flag, char **buf,
 	temp1 = *buf;
 	*buf = ft_strjoin(*buf, user_nbr);
 	free(temp1);
+	while (str[i] != '%')
+		i++;
 	while (str[i] != '-')
 		i++;
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
@@ -63,7 +65,7 @@ int		print_point(const char *str, t_flag all_flag,
 	char *temp1;
 	char *nbr_convert;
 
-	nbr_convert = ft_convert_address(user_nbr);
+	nbr_convert = ft_convert_address(user_nbr, all_flag);
 	if (error_case(all_flag) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0) &&

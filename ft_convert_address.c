@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_convert_address.c                               :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:55:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 15:44:19 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 16:22:51 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int		find_hexa_unsigned_size(long unsigned n)
 	compt = 0;
 	if (n < 0)
 	{
-		compt++;
 		n = n * -1;
+		compt++;
 	}
-	while (n > 0)
+	while (n / 16 != 0)
 	{
 		n = n / 16;
 		compt++;
@@ -40,7 +40,7 @@ char	*ft_convert_address_hexa(long unsigned user_nbr, char *base)
 	temp = user_nbr;
 	if (!(rslt = malloc(sizeof(char) * find_hexa_unsigned_size(user_nbr) + 1)))
 		return (NULL);
-	i = find_hexa_unsigned_size(user_nbr) - 1;
+	i = find_hexa_unsigned_size(user_nbr);
 	j = 0;
 	if (temp < 0)
 	{
@@ -54,17 +54,17 @@ char	*ft_convert_address_hexa(long unsigned user_nbr, char *base)
 		temp = temp / 16;
 		i--;
 	}
-	rslt[find_hexa_unsigned_size(user_nbr)] = '\0';
+	rslt[find_hexa_unsigned_size(user_nbr) + 1] = '\0';
 	return (rslt);
 }
 
-char	*ft_convert_address(long unsigned user_nbr)
+char	*ft_convert_address(long unsigned user_nbr, t_flag all_flag)
 {
 	char *address;
 	char *beginning;
 	char *temp;
 
-	if (user_nbr == 0)
+	if (user_nbr == 0 && all_flag.dot == 0)
 		return ("0x0");
 	if (!(address = malloc(sizeof(char) * 10)))
 		return (NULL);

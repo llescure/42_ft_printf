@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:32:35 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 10:40:06 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:15:21 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		ft_print_int(const char *str, t_flag all_flag, int user_nbr,
 	char *nbr_convert;
 
 	nbr_convert = ft_itoa(user_nbr);
+	printf("nbr%s\n", nbr_convert);
 	if (int_error_case(all_flag) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0 || all_flag.dot > 0) &&
