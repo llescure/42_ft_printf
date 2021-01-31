@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:49:00 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 17:08:25 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/31 23:53:15 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,23 @@ int		ft_space_int(const char *str, t_flag all_flag, char **buf,
 	number_of_char = ft_strlen(user_nbr);
 	number_of_spaces = 0;
 	if (all_flag.dot > 0)
+	{
+		if (ft_atoi(user_nbr) < 0)
+		{
+			number_of_spaces = -1;
+			ft_negative_case(&user_nbr, buf);
+		}
 		number_of_char = ft_precision(str, all_flag, &user_nbr);
+	}
 	while (str[++i] == '0' || ft_isdigit(str[i]) != 1)
 	{
 		if (str[i] == '\0' || str[i] == '*')
 			break ;
 	}
 	if (all_flag.number > 0 && ft_isdigit(str[i]) == 1)
-		number_of_spaces = ft_extract_number(str, i) - number_of_char;
+		number_of_spaces = number_of_spaces + ft_extract_number(str, i) - number_of_char;
 	else if (all_flag.wildcard > 0)
-		number_of_spaces = all_flag.wildcard_value1 - number_of_char;
+		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 - number_of_char;
 	ft_join_buf_space(buf, number_of_spaces);
 	ft_join_buf_zero(buf, number_of_char - ft_strlen(user_nbr));
 	temp1 = *buf;
@@ -63,6 +70,11 @@ int		ft_zero_int(const char *str, t_flag all_flag, char **buf,
 		return (ft_space_minus_int(str, all_flag, buf, user_nbr));
 	if (all_flag.dot > 0)
 		return (ft_space_int(str, all_flag, buf, user_nbr));
+	if (ft_atoi(user_nbr) < 0)
+	{
+		number_of_spaces = -1;
+		ft_negative_case(&user_nbr, buf);
+	}
 	while (str[i] == '0' || ft_isdigit(str[i]) != 1)
 	{
 		if (str[i] == '\0')
@@ -70,9 +82,9 @@ int		ft_zero_int(const char *str, t_flag all_flag, char **buf,
 		i++;
 	}
 	if (all_flag.number > 0)
-		number_of_spaces = ft_extract_number(str, i) - ft_strlen(user_nbr);
+		number_of_spaces = number_of_spaces + ft_extract_number(str, i) - ft_strlen(user_nbr);
 	else if (all_flag.wildcard > 0)
-		number_of_spaces = all_flag.wildcard_value1 - ft_strlen(user_nbr);
+		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 - ft_strlen(user_nbr);
 	ft_join_buf_zero(buf, number_of_spaces);
 	temp1 = *buf;
 	*buf = ft_strjoin(*buf, user_nbr);
@@ -93,6 +105,11 @@ int		ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 	number_of_char = ft_strlen(user_nbr);
 	if (all_flag.dot > 0)
 	{
+		if (ft_atoi(user_nbr) < 0)
+		{
+			number_of_spaces = -1;
+			ft_negative_case(&user_nbr, buf);
+		}
 		number_of_char = ft_precision(str, all_flag, &user_nbr);
 		ft_join_buf_zero(buf, number_of_char - ft_strlen(user_nbr));
 	}
@@ -102,10 +119,10 @@ int		ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 	while (str[i] != '-')
 		i++;
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
-		number_of_spaces = ft_extract_number(str, i) - number_of_char;
+		number_of_spaces = number_of_spaces + ft_extract_number(str, i) - number_of_char;
 	if ((str[i] == '-' && str[i + 1] == '*') ||
 			(ft_extract_number(str, i) == 0))
-		number_of_spaces = all_flag.wildcard_value1 - number_of_char;
+		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 - number_of_char;
 	ft_join_buf_space(buf, number_of_spaces);
 	return (ft_strlen(*buf));
 }

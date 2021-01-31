@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 23:21:39 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/31 23:28:38 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int				find_hexa_unsigned_size(long unsigned n);
 int				valid_type(const char *str, int compt);
 char			*ft_cut_str(const char *str, int compt);
 char			*ft_strdup(const char *s1);
+void			ft_negative_case(char **user_nbr, char **buf);
 
 int				ft_space(const char *str, t_flag all_flag, char **buf,
 		char cara);

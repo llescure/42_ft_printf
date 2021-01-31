@@ -6,26 +6,23 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 23:23:34 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/30 11:48:19 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char 		*ft_cut_str(const char *str, int compt)
+char		*ft_cut_str(const char *str, int compt)
 {
-	char *temp;
-	char *str_cut;
-	int i;
+	char				*temp;
+	char				*str_cut;
+	int			i;
 
-	if (valid_type(str, 0) == -1)
-		return (NULL);
 	i = compt + 1;
 	temp = ft_strdup(str);
 	str_cut = ft_strdup(&temp[i]);
 	free(temp);
 	return (str_cut);
-
 }
 
 int			ft_printf(const char *str, ...)
@@ -38,7 +35,8 @@ int			ft_printf(const char *str, ...)
 	int					rslt;
 
 	va_start(arguments, str);
-	ft_get_buf_start(str, &buf);
+	if (ft_get_buf_start(str, &buf) > 0)
+		str = ft_cut_str(str, ft_get_buf_start(str, &buf) - 1);
 	rslt = ft_strlen(buf);
 	while (str != NULL)
 	{

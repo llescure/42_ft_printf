@@ -6,11 +6,28 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:32:35 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 20:46:58 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/31 22:50:02 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void		ft_negative_case(char **user_nbr, char **buf)
+{
+	char *copy;
+	char *temp;
+	char *str_cara;
+
+	str_cara = NULL;
+	copy = *user_nbr;
+	*user_nbr = ft_strdup(&copy[1]);
+	free(copy);
+	str_cara = ft_allocate_char_to_str(str_cara, '-');
+	temp = *buf;
+	*buf = ft_strjoin(*buf, str_cara);
+	free(temp);
+	free(str_cara);
+}
 
 int		ft_print_int(const char *str, t_flag all_flag, int user_nbr,
 	char **buf)
@@ -27,8 +44,7 @@ int		ft_print_int(const char *str, t_flag all_flag, int user_nbr,
 	else if (all_flag.minus > 0 && (all_flag.number > 0 ||
 				all_flag.wildcard > 0) && all_flag.zero == 0)
 		return (ft_space_minus_int(str, all_flag, buf, nbr_convert));
-	else if (all_flag.zero > 0 && (all_flag.number > 0 ||
-				all_flag.wildcard > 0))
+	else if (all_flag.zero > 0)
 		return (ft_zero_int(str, all_flag, buf, nbr_convert));
 	else
 	{

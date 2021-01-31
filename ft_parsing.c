@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:23:07 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 22:57:14 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/01 00:10:04 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int			ft_parsing(const char *str, t_flag *all_flag)
 	pos_percent = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '%' && str[i - 1] != '%')
+		if (str[i] == '%' && str[i - 1] == '%')
 		{
 			pos_percent = i;
 			i = ft_where_type_is(str, i);
@@ -116,4 +116,3 @@ int			ft_parsing(const char *str, t_flag *all_flag)
 	}
 	return (-1);
 }
-

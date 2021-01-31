@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 23:22:06 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/30 11:47:17 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_get_buf_start(const char *str, char **buf)
 {
-	char *temp;
-	char *str_trimmed;
-	int i;
+	char 				*temp;
+	char				*str_trimmed;
+	int 			i;
 
 	i = 0;
 	if (!(*buf = malloc(sizeof(char))))
@@ -31,8 +31,9 @@ int		ft_get_buf_start(const char *str, char **buf)
 		*buf = ft_strjoin(*buf, str_trimmed);
 		free(temp);
 		free(str_trimmed);
+		return (i);
 	}
-	return (1);
+	return (0);
 }
 
 char	*ft_allocate_char_to_str(char *str, char cara)
@@ -101,7 +102,7 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag)
 
 	if (all_flag.type == '0')
 		return (0);
-	i = - 1;
+	i = -1;
 	while (str[++i] != '\0')
 	{
 		if (str[i] == '%')
@@ -120,4 +121,3 @@ int		ft_get_buf_end(const char *str, char **buf, t_flag all_flag)
 	free(str_trimmed);
 	return (total_number_cara);
 }
-

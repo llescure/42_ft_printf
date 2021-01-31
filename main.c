@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 23:26:34 by llescure         ###   ########.fr       */
+/*   Updated: 2021/01/31 23:55:35 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,13 +145,9 @@ int		main(void)
 	//Test %
 
 	//TEST mega testeur
-	//printf("%i\n", printf("%6.d", 0));
-	//printf("%d\n", ft_printf("%6.d", 0));
-	//printf("%d\n", printf("%.i\n", 0));
-	//printf("%d\n", ft_printf("%.i\n", 0));
-	//printf("%d\n", printf("%.i\n", 0));
-	//printf("%d\n", ft_printf("%.i\n", 0));
-	//printf("%d\n", printf("%6.i\n", -3));
-	//printf("%d\n", ft_printf("%6.i\n", -3));
+	//printf("%d\n", printf("%-10.6i\n", -3));
+	//printf("%d\n", ft_printf("%-10.6i\n", -3));
+	printf("%d\n", printf("%10.5i\n", -54));
+	printf("%d\n", ft_printf("%10.5i\n", -54));
 }
 
