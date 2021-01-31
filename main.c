@@ -1,12 +1,12 @@
-
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 15:43:32 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/31 23:55:35 by llescure         ###   ########.fr       */
+/*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
+/*   Updated: 2021/02/01 00:16:37 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		main(void)
 	//char *test = NULL;
 	/*t_flag all_flag;
 	int compt;
-
 	ft_get_buf_start("%*dabc\n",  &test);
 	ft_initialisation(&all_flag);
 	ft_parsing("%*dabc\n", &all_flag, 0);
@@ -150,4 +149,3 @@ int		main(void)
 	printf("%d\n", printf("%10.5i\n", -54));
 	printf("%d\n", ft_printf("%10.5i\n", -54));
 }
-
