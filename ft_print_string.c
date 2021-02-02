@@ -6,19 +6,32 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:47:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 14:47:58 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/02 23:12:31 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		str_error_case(t_flag all_flag)
+int		str_error_case(t_flag *all_flag, const char **str)
 {
-	if (all_flag.zero > 0 && all_flag.dot == 0)
+	if (all_flag->zero > 0 && all_flag->dot == 0)
 		return (-1);
-	if ((all_flag.wildcard > 2) || (all_flag.minus > 1) || (all_flag.dot > 1) ||
-		(all_flag.zero > 1))
+	if ((all_flag->wildcard > 2) || (all_flag->dot > 1) || (all_flag->zero > 1))
 		return (-1);
+	if (all_flag->wildcard_value1 < 0)
+	{
+		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
+		all_flag->minus = all_flag->minus + 1;
+		*str = ft_add_element(str, '-');
+	}
+	if (all_flag->wildcard_value2 < 0)
+	{
+		all_flag->wildcard_value2 = all_flag->wildcard_value2 * -1;
+		all_flag->minus = all_flag->minus + 1;
+		*str = ft_add_element(str, '-');
+	}
+	if (all_flag->minus > 1)
+		*str = ft_delete_multiple_cara(str, '-');
 	return (0);
 }
 
@@ -56,7 +69,7 @@ int		ft_space_string(const char *str, t_flag all_flag, char **buf,
 	number_of_spaces = 0;
 	if (all_flag.dot > 0)
 		number_of_char = ft_precision_string(str, all_flag, user_str);
-	while (ft_isdigit(str[i]) != 1)
+	while (ft_isdigit(str[i]) != 1 && str[i] != '\0')
 		i++;
 	if (all_flag.number > 0 && str[i - 1] != '.')
 		number_of_spaces = ft_extract_number(str, i) - number_of_char;
@@ -114,7 +127,7 @@ int		ft_print_string(const char *str, t_flag all_flag, char *user_str,
 	char *temp2;
 
 	temp2 = user_str;
-	if (str_error_case(all_flag) < 0)
+	if (str_error_case(&all_flag, &str) < 0)
 		return (-1);
 	if (user_str == NULL)
 		temp2 = "(null)\0";

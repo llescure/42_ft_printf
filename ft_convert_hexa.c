@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:49:44 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 16:55:29 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/02 23:35:10 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		find_size(int n)
 		compt++;
 		n = n * -1;
 	}
-	while (n / 16 != 0)
+	while (n > 0)
 	{
 		n = n / 16;
 		compt++;
@@ -40,7 +40,7 @@ char	*ft_convert_lower_hexa(int user_nbr, char *base)
 	temp = user_nbr;
 	if (!(rslt = malloc(sizeof(char) * find_size(user_nbr) + 1)))
 		return (NULL);
-	i = find_size(user_nbr);
+	i = find_size(user_nbr) - 1;
 	j = 0;
 	if (temp < 0)
 	{
@@ -54,7 +54,7 @@ char	*ft_convert_lower_hexa(int user_nbr, char *base)
 		temp = temp / 16;
 		i--;
 	}
-	rslt[find_size(user_nbr) + 1] = '\0';
+	rslt[find_size(user_nbr)] = '\0';
 	return (rslt);
 }
 
@@ -68,7 +68,7 @@ char	*ft_convert_upper_hexa(int user_nbr, char *base)
 	temp = user_nbr;
 	if (!(rslt = malloc(sizeof(char) * find_size(user_nbr) + 1)))
 		return (NULL);
-	i = find_size(user_nbr);
+	i = find_size(user_nbr) - 1;
 	j = 0;
 	if (temp < 0)
 	{
@@ -82,6 +82,6 @@ char	*ft_convert_upper_hexa(int user_nbr, char *base)
 		temp = temp / 16;
 		i--;
 	}
-	rslt[find_size(user_nbr) + 1] = '\0';
+	rslt[find_size(user_nbr)] = '\0';
 	return (rslt);
 }

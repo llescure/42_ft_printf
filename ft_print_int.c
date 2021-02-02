@@ -3,25 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 11:32:35 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/31 22:50:02 by llescure         ###   ########.fr       */
+/*   Created: 2021/02/01 19:49:56 by llescure          #+#    #+#             */
+/*   Updated: 2021/02/02 22:19:17 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		ft_negative_case(char **user_nbr, char **buf)
+void		ft_change_user_nbr(char **user_nbr, t_flag *all_flag)
 {
 	char *copy;
+
+	all_flag->negative = 1;
+	copy = *user_nbr;
+	*user_nbr = ft_strdup(&copy[1]);
+	free(copy);
+}
+
+void		ft_print_minus(char **buf)
+{
 	char *temp;
 	char *str_cara;
 
 	str_cara = NULL;
-	copy = *user_nbr;
-	*user_nbr = ft_strdup(&copy[1]);
-	free(copy);
 	str_cara = ft_allocate_char_to_str(str_cara, '-');
 	temp = *buf;
 	*buf = ft_strjoin(*buf, str_cara);
@@ -36,7 +42,7 @@ int		ft_print_int(const char *str, t_flag all_flag, int user_nbr,
 	char *nbr_convert;
 
 	nbr_convert = ft_itoa(user_nbr);
-	if (int_error_case(all_flag) < 0)
+	if (int_error_case(&all_flag, &str) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0 || all_flag.dot > 0) &&
 			(all_flag.minus == 0) && (all_flag.zero == 0))

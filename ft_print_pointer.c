@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:36:12 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/29 15:21:06 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/02 22:41:25 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		print_point(const char *str, t_flag all_flag,
 	char *nbr_convert;
 
 	nbr_convert = ft_convert_address(user_nbr, all_flag);
-	if (error_case(all_flag) < 0)
+	if (error_case(&all_flag, &str) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0) &&
 			(all_flag.minus == 0))

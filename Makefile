@@ -6,7 +6,7 @@
 #    By: llescure <llescure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 17:06:48 by llescure          #+#    #+#              #
-#    Updated: 2021/01/28 21:20:11 by llescure         ###   ########.fr        #
+#    Updated: 2021/02/01 22:12:56 by llescure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS = ft_buffer_allocation.c \
        ft_convert_address.c \
        ft_convert_hexa.c \
        ft_parsing.c \
+       ft_parsing_part2.c \
        ft_print_cara.c \
        ft_print_int.c \
        ft_print_lower_hexa.c \

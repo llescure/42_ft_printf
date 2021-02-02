@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 17:49:17 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/31 23:28:38 by llescure         ###   ########.fr       */
+/*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
+/*   Updated: 2021/02/02 22:40:58 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_flag
 	int		dot;
 	int		zero;
 	int		number;
+	int		negative;
 	char	type;
 }				t_flag;
 
@@ -59,6 +60,7 @@ int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 char			*ft_itoa_unsigned(unsigned int n);
 char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_join_cara(char const *str, char cara);
 int				ft_extract_number(const char *str, int compt);
 char			*ft_trim(char *str, int start, int end);
 int				ft_isascii(int c);
@@ -69,7 +71,11 @@ int				find_hexa_unsigned_size(long unsigned n);
 int				valid_type(const char *str, int compt);
 char			*ft_cut_str(const char *str, int compt);
 char			*ft_strdup(const char *s1);
-void			ft_negative_case(char **user_nbr, char **buf);
+void			ft_change_user_nbr(char **user_nbr, t_flag *all_flag);
+void			ft_print_minus(char **buf);
+char			*ft_delete_multiple_cara(const char **str, char cara);
+char			*ft_delete_cara(const char **str, char cara);
+char			*ft_add_element(const char **str, char cara);
 
 int				ft_space(const char *str, t_flag all_flag, char **buf,
 		char cara);
@@ -93,9 +99,9 @@ int				ft_zero_percent(const char *str, t_flag all_flag, char **buf,
 int				ft_precision(const char *str, t_flag all_flag, char **user_nbr);
 int				ft_precision_string(const char *str, t_flag all_flag,
 		char *user_str);
-int				error_case(t_flag all_flag);
-int				int_error_case(t_flag all_flag);
-int				str_error_case(t_flag all_flag);
+int				error_case(t_flag *all_flag, const char **str);
+int				int_error_case(t_flag *all_flag, const char **str);
+int				str_error_case(t_flag *all_flag, const char **str);
 
 int				ft_get_buf_start(const char *str, char **buf);
 int				ft_join_buf_space(char **buf, int number_of_spaces);

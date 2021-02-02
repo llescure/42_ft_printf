@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/31 19:17:03 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/02 23:36:34 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		find_unsigned_size(unsigned int n)
 	int compt;
 
 	compt = 0;
-	while (n / 10 != 0)
+	while (n > 0)
 	{
 		n = n / 10;
 		compt++;
@@ -35,7 +35,7 @@ char	*ft_itoa_unsigned(unsigned int n)
 	store = n;
 	if (!(rslt = malloc(sizeof(char) * find_unsigned_size(n) + 1)))
 		return (NULL);
-	i = find_unsigned_size(n);
+	i = find_unsigned_size(n) - 1;
 	j = 0;
 	while (i >= j)
 	{
@@ -43,7 +43,7 @@ char	*ft_itoa_unsigned(unsigned int n)
 		store = store / 10;
 		i--;
 	}
-	rslt[find_unsigned_size(n) + 1] = '\0';
+	rslt[find_unsigned_size(n)] = '\0';
 	return (rslt);
 }
 
@@ -62,7 +62,8 @@ int		ft_precision(const char *str, t_flag all_flag, char **user_str)
 		number_of_char = all_flag.wildcard_value2;
 	else if (str[i] == '.' && str[i + 1] == '*')
 		number_of_char = all_flag.wildcard_value1;
-	if (number_of_char == 0)
+	if ((number_of_char == 0 && ft_atoi(*user_str) == 0) || (str[i] == '.' && 
+			str[i + 1] == '0'))
 		*user_str = "";
 	if (number_of_char > (int)ft_strlen(*user_str))
 		return (number_of_char);
@@ -78,7 +79,7 @@ int		print_unsign(const char *str, t_flag all_flag, int user_nbr,
 
 	signed_to_unsigned = (unsigned int)user_nbr;
 	nbr_convert = ft_itoa_unsigned(signed_to_unsigned);
-	if (int_error_case(all_flag) < 0)
+	if (int_error_case(&all_flag, &str) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0 || all_flag.dot > 0) &&
 			(all_flag.minus == 0) && (all_flag.zero == 0))

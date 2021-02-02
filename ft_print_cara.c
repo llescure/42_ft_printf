@@ -6,19 +6,26 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/31 19:17:49 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/02 22:40:48 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		error_case(t_flag all_flag)
+int		error_case(t_flag *all_flag, const char **str)
 {
-	if ((all_flag.zero > 0) || (all_flag.wildcard > 1))
+	if (all_flag->zero > 0)
 		return (-1);
-	if ((all_flag.wildcard > 1) || (all_flag.minus > 1) || (all_flag.dot > 1) ||
-		(all_flag.zero > 1))
+	if ((all_flag->wildcard > 1) || (all_flag->dot > 1))
 		return (-1);
+	if (all_flag->wildcard_value1 < 0)
+	{
+		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
+		all_flag->minus = all_flag->minus + 1;
+		*str = ft_add_element(str, '-');
+	}
+	if (all_flag->minus > 1)
+		*str = ft_delete_multiple_cara(str, '-');
 	return (0);
 }
 
@@ -49,10 +56,8 @@ int		ft_space(const char *str, t_flag all_flag, char **buf,
 	int						i;
 	int						number_of_spaces;
 	char					*temp;
-	char					*str_cara;
 
 	i = 0;
-	str_cara = NULL;
 	while (ft_isdigit(str[i] != 1))
 		i++;
 	if (all_flag.wildcard == 1)
@@ -60,12 +65,9 @@ int		ft_space(const char *str, t_flag all_flag, char **buf,
 	else
 		number_of_spaces = ft_extract_number(str, i) - 1;
 	ft_join_buf_space(buf, number_of_spaces);
-	if ((str_cara = ft_allocate_char_to_str(str_cara, cara)) == NULL)
-		return (-1);
 	temp = *buf;
-	*buf = ft_strjoin(*buf, str_cara);
+	*buf = ft_join_cara(*buf, cara);
 	free(temp);
-	free(str_cara);
 	return (ft_strlen(*buf));
 }
 
@@ -74,24 +76,19 @@ int		ft_space_minus(const char *str, t_flag all_flag, char **buf,
 {
 	int								i;
 	int								number_of_spaces;
-	char							*str_cara;
 	char							*temp;
 
 	i = 0;
-	str_cara = NULL;
 	number_of_spaces = 0;
 	while (str[i] != '-')
 		i++;
-	if ((str_cara = ft_allocate_char_to_str(str_cara, cara)) == NULL)
-		return (-1);
 	temp = *buf;
-	*buf = ft_strjoin(*buf, str_cara);
+	*buf = ft_join_cara(*buf, cara);
 	free(temp);
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
 		number_of_spaces = ft_extract_number(str, i) - 1;
 	else if (str[i] == '-' && str[i + 1] == '*')
 		number_of_spaces = all_flag.wildcard_value1 - 1;
-	free(str_cara);
 	ft_join_buf_space(buf, number_of_spaces);
 	return (ft_strlen(*buf));
 }
@@ -99,11 +96,9 @@ int		ft_space_minus(const char *str, t_flag all_flag, char **buf,
 int		ft_print_cara(const char *str, t_flag all_flag, char cara,
 	char **buf)
 {
-	char *str_cara;
 	char *temp;
 
-	str_cara = NULL;
-	if (error_case(all_flag) < 0)
+	if (error_case(&all_flag, &str) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0) &&
 			all_flag.minus == 0)
@@ -113,10 +108,8 @@ int		ft_print_cara(const char *str, t_flag all_flag, char cara,
 		return (ft_space_minus(str, all_flag, buf, cara));
 	else
 	{
-		if ((str_cara = ft_allocate_char_to_str(str_cara, cara)) == NULL)
-			return (-1);
 		temp = *buf;
-		*buf = ft_strjoin(*buf, str_cara);
+		*buf = ft_join_cara(*buf, cara);
 		free(temp);
 	}
 	return ((int)ft_strlen(*buf));
