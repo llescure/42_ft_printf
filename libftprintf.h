@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 17:24:33 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 22:45:30 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ int				ft_extract_number(const char *str, int compt);
 char			*ft_trim(char *str, int start, int end);
 int				ft_isascii(int c);
 int				find_unsigned_size(unsigned int n);
-int				ft_find_size(int n);
-int				find_hexa_unsigned_size(long unsigned n);
+int				find_size(long unsigned n);
 int				valid_type(const char *str, int compt);
 char			*ft_cut_str(const char *str, int compt);
 char			*ft_strdup(const char *s1);
@@ -113,6 +112,6 @@ int				ft_get_buf_end(const char *str, char **buf, t_flag all_flag);
 char			*ft_convert_address(long unsigned user_nbr, t_flag all_flag);
 void			conv_wildcard(int arguments, int number_wildcard,
 		t_flag *all_flag);
-char			*ft_convert_address_hexa(long unsigned user_nbr, char *base);
+char			*ft_convert_hexa(long unsigned user_nbr, char *base);
 
 #endif

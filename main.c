@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 17:18:58 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 23:14:59 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,6 @@ int		main(void)
 	//printf("%d\n", ft_printf("%c\n" , '\0'));
 	printf("%d\n", printf("%x", -0x1234abcdu));
 	printf("%d\n", ft_printf("%x", -0x1234abcdu));
-	//printf("%d\n", printf("%x\n", 4294967295u));
-	//printf("%d\n", ft_printf("%x\n", 4294967295u));
+	printf("%d\n", printf("%x\n", 4294967295u));
+	printf("%d\n", ft_printf("%x\n", 4294967295u));
 }

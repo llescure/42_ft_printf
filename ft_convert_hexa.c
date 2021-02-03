@@ -6,13 +6,13 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:23:27 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 17:23:42 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 23:15:18 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		find_hexa_unsigned_size(long unsigned n)
+int		find_size(long unsigned n)
 {
 	int compt;
 
@@ -30,7 +30,7 @@ int		find_hexa_unsigned_size(long unsigned n)
 	return (compt);
 }
 
-char	*ft_convert_address_hexa(long unsigned user_nbr, char *base)
+char	*ft_convert_hexa(long unsigned user_nbr, char *base)
 {
 	char										*rslt;
 	long unsigned								temp;
@@ -38,9 +38,9 @@ char	*ft_convert_address_hexa(long unsigned user_nbr, char *base)
 	int											j;
 
 	temp = user_nbr;
-	if (!(rslt = malloc(sizeof(char) * find_hexa_unsigned_size(user_nbr) + 1)))
+	if (!(rslt = malloc(sizeof(char) * find_size(user_nbr) + 1)))
 		return (NULL);
-	i = find_hexa_unsigned_size(user_nbr) - 1;
+	i = find_size(user_nbr) - 1;
 	j = 0;
 	if (temp < 0)
 	{
@@ -54,7 +54,7 @@ char	*ft_convert_address_hexa(long unsigned user_nbr, char *base)
 		temp = temp / 16;
 		i--;
 	}
-	rslt[find_hexa_unsigned_size(user_nbr)] = '\0';
+	rslt[find_size(user_nbr)] = '\0';
 	return (rslt);
 }
 
@@ -70,7 +70,7 @@ char	*ft_convert_address(long unsigned user_nbr, t_flag all_flag)
 		return (NULL);
 	address[9] = '\0';
 	beginning = "0x";
-	address = ft_convert_address_hexa(user_nbr, "0123456789abcdef");
+	address = ft_convert_hexa(user_nbr, "0123456789abcdef");
 	temp = address;
 	address = ft_strjoin(beginning, address);
 	free(temp);
