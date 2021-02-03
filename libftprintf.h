@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 12:35:25 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:24:33 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ char			*ft_join_cara(char const *str, char cara);
 int				ft_extract_number(const char *str, int compt);
 char			*ft_trim(char *str, int start, int end);
 int				ft_isascii(int c);
-int				find_size(int n);
 int				find_unsigned_size(unsigned int n);
 int				ft_find_size(int n);
 int				find_hexa_unsigned_size(long unsigned n);
@@ -77,7 +76,7 @@ char			*ft_delete_multiple_cara(const char **str, char cara);
 char			*ft_delete_cara(const char **str, char cara);
 char			*replace_first_wildcard(const char **str, char cara);
 char			*replace_second_wildcard(const char **str, char cara);
-char			*check_weird_combination(const char **str, t_flag *all_flag);
+int				check_weird_combination(const char **str, t_flag *all_flag);
 
 int				ft_space(const char *str, t_flag all_flag, char **buf,
 		char cara);
@@ -114,8 +113,6 @@ int				ft_get_buf_end(const char *str, char **buf, t_flag all_flag);
 char			*ft_convert_address(long unsigned user_nbr, t_flag all_flag);
 void			conv_wildcard(int arguments, int number_wildcard,
 		t_flag *all_flag);
-char			*ft_convert_lower_hexa(int user_nbr, char *base);
-char			*ft_convert_upper_hexa(int user_nbr, char *base);
 char			*ft_convert_address_hexa(long unsigned user_nbr, char *base);
 
 #endif

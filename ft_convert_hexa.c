@@ -5,22 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 16:49:44 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/02 23:35:10 by llescure         ###   ########.fr       */
+/*   Created: 2021/02/03 17:23:27 by llescure          #+#    #+#             */
+/*   Updated: 2021/02/03 17:23:42 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		find_size(int n)
+int		find_hexa_unsigned_size(long unsigned n)
 {
 	int compt;
 
 	compt = 0;
-	if (n < 0)
+	if (n <= 0)
 	{
-		compt++;
 		n = n * -1;
+		compt++;
 	}
 	while (n > 0)
 	{
@@ -30,17 +30,17 @@ int		find_size(int n)
 	return (compt);
 }
 
-char	*ft_convert_lower_hexa(int user_nbr, char *base)
+char	*ft_convert_address_hexa(long unsigned user_nbr, char *base)
 {
-	char							*rslt;
-	int								temp;
-	int								i;
-	int								j;
+	char										*rslt;
+	long unsigned								temp;
+	int											i;
+	int											j;
 
 	temp = user_nbr;
-	if (!(rslt = malloc(sizeof(char) * find_size(user_nbr) + 1)))
+	if (!(rslt = malloc(sizeof(char) * find_hexa_unsigned_size(user_nbr) + 1)))
 		return (NULL);
-	i = find_size(user_nbr) - 1;
+	i = find_hexa_unsigned_size(user_nbr) - 1;
 	j = 0;
 	if (temp < 0)
 	{
@@ -54,34 +54,25 @@ char	*ft_convert_lower_hexa(int user_nbr, char *base)
 		temp = temp / 16;
 		i--;
 	}
-	rslt[find_size(user_nbr)] = '\0';
+	rslt[find_hexa_unsigned_size(user_nbr)] = '\0';
 	return (rslt);
 }
 
-char	*ft_convert_upper_hexa(int user_nbr, char *base)
+char	*ft_convert_address(long unsigned user_nbr, t_flag all_flag)
 {
-	char							*rslt;
-	int								temp;
-	int								i;
-	int								j;
+	char *address;
+	char *beginning;
+	char *temp;
 
-	temp = user_nbr;
-	if (!(rslt = malloc(sizeof(char) * find_size(user_nbr) + 1)))
+	if (user_nbr == 0 && all_flag.dot == 0)
+		return ("0x0");
+	if (!(address = malloc(sizeof(char) * 10)))
 		return (NULL);
-	i = find_size(user_nbr) - 1;
-	j = 0;
-	if (temp < 0)
-	{
-		rslt[j] = '-';
-		temp = temp * -1;
-		j++;
-	}
-	while (i >= j)
-	{
-		rslt[i] = base[temp % 16];
-		temp = temp / 16;
-		i--;
-	}
-	rslt[find_size(user_nbr)] = '\0';
-	return (rslt);
+	address[9] = '\0';
+	beginning = "0x";
+	address = ft_convert_address_hexa(user_nbr, "0123456789abcdef");
+	temp = address;
+	address = ft_strjoin(beginning, address);
+	free(temp);
+	return (address);
 }

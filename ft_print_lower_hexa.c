@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:16 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 12:35:50 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:21:59 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@ int		int_error_case(t_flag *all_flag, const char **str)
 {
 	if ((all_flag->wildcard > 2) || (all_flag->dot > 1))
 		return (-1);
-	if (all_flag->wildcard_value1 < 0)
+	if (all_flag->wildcard_value1 < 0 &&
+			check_weird_combination(str, all_flag) == 0)
 	{
-		*str = check_weird_combination(str, all_flag);
 		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
 		all_flag->minus = all_flag->minus + 1;
 		*str = replace_first_wildcard(str, '-');
 	}
 	if (all_flag->wildcard_value2 < 0)
 	{
-		*str = check_weird_combination(str, all_flag);
 		all_flag->wildcard_value2 = all_flag->wildcard_value2 * -1;
 		all_flag->minus = all_flag->minus + 1;
 		*str = replace_second_wildcard(str, '-');
@@ -55,7 +54,7 @@ int		ft_space_int(const char *str, t_flag all_flag, char **buf,
 	number_of_spaces = 0;
 	if (all_flag.dot > 0)
 	{
-		if (ft_atoi(user_nbr) < 0)
+		if (ft_atoi(user_nbr) < 0 && all_flag.type != 'u')
 		{
 			number_of_spaces = -1;
 			ft_change_user_nbr(&user_nbr, &all_flag);
@@ -90,7 +89,7 @@ int		ft_zero_int(const char *str, t_flag all_flag, char **buf,
 
 	i = 0;
 	number_of_spaces = 0;
-	if (ft_atoi(user_nbr) < 0)
+	if (ft_atoi(user_nbr) < 0 && all_flag.type != 'u')
 	{
 		number_of_spaces = -1;
 		ft_change_user_nbr(&user_nbr, &all_flag);
@@ -127,7 +126,7 @@ int		ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 	number_of_char = ft_strlen(user_nbr);
 	if (all_flag.dot > 0)
 	{
-		if (ft_atoi(user_nbr) < 0)
+		if (ft_atoi(user_nbr) < 0 && all_flag.type != 'u')
 		{
 			number_of_spaces = -1;
 			ft_change_user_nbr(&user_nbr, &all_flag);
@@ -156,7 +155,8 @@ int		ft_print_low_hexa(const char *str, t_flag all_flag, int user_nbr,
 	char *temp1;
 	char *nbr_convert;
 
-	nbr_convert = ft_convert_lower_hexa(user_nbr, "0123456789abcdef");
+	nbr_convert = ft_convert_address_hexa(user_nbr, "0123456789abcdef");
+//	printf("convert %s\n", nbr_convert);
 	if (int_error_case(&all_flag, &str) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0 || all_flag.dot > 0) &&

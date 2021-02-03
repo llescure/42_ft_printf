@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 22:28:13 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/02 12:01:54 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:21:46 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_print_up_hexa(const char *str, t_flag all_flag, int user_nbr,
 	char *temp1;
 	char *nbr_convert;
 
-	nbr_convert = ft_convert_upper_hexa(user_nbr, "0123456789ABCDEF");
+	nbr_convert = ft_convert_address_hexa(user_nbr, "0123456789ABCDEF");
 	if (int_error_case(&all_flag, &str) < 0)
 		return (-1);
 	if ((all_flag.number > 0 || all_flag.wildcard > 0 || all_flag.dot > 0) &&

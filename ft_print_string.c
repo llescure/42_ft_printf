@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:47:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 11:00:23 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 15:41:14 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int		str_error_case(t_flag *all_flag, const char **str)
 		return (-1);
 	if ((all_flag->wildcard > 2) || (all_flag->dot > 1) || (all_flag->zero > 1))
 		return (-1);
-	if (all_flag->wildcard_value1 < 0)
+	if (all_flag->wildcard_value1 < 0 &&
+			check_weird_combination(str, all_flag) == 0)
 	{
 		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
 		all_flag->minus = all_flag->minus + 1;
@@ -69,11 +70,12 @@ int		ft_space_string(const char *str, t_flag all_flag, char **buf,
 	number_of_spaces = 0;
 	if (all_flag.dot > 0)
 		number_of_char = ft_precision_string(str, all_flag, user_str);
-	while (ft_isdigit(str[i]) != 1 && str[i] != '\0')
+	while (ft_isdigit(str[i]) != 1 && str[i] != '.' && str[i] != '*' &&
+				str[i] != '\0')
 		i++;
-	if (all_flag.number > 0 && str[i - 1] != '.')
+	if (all_flag.number > 0 && str[i] != '.')
 		number_of_spaces = ft_extract_number(str, i) - number_of_char;
-	else if (all_flag.wildcard > 0)
+	else if (all_flag.wildcard > 0 && str[i] != '.')
 		number_of_spaces = all_flag.wildcard_value1 - number_of_char;
 	ft_join_buf_space(buf, number_of_spaces);
 	temp2 = ft_trim(user_str, 0, number_of_char);

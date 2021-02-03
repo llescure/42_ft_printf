@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 20:37:43 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 12:36:22 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 14:33:18 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ char		*replace_second_wildcard(const char **str, char cara)
 	return (rslt);
 }
 
-char		*check_weird_combination(const char **str, t_flag *all_flag)
+int			check_weird_combination(const char **str, t_flag *all_flag)
 {
 	int i;
 	char *temp;
@@ -155,16 +155,14 @@ char		*check_weird_combination(const char **str, t_flag *all_flag)
 	i = 0;
 	while (temp[i] != '%' && temp[i] != '\0')
 		i++;
-	while (temp[i] != '.')
+	while (temp[i] != '.' && temp[i] != '\0')
 		i++;
-	if (temp[i] == '.' && temp[i + 1] == '*')
+	if (temp[i] == '.' && temp[i + 1] == '*' && all_flag->wildcard == 1)
 	{
-		if (all_flag->wildcard == 1)
-				all_flag->wildcard_value1 = 0;
-		else if (all_flag->wildcard > 1)
-				all_flag->wildcard_value2 = 0;
-		temp = ft_delete_cara(str, '.');
+		all_flag->wildcard_value1 = 0;
+		all_flag->dot = 0;
+		return (1);
 	}
-	return (temp);
+	return (0);
 
 }

@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 12:08:42 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 16:26:55 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int		find_unsigned_size(unsigned int n)
 	int compt;
 
 	compt = 0;
-	while (n > 0)
+	if (n == 0)
+		compt = 1;
+	while (n  > 0)
 	{
 		n = n / 10;
 		compt++;
