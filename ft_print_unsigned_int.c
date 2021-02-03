@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/02 23:36:34 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 12:08:42 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_precision(const char *str, t_flag all_flag, char **user_str)
 		number_of_char = all_flag.wildcard_value2;
 	else if (str[i] == '.' && str[i + 1] == '*')
 		number_of_char = all_flag.wildcard_value1;
-	if ((number_of_char == 0 && ft_atoi(*user_str) == 0) || (str[i] == '.' && 
+	if ((number_of_char == 0 && ft_atoi(*user_str) == 0) || (str[i] == '.' &&
 			str[i + 1] == '0'))
 		*user_str = "";
 	if (number_of_char > (int)ft_strlen(*user_str))

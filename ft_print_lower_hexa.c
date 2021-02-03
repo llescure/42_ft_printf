@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:16 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/02 23:01:34 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 12:35:50 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ int		int_error_case(t_flag *all_flag, const char **str)
 		return (-1);
 	if (all_flag->wildcard_value1 < 0)
 	{
+		*str = check_weird_combination(str, all_flag);
 		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
 		all_flag->minus = all_flag->minus + 1;
-		*str = ft_add_element(str, '-');
+		*str = replace_first_wildcard(str, '-');
 	}
 	if (all_flag->wildcard_value2 < 0)
 	{
+		*str = check_weird_combination(str, all_flag);
 		all_flag->wildcard_value2 = all_flag->wildcard_value2 * -1;
-		all_flag->minus = all_flag->minus + 1;	
-		*str = ft_add_element(str, '-');
+		all_flag->minus = all_flag->minus + 1;
+		*str = replace_second_wildcard(str, '-');
 	}
 	if (all_flag->minus > 1)
 		*str = ft_delete_multiple_cara(str, '-');

@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/02 23:35:34 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 12:35:35 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,9 +150,10 @@ int		main(void)
 	//printf("%d\n", ft_printf("%.p\n" , NULL));
 	//printf("%d\n", printf("%c\n" , '\0'));
 	//printf("%d\n", ft_printf("%c\n" , '\0'));
-	//printf("%d\n", ft_printf("{%-*c}%d\n" , -5, 0));
+	//printf("%d\n", printf("{%.*d}\n" , -5, 42));
+	//printf("%d\n", ft_printf("{%.*d}\n" , -5, 42));
+	printf("%d\n", printf("{%05.*d}\n" , -15, 42));
+	printf("%d\n", ft_printf("{%05.*d}\n" , -15, 42));
 	//printf("%d\n", printf("%x", 4294967295u));
 	//printf("%d\n", ft_printf("%x", 4294967295u));
-	printf("%d\n", printf("***************%*s%*d**************%*u*************\n", 10, "coucou", 10, 10, -50, 20));
-	printf("%d\n", ft_printf("***************%*s%*d**************%*u*************\n", 10, "coucou", 10, 10, -50, 20));
 }

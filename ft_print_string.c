@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:47:02 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/02 23:12:31 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/03 11:00:23 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int		str_error_case(t_flag *all_flag, const char **str)
 	{
 		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
 		all_flag->minus = all_flag->minus + 1;
-		*str = ft_add_element(str, '-');
+		*str = replace_first_wildcard(str, '-');
 	}
 	if (all_flag->wildcard_value2 < 0)
 	{
 		all_flag->wildcard_value2 = all_flag->wildcard_value2 * -1;
 		all_flag->minus = all_flag->minus + 1;
-		*str = ft_add_element(str, '-');
+		*str = replace_second_wildcard(str, '-');
 	}
 	if (all_flag->minus > 1)
 		*str = ft_delete_multiple_cara(str, '-');
