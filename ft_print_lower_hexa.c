@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:16 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 23:14:48 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:01:54 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ int		int_error_case(t_flag *all_flag, const char **str)
 		*str = ft_delete_multiple_cara(str, '-');
 	if (all_flag->zero > 1)
 		*str = ft_delete_multiple_cara(str, '0');
-	if (all_flag->zero > 0 && (all_flag->dot > 0 || all_flag->minus > 0))
+	if (all_flag->zero > 0 && (all_flag->minus > 0 || (all_flag->dot > 0 &&
+					all_flag->type != '%')))
 	{
-		*str = ft_delete_cara(str, '0');
+		if (ft_delete_cara(str, '0', *all_flag) == NULL)
+			return (0);
+		*str = ft_delete_cara(str, '0', *all_flag);
 		all_flag->zero = 0;
 	}
 	return (0);
@@ -67,9 +70,11 @@ int		ft_space_int(const char *str, t_flag all_flag, char **buf,
 			break ;
 	}
 	if (all_flag.number > 0 && ft_isdigit(str[i]) == 1)
-		number_of_spaces = number_of_spaces + ft_extract_number(str, i) - number_of_char;
+		number_of_spaces = number_of_spaces + ft_extract_number(str, i) -
+			number_of_char;
 	else if (all_flag.wildcard > 0)
-		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 - number_of_char;
+		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 -
+			number_of_char;
 	ft_join_buf_space(buf, number_of_spaces);
 	if (all_flag.negative == 1)
 		ft_print_minus(buf);
@@ -101,9 +106,11 @@ int		ft_zero_int(const char *str, t_flag all_flag, char **buf,
 		i++;
 	}
 	if (all_flag.number > 0)
-		number_of_spaces = number_of_spaces + ft_extract_number(str, i) - ft_strlen(user_nbr);
+		number_of_spaces = number_of_spaces + ft_extract_number(str, i) -
+			ft_strlen(user_nbr);
 	else if (all_flag.wildcard > 0)
-		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 - ft_strlen(user_nbr);
+		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 -
+			ft_strlen(user_nbr);
 	if (all_flag.negative == 1)
 		ft_print_minus(buf);
 	ft_join_buf_zero(buf, number_of_spaces);
@@ -141,10 +148,12 @@ int		ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
 	while (str[i] != '-')
 		i++;
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
-		number_of_spaces = number_of_spaces + ft_extract_number(str, i) - number_of_char;
+		number_of_spaces = number_of_spaces + ft_extract_number(str, i) -
+			number_of_char;
 	if ((str[i] == '-' && str[i + 1] == '*') ||
 			(ft_extract_number(str, i) == 0))
-		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 - number_of_char;
+		number_of_spaces = number_of_spaces + all_flag.wildcard_value1 -
+			number_of_char;
 	ft_join_buf_space(buf, number_of_spaces);
 	return (ft_strlen(*buf));
 }

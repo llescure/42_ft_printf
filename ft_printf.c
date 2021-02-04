@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/30 11:48:19 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:54:39 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char		*ft_cut_str(const char *str, int compt)
 {
 	char				*temp;
 	char				*str_cut;
-	int			i;
+	int					i;
 
 	i = compt + 1;
 	temp = ft_strdup(str);
@@ -32,7 +32,7 @@ int			ft_printf(const char *str, ...)
 	int						number_wildcard;
 	t_flag					all_flag;
 	char					*buf;
-	int					rslt;
+	int						rslt;
 
 	va_start(arguments, str);
 	if (ft_get_buf_start(str, &buf) > 0)

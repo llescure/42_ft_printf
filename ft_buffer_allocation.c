@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/02 11:23:26 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:59:06 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_get_buf_start(const char *str, char **buf)
 {
-	char 				*temp;
-	char				*str_trimmed;
-	int 			i;
+	char							*temp;
+	char							*str_trimmed;
+	int								i;
 
 	i = 0;
 	if (!(*buf = malloc(sizeof(char))))

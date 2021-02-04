@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:23:07 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/01 22:29:50 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:55:24 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,57 @@ int			ft_where_type_is(const char *str, int i)
 	return (-1);
 }
 
+void		ft_parse_flag(const char *str, int start, int end,
+		t_flag *all_flag)
+{
+	int i;
+
+	i = start;
+	while (i < end)
+	{
+		if (str[i] == '*')
+			all_flag->wildcard = all_flag->wildcard + 1;
+		else if (str[i] == '-')
+			all_flag->minus = all_flag->minus + 1;
+		else if (str[i] == '.')
+			all_flag->dot = all_flag->dot + 1;
+		else if (str[i] == '0' && ft_isdigit(str[i - 1]) == 0
+			&& str[i - 1] != '.')
+			all_flag->zero = all_flag->zero + 1;
+		else if (ft_isdigit(str[i]) == 1)
+			all_flag->number = all_flag->number + 1;
+		i++;
+	}
+	all_flag->type = str[i];
+	return ;
+}
+
+int			ft_parsing(const char *str, t_flag *all_flag)
+{
+	int i;
+	int pos_percent;
+
+	i = 0;
+	pos_percent = 0;
+	while (str[i] != '\0')
+	{
+		if ((i == 0 && str[i] == '%') || (i > 0 && str[i] == '%'
+					&& str[i - 1] != '%'))
+		{
+			pos_percent = i;
+			i = ft_where_type_is(str, i);
+			if (i > pos_percent)
+			{
+				ft_parse_flag(str, pos_percent, i, all_flag);
+				return (pos_percent);
+			}
+			return (i);
+		}
+		i++;
+	}
+	return (-1);
+}
+
 int			valid_type(const char *str, int compt)
 {
 	int i;
@@ -69,52 +120,22 @@ int			valid_type(const char *str, int compt)
 	return (-1);
 }
 
-void		ft_parse_flag(const char *str, int start, int end,
-		t_flag *all_flag)
+int			check_weird_combination(const char **str, t_flag *all_flag)
 {
-	int i;
+	int											i;
+	char										*temp;
 
-	i = start;
-	while (i < end)
-	{
-		if (str[i] == '*')
-			all_flag->wildcard = all_flag->wildcard + 1;
-		else if (str[i] == '-')
-			all_flag->minus = all_flag->minus + 1;
-		else if (str[i] == '.')
-			all_flag->dot = all_flag->dot + 1;
-		else if (str[i] == '0' && ft_isdigit(str[i - 1]) == 0)
-			all_flag->zero = all_flag->zero + 1;
-		else if (ft_isdigit(str[i]) == 1)
-			all_flag->number = all_flag->number + 1;
-		i++;
-	}
-	all_flag->type = str[i];
-	return ;
-}
-
-int			ft_parsing(const char *str, t_flag *all_flag)
-{
-	int i;
-	int pos_percent;
-
+	temp = (char *)*str;
 	i = 0;
-	pos_percent = 0;
-	while (str[i] != '\0')
-	{
-		if ((i == 0 && str[i] == '%') || (i > 0 && str[i] == '%' 
-					&& str[i - 1] != '%'))
-		{
-			pos_percent = i;
-			i = ft_where_type_is(str, i);
-			if (i > pos_percent)
-			{
-				ft_parse_flag(str, pos_percent, i, all_flag);
-				return (pos_percent);
-			}
-			return (i);
-		}
+	while (temp[i] != '%' && temp[i] != '\0')
 		i++;
+	while (temp[i] != '.' && temp[i] != '\0')
+		i++;
+	if (temp[i] == '.' && temp[i + 1] == '*' && all_flag->wildcard == 1)
+	{
+		all_flag->wildcard_value1 = 0;
+		all_flag->dot = 0;
+		return (1);
 	}
-	return (-1);
+	return (0);
 }

@@ -6,18 +6,19 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 23:14:59 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:01:05 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
 #include "libftprintf.h"
 
 int		main(void)
 {
 	//DEBUG
-	//char *test = NULL;
+//	char *test = NULL;
 	/*t_flag all_flag;
 	int compt;
 	ft_get_buf_start("%*dabc\n",  &test);
@@ -144,14 +145,8 @@ int		main(void)
 	//Test %
 
 	//TEST mega testeur
-//	printf("%d\n", printf("%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c//%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c\n", ' ','!','"','#','$', '%','&','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':', ';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q', 'R','S','T','U', 'V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p', 'q','r','s','t','u','v','w','x','y','z','{','|','~'));
-//	printf("%d\n", ft_printf("%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c//%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c\n", ' ','!','"','#','$', '%','&','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':', ';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q', 'R','S','T','U', 'V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p', 'q','r','s','t','u','v','w','x','y','z','{','|','~'));
-	//printf("%d\n", printf("%.p\n" , NULL));
-	//printf("%d\n", ft_printf("%.p\n" , NULL));
+	printf("%d\n", printf("neg1 %*s\n", -9, "coucou"));
+	printf("%d\n", ft_printf("neg1 %*s\n", -9, "coucou"));
 	//printf("%d\n", printf("%c\n" , '\0'));
 	//printf("%d\n", ft_printf("%c\n" , '\0'));
-	printf("%d\n", printf("%x", -0x1234abcdu));
-	printf("%d\n", ft_printf("%x", -0x1234abcdu));
-	printf("%d\n", printf("%x\n", 4294967295u));
-	printf("%d\n", ft_printf("%x\n", 4294967295u));
 }

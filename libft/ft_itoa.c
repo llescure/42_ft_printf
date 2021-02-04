@@ -3,23 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llescure <llescure@42.fr>                  +#+  +:+       +#+        */
+/*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 23:15:29 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/02 23:29:12 by llescure         ###   ########.fr       */
+/*   Created: 2021/02/04 10:52:43 by llescure          #+#    #+#             */
+/*   Updated: 2021/02/04 12:11:01 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_find_size(int n)
+int		ft_find_size(long n)
 {
 	int compt;
 
 	compt = 0;
-	if (n < 0)
+	if (n <= 0)
+	{
+		n = n * -1;
 		compt++;
-	while (n / 10 != 0)
+	}
+	while (n > 0)
 	{
 		n = n / 10;
 		compt++;
@@ -37,7 +40,7 @@ char	*ft_itoa(int n)
 	store = n;
 	if (!(rslt = malloc(sizeof(char) * ft_find_size(n) + 1)))
 		return (NULL);
-	i = ft_find_size(n);
+	i = ft_find_size(n) - 1;
 	j = 0;
 	if (store < 0)
 	{
@@ -51,6 +54,6 @@ char	*ft_itoa(int n)
 		store = store / 10;
 		i--;
 	}
-	rslt[ft_find_size(n) + 1] = '\0';
+	rslt[ft_find_size(n)] = '\0';
 	return (rslt);
 }

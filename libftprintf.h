@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 22:45:30 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 15:45:35 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char			*ft_strdup(const char *s1);
 void			ft_change_user_nbr(char **user_nbr, t_flag *all_flag);
 void			ft_print_minus(char **buf);
 char			*ft_delete_multiple_cara(const char **str, char cara);
-char			*ft_delete_cara(const char **str, char cara);
+char			*ft_delete_cara(const char **str, char cara, t_flag all_flag);
 char			*replace_first_wildcard(const char **str, char cara);
 char			*replace_second_wildcard(const char **str, char cara);
 int				check_weird_combination(const char **str, t_flag *all_flag);

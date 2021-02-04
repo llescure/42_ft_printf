@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 20:37:43 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 14:33:18 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:02:44 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char		*ft_delete_multiple_cara(const char **str, char cara)
 {
-	char *temp;
-	char *first_str_trimmed;
-	char *second_str_trimmed;
-	int start;
-	int end;
+	char										*temp;
+	char										*first_str_trimmed;
+	char										*second_str_trimmed;
+	int											start;
+	int											end;
 
 	temp = (char *)*str;
 	start = 0;
@@ -37,19 +37,23 @@ char		*ft_delete_multiple_cara(const char **str, char cara)
 	return (temp);
 }
 
-
-char		*ft_delete_cara(const char **str, char cara)
+char		*ft_delete_cara(const char **str, char cara, t_flag all_flag)
 {
-	char *temp;
-	char *first_str_trimmed;
-	char *second_str_trimmed;
-	int start;
-	int end;
+	char								*temp;
+	char								*first_str_trimmed;
+	char								*second_str_trimmed;
+	int									start;
+	int									end;
 
 	temp = (char *)*str;
 	start = 0;
 	while (temp[start] != '%')
 		start++;
+	end = start;
+	while (temp[end] != '.')
+		end++;
+	if (temp[end] == '.' && temp[end + 1] == '%' && all_flag.minus < 1)
+		return (NULL);
 	while (temp[start] != cara)
 		start++;
 	end = start;
@@ -84,11 +88,11 @@ char		*ft_join_cara(const char *str, char cara)
 
 char		*replace_first_wildcard(const char **str, char cara)
 {
-	int i;
-	int j;
-	int ok;
-	char *rslt;
-	char *temp;
+	int											i;
+	int											j;
+	int											ok;
+	char										*rslt;
+	char										*temp;
 
 	i = 0;
 	j = 0;
@@ -103,8 +107,8 @@ char		*replace_first_wildcard(const char **str, char cara)
 		if (temp[i] == '*' && ok == 1)
 		{
 			rslt[j] = cara;
-			ok = 0;
 			j++;
+			ok = 0;
 		}
 		rslt[j] = temp[i];
 		i++;
@@ -116,10 +120,10 @@ char		*replace_first_wildcard(const char **str, char cara)
 
 char		*replace_second_wildcard(const char **str, char cara)
 {
-	int i;
-	int j;
-	char *rslt;
-	char *temp;
+	int											i;
+	int											j;
+	char										*rslt;
+	char										*temp;
 
 	i = 0;
 	j = 0;
@@ -144,25 +148,4 @@ char		*replace_second_wildcard(const char **str, char cara)
 	}
 	rslt[j] = '\0';
 	return (rslt);
-}
-
-int			check_weird_combination(const char **str, t_flag *all_flag)
-{
-	int i;
-	char *temp;
-
-	temp = (char *)*str;
-	i = 0;
-	while (temp[i] != '%' && temp[i] != '\0')
-		i++;
-	while (temp[i] != '.' && temp[i] != '\0')
-		i++;
-	if (temp[i] == '.' && temp[i + 1] == '*' && all_flag->wildcard == 1)
-	{
-		all_flag->wildcard_value1 = 0;
-		all_flag->dot = 0;
-		return (1);
-	}
-	return (0);
-
 }

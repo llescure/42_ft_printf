@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 16:26:55 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:44:13 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		find_unsigned_size(unsigned int n)
 	compt = 0;
 	if (n == 0)
 		compt = 1;
-	while (n  > 0)
+	while (n > 0)
 	{
 		n = n / 10;
 		compt++;
@@ -64,8 +64,7 @@ int		ft_precision(const char *str, t_flag all_flag, char **user_str)
 		number_of_char = all_flag.wildcard_value2;
 	else if (str[i] == '.' && str[i + 1] == '*')
 		number_of_char = all_flag.wildcard_value1;
-	if ((number_of_char == 0 && ft_atoi(*user_str) == 0) || (str[i] == '.' &&
-			str[i + 1] == '0'))
+	if ((number_of_char == 0 && *user_str[0] == '0'))
 		*user_str = "";
 	if (number_of_char > (int)ft_strlen(*user_str))
 		return (number_of_char);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 17:23:27 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 23:15:18 by llescure         ###   ########.fr       */
+/*   Created: 2021/02/04 16:38:55 by llescure          #+#    #+#             */
+/*   Updated: 2021/02/04 16:57:17 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ char	*ft_convert_address(long unsigned user_nbr, t_flag all_flag)
 	char *beginning;
 	char *temp;
 
-	if (user_nbr == 0 && all_flag.dot == 0)
-		return ("0x0");
+	if (all_flag.dot > 0 && user_nbr == 0)
+		return ("0x");
 	if (!(address = malloc(sizeof(char) * 10)))
 		return (NULL);
 	address[9] = '\0';

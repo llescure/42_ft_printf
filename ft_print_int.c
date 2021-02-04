@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:49:56 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/03 14:34:56 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:37:57 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		ft_print_minus(char **buf)
 	free(str_cara);
 }
 
-int		ft_print_int(const char *str, t_flag all_flag, int user_nbr,
+int			ft_print_int(const char *str, t_flag all_flag, int user_nbr,
 	char **buf)
 {
 	char *temp1;
