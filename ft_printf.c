@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/04 16:54:39 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/05 17:12:49 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,10 @@ int			ft_printf(const char *str, ...)
 	int						compt;
 	int						number_wildcard;
 	t_flag					all_flag;
-	char					*buf;
-	int						rslt;
 
 	va_start(arguments, str);
-	if (ft_get_buf_start(str, &buf) > 0)
-		str = ft_cut_str(str, ft_get_buf_start(str, &buf) - 1);
-	rslt = ft_strlen(buf);
+	str = ft_get_buf_start(str, &all_flag);
+	//printf("compt = %d\n", all_flag.compt);
 	while (str != NULL)
 	{
 		ft_initialisation(&all_flag);
@@ -50,27 +47,26 @@ int			ft_printf(const char *str, ...)
 			conv_wildcard(va_arg(arguments, int), number_wildcard, &all_flag);
 			number_wildcard--;
 		}
+//		printf("str = %s\n", str);
 		if (all_flag.type == 'c')
-			ft_print_cara(str, all_flag, (char)va_arg(arguments, int), &buf);
-		if (all_flag.type == '%')
-			ft_print_percent(str, all_flag, &buf);
+			ft_print_cara(&str, &all_flag, (char)va_arg(arguments, int));
+	/*	if (all_flag.type == '%')
+			ft_print_percent(str, &all_flag, &buf);
 		else if (all_flag.type == 's')
-			ft_print_string(str, all_flag, va_arg(arguments, char*), &buf);
+			ft_print_string(str, &all_flag, va_arg(arguments, char*), &buf);
 		else if (all_flag.type == 'x')
-			ft_print_low_hexa(str, all_flag, va_arg(arguments, int), &buf);
+			ft_print_low_hexa(str, &all_flag, va_arg(arguments, int), &buf);
 		else if (all_flag.type == 'X')
-			ft_print_up_hexa(str, all_flag, va_arg(arguments, int), &buf);
+			ft_print_up_hexa(str, &all_flag, va_arg(arguments, int), &buf);
 		else if (all_flag.type == 'u')
-			print_unsign(str, all_flag, va_arg(arguments, unsigned int), &buf);
+			print_unsign(str, &all_flag, va_arg(arguments, unsigned int), &buf);
 		else if (all_flag.type == 'i' || all_flag.type == 'd')
-			ft_print_int(str, all_flag, va_arg(arguments, int), &buf);
+			ft_print_int(str, &all_flag, va_arg(arguments, int), &buf);
 		else if (all_flag.type == 'p')
-			print_point(str, all_flag, va_arg(arguments, long unsigned), &buf);
-		str = ft_cut_str(str, valid_type(str, compt));
-		rslt = ft_strlen(buf) + ft_get_buf_end(str, &buf, all_flag);
+			print_point(str, &all_flag, va_arg(arguments, long unsigned), &buf);*/
+		ft_get_buf_end(str, &all_flag);
+		str = ft_cut_str(str, compt);
 	}
 	va_end(arguments);
-	ft_putstr_fd(buf, 1);
-	free(buf);
-	return (rslt);
+	return (all_flag.compt);
 }

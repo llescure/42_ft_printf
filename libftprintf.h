@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/04 15:45:35 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/05 16:58:56 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,24 @@ typedef struct	s_flag
 	int		zero;
 	int		number;
 	int		negative;
+	int		compt;
 	char	type;
 }				t_flag;
 
 int				ft_printf(const char *str, ...);
-int				ft_print_cara(const char *str, t_flag all_flag, char cara,
-		char **buf);
-int				ft_print_percent(const char *str, t_flag all_flag, char **buf);
-int				ft_print_string(const char *str, t_flag all_flag,
-		char *user_str, char **buf);
-int				ft_print_up_hexa(const char *str, t_flag all_flag, int user_nbr,
-		char **buf);
+void			ft_print_cara(const char **str, t_flag *all_flag, char cara);
+int				ft_print_percent(const char *str, t_flag *all_flag);
+int				ft_print_string(const char *str, t_flag *all_flag,
+		char *user_str);
+int				ft_print_up_hexa(const char *str, t_flag all_flag,
+		int user_nbr);
 int				ft_print_low_hexa(const char *str, t_flag all_flag,
-		int user_nbr, char **buf);
-int				ft_print_int(const char *str, t_flag all_flag, int user_nbr,
-		char **buf);
+		int user_nbr);
+int				ft_print_int(const char *str, t_flag all_flag, int user_nbr);
 int				print_unsign(const char *str, t_flag all_flag,
-		int user_nbr, char **buf);
+		int user_nbr);
 int				print_point(const char *str, t_flag all_flag,
-		long unsigned user_nbr, char **buf);
+		long unsigned user_nbr);
 
 void			ft_initialisation(t_flag *all_flag);
 int				ft_where_type_is(const char *str, int i);
@@ -56,6 +55,7 @@ int				ft_parsing(const char *str, t_flag *all_flag);
 size_t			ft_strlen(const char *str);
 int				ft_isdigit(int c);
 void			ft_putstr_fd(char *s, int fd);
+void			ft_putchar_fd(char c, int fd);
 int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 char			*ft_itoa_unsigned(unsigned int n);
@@ -77,37 +77,33 @@ char			*replace_first_wildcard(const char **str, char cara);
 char			*replace_second_wildcard(const char **str, char cara);
 int				check_weird_combination(const char **str, t_flag *all_flag);
 
-int				ft_space(const char *str, t_flag all_flag, char **buf,
+void			ft_space(const char *str, t_flag *all_flag, char cara);
+void			ft_space_minus(const char *str, t_flag *all_flag,
 		char cara);
-int				ft_space_minus(const char *str, t_flag all_flag,
-		char **buf, char cara);
-int				ft_space_percent(const char *str, t_flag all_flag, char **buf);
-int				ft_space_minus_percent(const char *str, t_flag all_flag,
-		char **buf);
-int				ft_space_string(const char *str, t_flag all_flag, char **buf,
+void			ft_space_percent(const char *str, t_flag *all_flag);
+void			ft_space_minus_percent(const char *str, t_flag *all_flag);
+void			ft_space_string(const char *str, t_flag *all_flag,
 		char *user_str);
-int				ft_space_minus_string(const char *str, t_flag all_flag,
-		char **buf, char *user_str);
-int				ft_space_int(const char *str, t_flag all_flag, char **buf, char
-		*user_nbr);
-int				ft_space_minus_int(const char *str, t_flag all_flag, char **buf,
+void			ft_space_minus_string(const char *str, t_flag *all_flag,
+		char *user_str);
+void			ft_space_int(const char *str, t_flag *all_flag,
 		char *user_nbr);
-int				ft_zero_int(const char *str, t_flag all_flag, char **buf,
+void			ft_space_minus_int(const char *str, t_flag *all_flag,
 		char *user_nbr);
-int				ft_zero_percent(const char *str, t_flag all_flag, char **buf,
-		char cara);
+void			ft_zero_int(const char *str, t_flag *all_flag,
+		char *user_nbr);
+void			ft_zero_percent(const char *str, t_flag *all_flag, char cara);
 int				ft_precision(const char *str, t_flag all_flag, char **user_nbr);
 int				ft_precision_string(const char *str, t_flag all_flag,
 		char *user_str);
-int				error_case(t_flag *all_flag, const char **str);
-int				int_error_case(t_flag *all_flag, const char **str);
-int				str_error_case(t_flag *all_flag, const char **str);
+void			error_case(t_flag *all_flag, const char **str);
+void			int_error_case(t_flag *all_flag, const char **str);
+void			str_error_case(t_flag *all_flag, const char **str);
 
-int				ft_get_buf_start(const char *str, char **buf);
-int				ft_join_buf_space(char **buf, int number_of_spaces);
-int				ft_join_buf_zero(char **buf, int number_of_zeros);
-char			*ft_allocate_char_to_str(char *str, char cara);
-int				ft_get_buf_end(const char *str, char **buf, t_flag all_flag);
+char			*ft_get_buf_start(const char *str, t_flag *all_flag);
+int				ft_join_buf_space(int number_of_spaces);
+int				ft_join_buf_zero(int number_of_zeros);
+char			*ft_get_buf_end(const char *str, t_flag *all_flag);
 
 char			*ft_convert_address(long unsigned user_nbr, t_flag all_flag);
 void			conv_wildcard(int arguments, int number_wildcard,

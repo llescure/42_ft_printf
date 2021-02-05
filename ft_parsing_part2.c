@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 20:37:43 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/04 17:02:44 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/05 17:04:39 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ char		*replace_second_wildcard(const char **str, char cara)
 	i = 0;
 	j = 0;
 	temp = (char *)*str;
-	printf("temp%s\n", temp);
 	if (!(rslt = malloc(sizeof(char) * (ft_strlen(temp) + 2))))
 		return (NULL);
 	while (temp[i] != '%')
