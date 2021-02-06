@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 18:42:34 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:07:05 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_space(const char *str, t_flag *all_flag, char cara)
 		number_of_spaces = all_flag->wildcard_value1 - 1;
 	else
 		number_of_spaces = ft_extract_number(str, i) - 1;
-	ft_join_buf_space(number_of_spaces);
+	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
 	ft_putchar_fd(cara, 1);
 	all_flag->compt = all_flag->compt + 1 + number_of_spaces;
 	return ;
@@ -80,7 +80,7 @@ void	ft_space_minus(const char *str, t_flag *all_flag, char cara)
 		number_of_spaces = ft_extract_number(str, i) - 1;
 	else if (str[i] == '-' && str[i + 1] == '*')
 		number_of_spaces = all_flag->wildcard_value1 - 1;
-	ft_join_buf_space(number_of_spaces);
+	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
 	all_flag->compt = all_flag->compt + 1 + number_of_spaces;
 	return ;
 }

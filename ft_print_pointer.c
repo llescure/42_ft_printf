@@ -6,63 +6,38 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:36:12 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/04 21:43:46 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:08:23 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		error_case(t_flag *all_flag, const char **str)
-{
-	if (all_flag->zero > 0)
-		return (-1);
-	if ((all_flag->wildcard > 1) || (all_flag->dot > 1))
-		return (-1);
-	if (all_flag->wildcard_value1 < 0)
-	{
-		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
-		all_flag->minus = all_flag->minus + 1;
-		*str = replace_first_wildcard(str, '-');
-	}
-	if (all_flag->minus > 1)
-		*str = ft_delete_multiple_cara(str, '-');
-	return (0);
-}
-
-int		ft_space_pointer(const char *str, t_flag all_flag, char **buf,
-		char *user_nbr)
+void	ft_space_pointer(const char *str, t_flag *all_flag, char *user_nbr)
 {
 	int						i;
 	int						number_of_spaces;
-	char					*temp1;
 
 	i = 0;
 	number_of_spaces = 0;
 	while (ft_isdigit(str[i]) != 1)
 		i++;
-	if (all_flag.number > 0 && ft_isdigit(str[i]) == 1)
+	if (all_flag->number > 0 && ft_isdigit(str[i]) == 1)
 		number_of_spaces = ft_extract_number(str, i) - ft_strlen(user_nbr);
-	else if (all_flag.wildcard > 0)
-		number_of_spaces = all_flag.wildcard_value1 - ft_strlen(user_nbr);
-	ft_join_buf_space(buf, number_of_spaces);
-	temp1 = *buf;
-	*buf = ft_strjoin(*buf, user_nbr);
-	free(temp1);
-	return (ft_strlen(*buf));
+	else if (all_flag->wildcard > 0)
+		number_of_spaces = all_flag->wildcard_value1 - ft_strlen(user_nbr);
+	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
+	ft_putstr_fd(user_nbr, 1);
+	return ;
 }
 
-int		ft_space_minus_pointer(const char *str, t_flag all_flag, char **buf,
-		char *user_nbr)
+void	ft_space_minus_pointer(const char *str, t_flag *all_flag, char *user_nbr)
 {
 	int								i;
 	int								number_of_spaces;
-	char							*temp1;
 
 	i = 0;
 	number_of_spaces = 0;
-	temp1 = *buf;
-	*buf = ft_strjoin(*buf, user_nbr);
-	free(temp1);
+	ft_putstr_fd(user_nbr, 1);
 	while (str[i] != '%')
 		i++;
 	while (str[i] != '-')
@@ -70,32 +45,28 @@ int		ft_space_minus_pointer(const char *str, t_flag all_flag, char **buf,
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
 		number_of_spaces = ft_extract_number(str, i) - ft_strlen(user_nbr);
 	if ((str[i] == '-' && str[i + 1] == '*'))
-		number_of_spaces = all_flag.wildcard_value1 - ft_strlen(user_nbr);
-	ft_join_buf_space(buf, number_of_spaces);
-	return (ft_strlen(*buf));
+		number_of_spaces = all_flag->wildcard_value1 - ft_strlen(user_nbr);
+	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
+	return ;
 }
 
-int		print_point(const char *str, t_flag all_flag,
-		long unsigned user_nbr,
-	char **buf)
+void	print_point(const char **str, t_flag *all_flag,
+		long unsigned user_nbr)
 {
-	char *temp1;
 	char *nbr_convert;
 
-	nbr_convert = ft_convert_address(user_nbr, all_flag);
-	if (error_case(&all_flag, &str) < 0)
-		return (-1);
-	if ((all_flag.number > 0 || all_flag.wildcard > 0) &&
-			(all_flag.minus == 0))
-		return (ft_space_pointer(str, all_flag, buf, nbr_convert));
-	else if (all_flag.minus > 0 && (all_flag.number > 0 ||
-				all_flag.wildcard > 0))
-		return (ft_space_minus_pointer(str, all_flag, buf, nbr_convert));
+	nbr_convert = ft_convert_address(user_nbr, *all_flag);
+	error_case(all_flag, str);
+	if ((all_flag->number > 0 || all_flag->wildcard > 0) &&
+			(all_flag->minus == 0))
+		ft_space_pointer(*str, all_flag, nbr_convert);
+	else if (all_flag->minus > 0 && (all_flag->number > 0 ||
+				all_flag->wildcard > 0))
+		ft_space_minus_pointer(*str, all_flag, nbr_convert);
 	else
 	{
-		temp1 = *buf;
-		*buf = ft_strjoin(*buf, nbr_convert);
-		free(temp1);
+		ft_putstr_fd(nbr_convert, 1);
+		all_flag->compt = all_flag->compt + ft_strlen(nbr_convert);
 	}
-	return ((int)ft_strlen(*buf));
+	return ;
 }

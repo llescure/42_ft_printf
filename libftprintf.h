@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 16:58:56 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:05:08 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ typedef struct	s_flag
 
 int				ft_printf(const char *str, ...);
 void			ft_print_cara(const char **str, t_flag *all_flag, char cara);
-int				ft_print_percent(const char *str, t_flag *all_flag);
-int				ft_print_string(const char *str, t_flag *all_flag,
+void			ft_print_percent(const char **str, t_flag *all_flag);
+void			ft_print_string(const char **str, t_flag *all_flag,
 		char *user_str);
-int				ft_print_up_hexa(const char *str, t_flag all_flag,
+void			ft_print_up_hexa(const char **str, t_flag *all_flag,
 		int user_nbr);
-int				ft_print_low_hexa(const char *str, t_flag all_flag,
+void			ft_print_low_hexa(const char **str, t_flag *all_flag,
 		int user_nbr);
-int				ft_print_int(const char *str, t_flag all_flag, int user_nbr);
-int				print_unsign(const char *str, t_flag all_flag,
+void			ft_print_int(const char **str, t_flag *all_flag, int user_nbr);
+void			print_unsign(const char **str, t_flag *all_flag,
 		int user_nbr);
-int				print_point(const char *str, t_flag all_flag,
+void			print_point(const char **str, t_flag *all_flag,
 		long unsigned user_nbr);
 
 void			ft_initialisation(t_flag *all_flag);
@@ -70,7 +70,6 @@ int				valid_type(const char *str, int compt);
 char			*ft_cut_str(const char *str, int compt);
 char			*ft_strdup(const char *s1);
 void			ft_change_user_nbr(char **user_nbr, t_flag *all_flag);
-void			ft_print_minus(char **buf);
 char			*ft_delete_multiple_cara(const char **str, char cara);
 char			*ft_delete_cara(const char **str, char cara, t_flag all_flag);
 char			*replace_first_wildcard(const char **str, char cara);
@@ -100,10 +99,9 @@ void			error_case(t_flag *all_flag, const char **str);
 void			int_error_case(t_flag *all_flag, const char **str);
 void			str_error_case(t_flag *all_flag, const char **str);
 
-char			*ft_get_buf_start(const char *str, t_flag *all_flag);
-int				ft_join_buf_space(int number_of_spaces);
-int				ft_join_buf_zero(int number_of_zeros);
-char			*ft_get_buf_end(const char *str, t_flag *all_flag);
+char			*ft_get_start(const char *str, t_flag *all_flag);
+int				ft_create_cara(int number_of_spaces, char c);
+char			*ft_get_end(const char *str, t_flag *all_flag);
 
 char			*ft_convert_address(long unsigned user_nbr, t_flag all_flag);
 void			conv_wildcard(int arguments, int number_wildcard,

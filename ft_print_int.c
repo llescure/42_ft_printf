@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:49:56 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 12:05:42 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/06 15:59:15 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,24 @@ void		ft_change_user_nbr(char **user_nbr, t_flag *all_flag)
 	free(copy);
 }
 
-void		ft_print_minus(char **buf)
+void		ft_print_int(const char **str, t_flag *all_flag, int user_nbr)
 {
-	char *temp;
-	char *str_cara;
-
-	str_cara = NULL;
-	str_cara = ft_allocate_char_to_str(str_cara, '-');
-	temp = *buf;
-	*buf = ft_strjoin(*buf, str_cara);
-	free(temp);
-	free(str_cara);
-}
-
-int			ft_print_int(const char *str, t_flag all_flag, int user_nbr,
-	char **buf)
-{
-	char *temp1;
 	char *nbr_convert;
 
 	nbr_convert = ft_itoa(user_nbr);
-	if (int_error_case(&all_flag, &str) < 0)
-		return (-1);
-	if ((all_flag.number > 0 || all_flag.wildcard > 0 || all_flag.dot > 0) &&
-			(all_flag.minus == 0) && (all_flag.zero == 0))
-		return (ft_space_int(str, all_flag, buf, nbr_convert));
-	else if (all_flag.minus > 0 && (all_flag.number > 0 ||
-				all_flag.wildcard > 0) && all_flag.zero == 0)
-		return (ft_space_minus_int(str, all_flag, buf, nbr_convert));
-	else if (all_flag.zero > 0)
-		return (ft_zero_int(str, all_flag, buf, nbr_convert));
+	int_error_case(all_flag, str);
+	if ((all_flag->number > 0 || all_flag->wildcard > 0 || all_flag->dot > 0) &&
+			(all_flag->minus == 0) && (all_flag->zero == 0))
+		ft_space_int(*str, all_flag, nbr_convert);
+	else if (all_flag->minus > 0 && (all_flag->number > 0 ||
+				all_flag->wildcard > 0) && all_flag->zero == 0)
+		ft_space_minus_int(*str, all_flag, nbr_convert);
+	else if (all_flag->zero > 0)
+		ft_zero_int(*str, all_flag, nbr_convert);
 	else
 	{
-		temp1 = *buf;
-		*buf = ft_strjoin(*buf, nbr_convert);
-		free(temp1);
+		ft_putstr_fd(nbr_convert, 1);
+		all_flag->compt = all_flag->compt + ft_strlen(nbr_convert);
 	}
-	return ((int)ft_strlen(*buf));
+	return ;
 }

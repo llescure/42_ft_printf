@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 12:41:32 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:05:49 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int		main(void)
 {
 	//DEBUG
-//	char *test = NULL;
+	//char *test = NULL;
 	/*t_flag all_flag;
 	int compt;
 	ft_get_buf_start("%*dabc\n",  &test);
@@ -77,7 +77,7 @@ int		main(void)
 	printf("%d\n", ft_printf("%-5u\n", -1));*/
 
 	//TEST x AND X
-	/*printf("%d\n", printf("%x\n", 42));
+	printf("%d\n", printf("%x\n", 42));
 	printf("%d\n", ft_printf("%x\n", 42));
 	printf("%d\n", printf("%3x\n", 42));
 	printf("%d\n", ft_printf("%3x\n", 42));
@@ -91,19 +91,19 @@ int		main(void)
 	printf("%d\n", ft_printf("%-3.5xabc\n", 42));
 	printf("%d\n", printf("%0*.3xabc\n", 5, 42));
 	printf("%d\n", ft_printf("%0*.3xabc\n", 5, 42));
-	printf("%d\n", printf("%0*.*x\n", 3, 3, 42));
+	/*printf("%d\n", printf("%0*.*x\n", 3, 3, 42));
 	printf("%d\n", ft_printf("%0*.*x\n", 3, 3, 42));
 	printf("%d\n", printf("%0.x\n", 42));
 	printf("%d\n", ft_printf("%0.x\n", 42));
 	printf("%d\n", printf("%.0x\n", 42));
 	printf("%d\n", ft_printf("%.0x\n", 42));
 	printf("%d\n", printf("%0*x\n", 6, 42));
-	printf("%d\n", ft_printf("%0*x\n", 6, 42));
-	printf("%d\n", printf("%-0*x\n", 6, 42));
-	printf("%d\n", ft_printf("%-0*x\n", 6, 42));
-	printf("%d\n", printf("%-03x\n", 42));
-	printf("%d\n", ft_printf("%-03x\n", 42));
-	printf("%d\n", printf("%-5X\n", 123456789));
+	printf("%d\n", ft_printf("%0*x\n", 6, 42));*/
+	//printf("%d\n", printf("%-0*x\n", 6, 42));
+	//printf("%d\n", ft_printf("%-0*x\n", 6, 42));
+	//printf("%d\n", printf("%-03x\n", 42));
+	//printf("%d\n", ft_printf("%-03x\n", 42));*/
+	/*printf("%d\n", printf("%-5X\n", 123456789));
 	printf("%d\n", ft_printf("%-5X\n", 123456789));*/
 
 	// MULTIPLE TYPES
@@ -123,9 +123,9 @@ int		main(void)
 	printf("%d\n", ft_printf("%*dabc%*c\n", 5, 1, 10, 'a'));*/
 
 	//TEST STRING
-	//printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));
-	//printf("%d\n", ft_printf("%*.abc10s\n", 10, "coucou"));
-	/*printf("%d\n", printf("%.3s\n", "coucou"));
+	/*printf("%d\n", printf("%*.abc10s\n", 10, "coucou"));
+	printf("%d\n", ft_printf("%*.abc10s\n", 10, "coucou"));
+	printf("%d\n", printf("%.3s\n", "coucou"));
 	printf("%d\n", ft_printf("%.3s\n", "coucou"));
 	printf("%d\n", printf("%10.*s\n", 2, "coucou"));
 	printf("%d\n", ft_printf("%10.*s\n", 2, "coucou"));
@@ -156,13 +156,25 @@ int		main(void)
 	printf("%d\n", printf("%c%c%c\n" , 'a', 'b', 'c'));
 	printf("%d\n", ft_printf("%c%c%c\n" , 'a', 'b', 'c'));
 	printf("%d\n", printf("%c%c%c\n" , 'a', 'b', 'c'));
-	printf("%d\n", ft_printf("%c%c%c\n" , 'a', 'b', 'c'));*/
-	//printf("%d\n", printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
-	//printf("%d\n", ft_printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
+	printf("%d\n", ft_printf("%c%c%c\n" , 'a', 'b', 'c'));
+	printf("%d\n", printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
+	printf("%d\n", ft_printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
 	printf("%d\n", printf("coucou %c mon %c ami %c\n" , 'a', 'b', 'c'));
-	printf("%d\n", ft_printf("coucou %c mon %c ami %c\n" , 'a', 'b', 'c'));
+	printf("%d\n", ft_printf("coucou %c mon %c ami %c\n" , 'a', 'b', 'c'));*/
 
 	//Test %
+/*	printf("%d\n", printf("%%\n"));
+	printf("%d\n", printf("%%\n"));
+	printf("%d\n", printf("%5%\n"));
+	printf("%d\n", printf("%5%\n"));
+	printf("%d\n", printf("%-5%\n"));
+	printf("%d\n", printf("%-5%\n"));
+	printf("%d\n", printf("abc%5%\n"));
+	printf("%d\n", printf("abc%5%\n"));
+	printf("%d\n", printf("%05%\n"));
+	printf("%d\n", printf("%05%\n"));
+	printf("%d\n", printf("%05%%c\n", 'a'));
+	printf("%d\n", printf("%05%%c\n", 'a')); */
 
 	//TEST mega testeur
 }

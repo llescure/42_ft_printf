@@ -6,13 +6,13 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 12:41:45 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:04:51 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_get_buf_start(const char *str, t_flag *all_flag)
+char	*ft_get_start(const char *str, t_flag *all_flag)
 {
 	char							*buf;
 	int								i;
@@ -32,49 +32,28 @@ char	*ft_get_buf_start(const char *str, t_flag *all_flag)
 		return ((char *)str);
 }
 
-int		ft_join_buf_space(int number_of_spaces)
+int		ft_create_cara(int number_of_cara, char c)
 {
-	char				*spaces;
+	char				*cara;
 	int					i;
 
 	i = 0;
-	if (number_of_spaces <= 0)
-		return (-1);
-	if (!(spaces = malloc(sizeof(char) * number_of_spaces + 1)))
-		return (-1);
-	while (i < number_of_spaces)
+	if (number_of_cara <= 0)
+		return (0);
+	if (!(cara = malloc(sizeof(char) * number_of_cara + 1)))
+		return (0);
+	while (i < number_of_cara)
 	{
-		spaces[i] = ' ';
+		cara[i] = c;
 		i++;
 	}
-	spaces[number_of_spaces] = '\0';
-	ft_putstr_fd(spaces, 1);
-	free(spaces);
-	return (1);
+	cara[number_of_cara] = '\0';
+	ft_putstr_fd(cara, 1);
+	free(cara);
+	return (number_of_cara);
 }
 
-int		ft_join_buf_zero(int number_of_zeros)
-{
-	char				*zeros;
-	int					i;
-
-	i = 0;
-	if (number_of_zeros <= 0)
-		return (-1);
-	if (!(zeros = malloc(sizeof(char) * number_of_zeros + 1)))
-		return (-1);
-	while (i < number_of_zeros)
-	{
-		zeros[i] = '0';
-		i++;
-	}
-	zeros[number_of_zeros] = '\0';
-	ft_putstr_fd(zeros, 1);
-	free(zeros);
-	return (1);
-}
-
-char	*ft_get_buf_end(const char *str, t_flag *all_flag)
+char	*ft_get_end(const char *str, t_flag *all_flag)
 {
 	char						*buf;
 	int							i;
@@ -97,5 +76,5 @@ char	*ft_get_buf_end(const char *str, t_flag *all_flag)
 		str = ft_cut_str(str, i - 1);
 	//printf("buf = %s\n", buf);
 	}
-	return ((char *)str);
+	return (NULL);
 }
