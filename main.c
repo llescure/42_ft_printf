@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 19:10:47 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/06 12:41:32 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,10 @@ int		main(void)
 	printf("%d\n", ft_printf("%c%c%c\n" , 'a', 'b', 'c'));
 	printf("%d\n", printf("%c%c%c\n" , 'a', 'b', 'c'));
 	printf("%d\n", ft_printf("%c%c%c\n" , 'a', 'b', 'c'));*/
-	printf("%d\n", printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
-	printf("%d\n", ft_printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
+	//printf("%d\n", printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
+	//printf("%d\n", ft_printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
+	printf("%d\n", printf("coucou %c mon %c ami %c\n" , 'a', 'b', 'c'));
+	printf("%d\n", ft_printf("coucou %c mon %c ami %c\n" , 'a', 'b', 'c'));
 
 	//Test %
 

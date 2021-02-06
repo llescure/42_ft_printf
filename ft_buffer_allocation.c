@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 19:11:40 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/06 12:41:45 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,20 @@ char	*ft_get_buf_end(const char *str, t_flag *all_flag)
 	if (all_flag->type == '0')
 		return ((char *)str);
 	buf = NULL;
-	printf("str1 = %s\n", str);
+	//printf("str1 = %s\n", str);
 	//printf("compt = %d\n", all_flag->compt);
-	i = ft_where_type_is(str, 0);
-	//printf("i = %d\n", i);
+	i = valid_type(str, 0);
+	//printf("i1 = %d\n", i);
 	while (str[i] != '\0' && str[i] != '%')
 		i++;
-	//printf("i = %d\n", i);
-	if (i - 1 > ft_where_type_is(str, 0))
+	//printf("i2 = %d\n", i);
+	if (i  > valid_type(str, 0) + 1)
 	{
-		buf = ft_trim((char *)str, ft_where_type_is(str, 0) + 1, i);
-		all_flag->compt = all_flag->compt + i - ft_where_type_is(str, 0) - 1;
+		buf = ft_trim((char *)str, valid_type(str, 0) + 1, i);
+		all_flag->compt = all_flag->compt + i - valid_type(str, 0) - 1;
 		ft_putstr_fd(buf, 1);
 		str = ft_cut_str(str, i - 1);
-	printf("str2 = %s\n", str);
+	//printf("buf = %s\n", buf);
 	}
 	return ((char *)str);
 }
