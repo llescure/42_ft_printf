@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 17:12:49 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/05 19:10:05 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int			ft_printf(const char *str, ...)
 			ft_print_int(str, &all_flag, va_arg(arguments, int), &buf);
 		else if (all_flag.type == 'p')
 			print_point(str, &all_flag, va_arg(arguments, long unsigned), &buf);*/
-		ft_get_buf_end(str, &all_flag);
-		str = ft_cut_str(str, compt);
+		str = ft_get_buf_end(str, &all_flag);
+		str = ft_cut_str(str, valid_type(str, compt));
 	}
 	va_end(arguments);
 	return (all_flag.compt);

@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 17:02:32 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/05 18:42:34 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_space_minus(const char *str, t_flag *all_flag, char cara)
 void	ft_print_cara(const char **str, t_flag *all_flag, char cara)
 {
 	error_case(all_flag, str);
-	//printf("str = %s\n", *str);
+//	printf("str = %s\n", *str);
 	if ((all_flag->number > 0 || all_flag->wildcard > 0) &&
 			all_flag->minus == 0)
 		ft_space(*str, all_flag, cara);

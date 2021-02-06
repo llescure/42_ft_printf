@@ -6,11 +6,28 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:36:12 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/04 16:21:44 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/04 21:43:46 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+int		error_case(t_flag *all_flag, const char **str)
+{
+	if (all_flag->zero > 0)
+		return (-1);
+	if ((all_flag->wildcard > 1) || (all_flag->dot > 1))
+		return (-1);
+	if (all_flag->wildcard_value1 < 0)
+	{
+		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
+		all_flag->minus = all_flag->minus + 1;
+		*str = replace_first_wildcard(str, '-');
+	}
+	if (all_flag->minus > 1)
+		*str = ft_delete_multiple_cara(str, '-');
+	return (0);
+}
 
 int		ft_space_pointer(const char *str, t_flag all_flag, char **buf,
 		char *user_nbr)

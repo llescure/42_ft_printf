@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 17:21:58 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/05 19:10:47 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,18 +143,22 @@ int		main(void)
 	printf("%d", ft_printf("%s\n", "coucou"));*/
 
 	//TEST CHAR
-	//printf("%d\n", printf("%c\n" , '\0'));
-	//printf("%d\n", ft_printf("%c\n" , '\0'));
-	//printf("%d\n", printf("%5c\n" , 'a'));
-	//printf("%d\n", ft_printf("%5c\n" , 'a'));
-	//printf("%d\n", printf("%-5c\n" , 'a'));
-	//printf("%d\n", ft_printf("%-5c\n" , 'a'));
-	//printf("%d\n", printf("coucou%-5c copain\n" , 'a'));
-	//printf("%d\n", ft_printf("coucou%-5c copain\n" , 'a'));
-	//printf("%d\n", printf("coucou%-------5c lolo\n" , 'a'));
-	//printf("%d\n", ft_printf("coucou%-------5c lolo\n" , 'a'));
+/*	printf("%d\n", printf("%c\n" , '\0'));
+	printf("%d\n", ft_printf("%c\n" , '\0'));
+	printf("%d\n", printf("%5c\n" , 'a'));
+	printf("%d\n", ft_printf("%5c\n" , 'a'));
+	printf("%d\n", printf("%-5c\n" , 'a'));
+	printf("%d\n", ft_printf("%-5c\n" , 'a'));
+	printf("%d\n", printf("coucou%-5c copain\n" , 'a'));
+	printf("%d\n", ft_printf("coucou%-5c copain\n" , 'a'));
+	printf("%d\n", printf("coucou%-------5c lolo\n" , 'a'));
+	printf("%d\n", ft_printf("coucou%-------5c lolo\n" , 'a'));
 	printf("%d\n", printf("%c%c%c\n" , 'a', 'b', 'c'));
 	printf("%d\n", ft_printf("%c%c%c\n" , 'a', 'b', 'c'));
+	printf("%d\n", printf("%c%c%c\n" , 'a', 'b', 'c'));
+	printf("%d\n", ft_printf("%c%c%c\n" , 'a', 'b', 'c'));*/
+	printf("%d\n", printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
+	printf("%d\n", ft_printf("coucou %cmon %c ami %c\n" , 'a', 'b', 'c'));
 
 	//Test %
 
