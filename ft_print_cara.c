@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 17:07:05 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 21:28:54 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 void	error_case(t_flag *all_flag, const char **str)
 {
-	if (all_flag->zero > 0 || all_flag->wildcard > 1 || all_flag->dot > 1)
+	if (all_flag->zero > 0 || all_flag->wildcard > 1)
 		all_flag->compt = -1;
 	if (all_flag->wildcard_value1 < 0)
-	{
-		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
-		all_flag->minus = all_flag->minus + 1;
-		*str = replace_first_wildcard(str, '-');
-	}
+		*str = replace_first_wildcard(*str, '-', all_flag);
 	if (all_flag->minus > 1)
 		*str = ft_delete_multiple_cara(str, '-');
 	return ;
@@ -54,11 +50,14 @@ void	ft_space(const char *str, t_flag *all_flag, char cara)
 	int						number_of_spaces;
 
 	i = 0;
-	while (ft_isdigit(str[i] != 1))
+	number_of_spaces = 0;
+	while (ft_isdigit(str[i]) != 1 && str[i] != '.' && str[i] != '*')
 		i++;
-	if (all_flag->wildcard == 1)
+	if (str[i] == '.')
+		number_of_spaces = 0;
+	else if (all_flag->wildcard == 1)
 		number_of_spaces = all_flag->wildcard_value1 - 1;
-	else
+	else if (ft_isdigit(str[i]) == 1)
 		number_of_spaces = ft_extract_number(str, i) - 1;
 	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
 	ft_putchar_fd(cara, 1);
@@ -73,10 +72,12 @@ void	ft_space_minus(const char *str, t_flag *all_flag, char cara)
 
 	i = 0;
 	number_of_spaces = 0;
-	while (str[i] != '-')
+	while (str[i] != '-' && str[i] != '.' && str[i] != '\0')
 		i++;
 	ft_putchar_fd(cara, 1);
-	if (str[i] == '-' && ft_isdigit(str[i + 1]))
+	if (str[i] == '.')
+		number_of_spaces = 0;
+	else if (str[i] == '-' && ft_isdigit(str[i + 1]))
 		number_of_spaces = ft_extract_number(str, i) - 1;
 	else if (str[i] == '-' && str[i + 1] == '*')
 		number_of_spaces = all_flag->wildcard_value1 - 1;
@@ -88,6 +89,8 @@ void	ft_space_minus(const char *str, t_flag *all_flag, char cara)
 void	ft_print_cara(const char **str, t_flag *all_flag, char cara)
 {
 	error_case(all_flag, str);
+	if (all_flag->compt == -1)
+		return ;
 //	printf("str = %s\n", *str);
 	if ((all_flag->number > 0 || all_flag->wildcard > 0) &&
 			all_flag->minus == 0)

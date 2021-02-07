@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:36:12 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 17:08:23 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 10:28:38 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	ft_space_pointer(const char *str, t_flag *all_flag, char *user_nbr)
 	return ;
 }
 
-void	ft_space_minus_pointer(const char *str, t_flag *all_flag, char *user_nbr)
+void	ft_space_minus_pointer(const char *str, t_flag *all_flag,
+		char *user_nbr)
 {
 	int								i;
 	int								number_of_spaces;
@@ -57,6 +58,8 @@ void	print_point(const char **str, t_flag *all_flag,
 
 	nbr_convert = ft_convert_address(user_nbr, *all_flag);
 	error_case(all_flag, str);
+	if (all_flag->compt == -1)
+		return ;
 	if ((all_flag->number > 0 || all_flag->wildcard > 0) &&
 			(all_flag->minus == 0))
 		ft_space_pointer(*str, all_flag, nbr_convert);

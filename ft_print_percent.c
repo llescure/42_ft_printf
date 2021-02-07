@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 19:38:22 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 17:08:54 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 12:50:25 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_zero_percent(const char *str, t_flag *all_flag, char cara)
 void	ft_print_percent(const char **str, t_flag *all_flag)
 {
 	int_error_case(all_flag, str);
+	if (all_flag->compt == -1)
+		return ;
 	if ((all_flag->number > 0 || all_flag->wildcard > 0) &&
 			all_flag->minus == 0 && all_flag->zero == 0)
 		ft_space(*str, all_flag, '%');

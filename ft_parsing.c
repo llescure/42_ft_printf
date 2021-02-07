@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:23:07 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 17:07:01 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 10:44:53 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,24 +118,4 @@ int			valid_type(const char *str, int compt)
 		i++;
 	}
 	return (-1);
-}
-
-int			check_weird_combination(const char **str, t_flag *all_flag)
-{
-	int											i;
-	char										*temp;
-
-	temp = (char *)*str;
-	i = 0;
-	while (temp[i] != '%' && temp[i] != '\0')
-		i++;
-	while (temp[i] != '.' && temp[i] != '\0')
-		i++;
-	if (temp[i] == '.' && temp[i + 1] == '*' && all_flag->wildcard == 1)
-	{
-		all_flag->wildcard_value1 = 0;
-		all_flag->dot = 0;
-		return (1);
-	}
-	return (0);
 }

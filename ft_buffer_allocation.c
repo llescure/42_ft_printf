@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 17:04:51 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 10:30:49 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_get_start(const char *str, t_flag *all_flag)
 
 	i = 0;
 	buf = NULL;
-	all_flag->compt = 0;
 	while (str[i] != '\0' && str[i] != '%')
 		i++;
 	if (i > 0)
@@ -29,7 +28,7 @@ char	*ft_get_start(const char *str, t_flag *all_flag)
 		str = ft_cut_str(str, i - 1);
 		ft_putstr_fd(buf, 1);
 	}
-		return ((char *)str);
+	return ((char *)str);
 }
 
 int		ft_create_cara(int number_of_cara, char c)
@@ -51,30 +50,4 @@ int		ft_create_cara(int number_of_cara, char c)
 	ft_putstr_fd(cara, 1);
 	free(cara);
 	return (number_of_cara);
-}
-
-char	*ft_get_end(const char *str, t_flag *all_flag)
-{
-	char						*buf;
-	int							i;
-
-	if (all_flag->type == '0')
-		return ((char *)str);
-	buf = NULL;
-	//printf("str1 = %s\n", str);
-	//printf("compt = %d\n", all_flag->compt);
-	i = valid_type(str, 0);
-	//printf("i1 = %d\n", i);
-	while (str[i] != '\0' && str[i] != '%')
-		i++;
-	//printf("i2 = %d\n", i);
-	if (i  > valid_type(str, 0) + 1)
-	{
-		buf = ft_trim((char *)str, valid_type(str, 0) + 1, i);
-		all_flag->compt = all_flag->compt + i - valid_type(str, 0) - 1;
-		ft_putstr_fd(buf, 1);
-		str = ft_cut_str(str, i - 1);
-	//printf("buf = %s\n", buf);
-	}
-	return (NULL);
 }

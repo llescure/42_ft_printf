@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 22:28:13 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 15:53:51 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 00:36:03 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_print_up_hexa(const char **str, t_flag *all_flag, int user_nbr)
 
 	nbr_convert = ft_convert_hexa((unsigned int)user_nbr, "0123456789ABCDEF");
 	int_error_case(all_flag, str);
+	if (all_flag->compt == -1)
+		return ;
 	if ((all_flag->number > 0 || all_flag->wildcard > 0 || all_flag->dot > 0) &&
 			(all_flag->minus == 0) && (all_flag->zero == 0))
 		ft_space_int(*str, all_flag, nbr_convert);

@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:16 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 17:11:29 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 11:03:13 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,12 @@
 void	int_error_case(t_flag *all_flag, const char **str)
 {
 	if ((all_flag->wildcard > 2) || (all_flag->dot > 1))
-		all_flag->compt = - 1;
+		all_flag->compt = -1;
 	if (all_flag->wildcard_value1 < 0 &&
 			check_weird_combination(str, all_flag) == 0)
-	{
-		all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
-		all_flag->minus = all_flag->minus + 1;
-		*str = replace_first_wildcard(str, '-');
-	}
+		*str = replace_first_wildcard(*str, '-', all_flag);
 	if (all_flag->wildcard_value2 < 0)
-	{
-		all_flag->wildcard_value2 = all_flag->wildcard_value2 * -1;
-		all_flag->minus = all_flag->minus + 1;
-		*str = replace_second_wildcard(str, '-');
-	}
+		*str = replace_second_wildcard(*str, '-', all_flag);
 	if (all_flag->minus > 1)
 		*str = ft_delete_multiple_cara(str, '-');
 	if (all_flag->zero > 1)
@@ -36,9 +28,9 @@ void	int_error_case(t_flag *all_flag, const char **str)
 	if (all_flag->zero > 0 && (all_flag->minus > 0 || (all_flag->dot > 0 &&
 					all_flag->type != '%')))
 	{
-		if (ft_delete_cara(str, '0', *all_flag) == NULL)
+		if (ft_delete_cara(*str, '0', *all_flag) == NULL)
 			return ;
-		*str = ft_delete_cara(str, '0', *all_flag);
+		*str = ft_delete_cara(*str, '0', *all_flag);
 		all_flag->zero = 0;
 	}
 	return ;
@@ -79,7 +71,6 @@ void	ft_space_int(const char *str, t_flag *all_flag, char *user_nbr)
 	ft_create_cara(number_of_char - ft_strlen(user_nbr), '0');
 	ft_putstr_fd(user_nbr, 1);
 	all_flag->compt = all_flag->compt + number_of_spaces + number_of_char;
-	return ;
 }
 
 void	ft_zero_int(const char *str, t_flag *all_flag, char *user_nbr)
@@ -87,7 +78,7 @@ void	ft_zero_int(const char *str, t_flag *all_flag, char *user_nbr)
 	int						i;
 	int						number_of_zero;
 
-	i = 0;
+	i = -1;
 	number_of_zero = 0;
 	if (ft_atoi(user_nbr) < 0 && all_flag->type != 'u')
 	{
@@ -96,9 +87,8 @@ void	ft_zero_int(const char *str, t_flag *all_flag, char *user_nbr)
 	}
 	while (str[i] == '0' || ft_isdigit(str[i]) != 1)
 	{
-		if (str[i] == '\0')
+		if (str[++i] == '\0')
 			break ;
-		i++;
 	}
 	if (all_flag->number > 0)
 		number_of_zero = number_of_zero + ft_extract_number(str, i) -
@@ -111,10 +101,10 @@ void	ft_zero_int(const char *str, t_flag *all_flag, char *user_nbr)
 	number_of_zero = ft_create_cara(number_of_zero, '0');
 	ft_putstr_fd(user_nbr, 1);
 	all_flag->compt = all_flag->compt + number_of_zero + ft_strlen(user_nbr);
-	return ;
 }
 
-void		ft_space_minus_int(const char *str, t_flag *all_flag, char *user_nbr)
+void	ft_space_minus_int(const char *str, t_flag *all_flag,
+		char *user_nbr)
 {
 	int								i;
 	int								number_of_spaces;
@@ -146,7 +136,6 @@ void		ft_space_minus_int(const char *str, t_flag *all_flag, char *user_nbr)
 			number_of_char;
 	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
 	all_flag->compt = all_flag->compt + number_of_spaces + number_of_char;
-	return ;
 }
 
 void	ft_print_low_hexa(const char **str, t_flag *all_flag, int user_nbr)
@@ -155,6 +144,10 @@ void	ft_print_low_hexa(const char **str, t_flag *all_flag, int user_nbr)
 
 	nbr_convert = ft_convert_hexa((unsigned int)user_nbr, "0123456789abcdef");
 	int_error_case(all_flag, str);
+//	printf("str = %s\n", *str);
+//	printf("wildcard%d\n", all_flag->wildcard_value1);
+	if (all_flag->compt == -1)
+		return ;
 	if ((all_flag->number > 0 || all_flag->wildcard > 0 || all_flag->dot > 0) &&
 			(all_flag->minus == 0) && (all_flag->zero == 0))
 		ft_space_int(*str, all_flag, nbr_convert);

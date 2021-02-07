@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 17:05:08 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 12:50:43 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 char			*ft_itoa_unsigned(unsigned int n);
 char			*ft_strjoin(char const *s1, char const *s2);
-char			*ft_join_cara(char const *str, char cara);
 int				ft_extract_number(const char *str, int compt);
 char			*ft_trim(char *str, int start, int end);
 int				ft_isascii(int c);
@@ -71,9 +70,9 @@ char			*ft_cut_str(const char *str, int compt);
 char			*ft_strdup(const char *s1);
 void			ft_change_user_nbr(char **user_nbr, t_flag *all_flag);
 char			*ft_delete_multiple_cara(const char **str, char cara);
-char			*ft_delete_cara(const char **str, char cara, t_flag all_flag);
-char			*replace_first_wildcard(const char **str, char cara);
-char			*replace_second_wildcard(const char **str, char cara);
+char			*ft_delete_cara(const char *str, char cara, t_flag all_flag);
+char			*replace_first_wildcard(const char *str, char cara, t_flag *all_flag);
+char			*replace_second_wildcard(const char *str, char cara, t_flag *all_flag);
 int				check_weird_combination(const char **str, t_flag *all_flag);
 
 void			ft_space(const char *str, t_flag *all_flag, char cara);
@@ -101,7 +100,6 @@ void			str_error_case(t_flag *all_flag, const char **str);
 
 char			*ft_get_start(const char *str, t_flag *all_flag);
 int				ft_create_cara(int number_of_spaces, char c);
-char			*ft_get_end(const char *str, t_flag *all_flag);
 
 char			*ft_convert_address(long unsigned user_nbr, t_flag all_flag);
 void			conv_wildcard(int arguments, int number_wildcard,

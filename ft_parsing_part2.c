@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 20:37:43 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/05 17:04:39 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 23:03:52 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,114 +37,110 @@ char		*ft_delete_multiple_cara(const char **str, char cara)
 	return (temp);
 }
 
-char		*ft_delete_cara(const char **str, char cara, t_flag all_flag)
+char		*ft_delete_cara(const char *str, char cara, t_flag all_flag)
 {
-	char								*temp;
 	char								*first_str_trimmed;
 	char								*second_str_trimmed;
 	int									start;
 	int									end;
 
-	temp = (char *)*str;
 	start = 0;
-	while (temp[start] != '%')
+	while (str[start] != '%')
 		start++;
 	end = start;
-	while (temp[end] != '.')
+	while (str[end] != '.')
 		end++;
-	if (temp[end] == '.' && temp[end + 1] == '%' && all_flag.minus < 1)
+	if (str[end] == '.' && str[end + 1] == '%' && all_flag.minus < 1)
 		return (NULL);
-	while (temp[start] != cara)
+	while (str[start] != cara)
 		start++;
 	end = start;
-	while (temp[end] == cara)
+	while (str[end] == cara)
 		end++;
-	first_str_trimmed = ft_trim(temp, 0, start);
-	second_str_trimmed = ft_trim(temp, end, ft_strlen(temp));
-	temp = ft_strjoin(first_str_trimmed, second_str_trimmed);
+	first_str_trimmed = ft_trim((char *)str, 0, start);
+	second_str_trimmed = ft_trim((char *)str, end, ft_strlen(str));
+	str = ft_strjoin(first_str_trimmed, second_str_trimmed);
 	free(first_str_trimmed);
 	free(second_str_trimmed);
-	return (temp);
+	return ((char *)str);
 }
 
-char		*ft_join_cara(const char *str, char cara)
-{
-	unsigned int						i;
-	char								*rslt;
-
-	if (!(rslt = malloc(sizeof(char) * (ft_strlen(str) + 2))))
-		return (NULL);
-	i = 0;
-	while (str[i] != '\0')
-	{
-		rslt[i] = str[i];
-		i++;
-	}
-	rslt[i] = cara;
-	i++;
-	rslt[i] = '\0';
-	return (rslt);
-}
-
-char		*replace_first_wildcard(const char **str, char cara)
+char		*replace_first_wildcard(const char *str, char cara,
+		t_flag *all_flag)
 {
 	int											i;
 	int											j;
 	int											ok;
 	char										*rslt;
-	char										*temp;
 
 	i = 0;
 	j = 0;
 	ok = 1;
-	temp = (char *)*str;
-	if (!(rslt = malloc(sizeof(char) * (ft_strlen(temp) + 2))))
+	all_flag->wildcard_value1 = all_flag->wildcard_value1 * -1;
+	all_flag->minus = all_flag->minus + 1;
+	if (!(rslt = malloc(sizeof(char) * (ft_strlen(str) + 2))))
 		return (NULL);
-	while (temp[i] != '%')
+	while (str[i] != '%')
 		i++;
-	while (temp[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if (temp[i] == '*' && ok == 1)
+		if (str[i] == '*' && ok == 1)
 		{
-			rslt[j] = cara;
-			j++;
+			rslt[j++] = cara;
 			ok = 0;
 		}
-		rslt[j] = temp[i];
-		i++;
-		j++;
+		rslt[j++] = str[i++];
 	}
 	rslt[j] = '\0';
 	return (rslt);
 }
 
-char		*replace_second_wildcard(const char **str, char cara)
+char		*replace_second_wildcard(const char *str, char cara,
+		t_flag *all_flag)
 {
 	int											i;
 	int											j;
 	char										*rslt;
-	char										*temp;
 
 	i = 0;
 	j = 0;
-	temp = (char *)*str;
-	if (!(rslt = malloc(sizeof(char) * (ft_strlen(temp) + 2))))
+	all_flag->wildcard_value2 = all_flag->wildcard_value2 * -1;
+	all_flag->minus = all_flag->minus + 1;
+	if (!(rslt = malloc(sizeof(char) * (ft_strlen(str) + 2))))
 		return (NULL);
-	while (temp[i] != '%')
+	while (str[i] != '%')
 		i++;
-	while (temp[i] != '*')
-		i++;
-	while (temp[i] != '\0')
+	while (str[i] != '*')
+		rslt[j++] = str[i++];
+	rslt[j++] = str[i++];
+	//printf("i = %d\n", i);
+	//printf("j = %d\n", j);
+	while (str[i] != '\0')
 	{
-		if (temp[i] == '*')
-		{
-			rslt[j] = cara;
-			j++;
-		}
-		rslt[j] = temp[i];
-		i++;
-		j++;
+		if (str[i] == '*')
+			rslt[j++] = cara;
+		rslt[j++] = str[i++];
 	}
 	rslt[j] = '\0';
 	return (rslt);
+}
+
+int			check_weird_combination(const char **str, t_flag *all_flag)
+{
+	int											i;
+	char										*temp;
+
+	temp = (char *)*str;
+	i = 0;
+	while (temp[i] != '%' && temp[i] != '\0')
+		i++;
+	while (temp[i] != '.' && temp[i] != '\0')
+		i++;
+	if (temp[i] == '.' && temp[i + 1] == '*' && all_flag->wildcard == 1)
+	{
+		all_flag->wildcard_value1 = 0;
+		all_flag->dot = 0;
+		return (1);
+	}
+	return (0);
 }

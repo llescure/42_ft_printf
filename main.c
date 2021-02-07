@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/06 17:05:49 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/07 23:30:10 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 int		main(void)
 {
 	//DEBUG
-	//char *test = NULL;
-	/*t_flag all_flag;
-	int compt;
-	ft_get_buf_start("%*dabc\n",  &test);
-	ft_initialisation(&all_flag);
-	ft_parsing("%*dabc\n", &all_flag, 0);
-	all_flag.wildcard_value1 = 5;
+//	char *test = "abc";
+//	const char *str = "%*.*s\n";
+//	t_flag all_flag;
+//	ft_get_buf_start("%*.*s\n",  &all_flag);
+//	ft_initialisation(&all_flag);
+//	ft_parsing(str, &all_flag);
+//	all_flag.wildcard_value1 = -4;
+//	all_flag.wildcard_value2 = -4;
+//	str_error_case(&all_flag, &str);
 	//printf("error%d\n", int_error_case(all_flag));
 	//printf("type%c\n", all_flag.type);
 	//printf("wildcard%d\n", all_flag.wildcard);
@@ -32,9 +34,7 @@ int		main(void)
 	//compt = ft_print_low_hexa("%.0x\n", all_flag, 42 ,&test);
 	//compt = ft_zero_int("%.0x\n", all_flag ,&test, "2a");
 	//compt = ft_print_int("%*dabc\n", all_flag, 1, &test);
-	compt = ft_space_int("%*dabc\n", all_flag, &test, "1");
-	printf("%s\n", test);
-	printf("%d\n", compt);*/
+//	ft_space_string(str, &all_flag, test);
 
 	//TEST p
 	/*int *address;
@@ -77,7 +77,7 @@ int		main(void)
 	printf("%d\n", ft_printf("%-5u\n", -1));*/
 
 	//TEST x AND X
-	printf("%d\n", printf("%x\n", 42));
+/*	printf("%d\n", printf("%x\n", 42));
 	printf("%d\n", ft_printf("%x\n", 42));
 	printf("%d\n", printf("%3x\n", 42));
 	printf("%d\n", ft_printf("%3x\n", 42));
@@ -91,19 +91,19 @@ int		main(void)
 	printf("%d\n", ft_printf("%-3.5xabc\n", 42));
 	printf("%d\n", printf("%0*.3xabc\n", 5, 42));
 	printf("%d\n", ft_printf("%0*.3xabc\n", 5, 42));
-	/*printf("%d\n", printf("%0*.*x\n", 3, 3, 42));
+	printf("%d\n", printf("%0*.*x\n", 3, 3, 42));
 	printf("%d\n", ft_printf("%0*.*x\n", 3, 3, 42));
 	printf("%d\n", printf("%0.x\n", 42));
 	printf("%d\n", ft_printf("%0.x\n", 42));
 	printf("%d\n", printf("%.0x\n", 42));
 	printf("%d\n", ft_printf("%.0x\n", 42));
 	printf("%d\n", printf("%0*x\n", 6, 42));
-	printf("%d\n", ft_printf("%0*x\n", 6, 42));*/
-	//printf("%d\n", printf("%-0*x\n", 6, 42));
-	//printf("%d\n", ft_printf("%-0*x\n", 6, 42));
-	//printf("%d\n", printf("%-03x\n", 42));
-	//printf("%d\n", ft_printf("%-03x\n", 42));*/
-	/*printf("%d\n", printf("%-5X\n", 123456789));
+	printf("%d\n", ft_printf("%0*x\n", 6, 42));
+	printf("%d\n", printf("%-0*x\n", 6, 42));
+	printf("%d\n", ft_printf("%-0*x\n", 6, 42));
+	printf("%d\n", printf("%-03x\n", 42));
+	printf("%d\n", ft_printf("%-03x\n", 42));
+	printf("%d\n", printf("%-5X\n", 123456789));
 	printf("%d\n", ft_printf("%-5X\n", 123456789));*/
 
 	// MULTIPLE TYPES
@@ -177,4 +177,22 @@ int		main(void)
 	printf("%d\n", printf("%05%%c\n", 'a')); */
 
 	//TEST mega testeur
+	//printf("%d\n", printf("***************%*s%*d**************%*u*************", 10, "coucou", 10, 10, -50, 20));
+	//printf("%d\n", ft_printf("***************%*s%*d**************%*u*************", 10, "coucou", 10, 10, -50, 20));
+//	printf("%d\n", printf("***************%*s%*d**************%*u*************\n", 10, "coucou", 10, 10, -50, 20));
+//	printf("%d\n", ft_printf("***************%*s%*d**************%*u*************\n", 10, "coucou", 10, 10, -50, 20));
+//	printf("%d\n", printf("-->|%-4.3%|<--\n"));
+//	printf("%d\n", printf("-->|%-4.3%|<--\n"));
+//	printf("%d\n", printf("-->|%*%|<--\n", 0));
+//	printf("%d\n", printf("-->|%*%|<--\n", 0));
+//	printf("%d\n", printf("-->|%*.c|<--\n", 2, 'c'));
+//	printf("%d\n", ft_printf("-->|%*.c|<--\n", 2, 'c'));
+//	printf("%d\n", printf("-->|%2.c|<--\n", 'c'));
+//	printf("%d\n", ft_printf("-->|%2.c|<--\n", 'c'));
+//	printf("%d\n", printf("-->|%*c|<--\n", 0, 'c'));
+//	printf("%d\n", ft_printf("-->|%*c|<--\n", 0, 'c'));
+	//printf("%d\n", printf("-->|%*.c|<--\n", 10, 'c'));
+	//printf("%d\n", ft_printf("-->|%*.c|<--\n", 10, 'c'));
+	printf("%d\n", printf("-->|%*.*s|<--\n", 4, -2, "abc"));
+	printf("%d\n", ft_printf("-->|%*.*s|<--\n", 4, -2, "abc"));
 }
