@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/07 22:47:20 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/08 11:41:48 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			ft_printf(const char *str, ...)
 			conv_wildcard(va_arg(arguments, int), number_wildcard, &all_flag);
 			number_wildcard--;
 		}
-//		printf("compt = %d\n", all_flag.compt);
+	//	printf("compt = %d\n", all_flag.compt);
 //		printf("str = %s\n", str);
 //		printf("dot = %d\n", all_flag.dot);
 		if (all_flag.type == 'c')
@@ -66,6 +66,7 @@ int			ft_printf(const char *str, ...)
 			ft_print_int(&str, &all_flag, va_arg(arguments, int));
 		else if (all_flag.type == 'p')
 			print_point(&str, &all_flag, va_arg(arguments, long unsigned));
+	//	printf("compt = %d\n", all_flag.compt);
 		str = ft_cut_str(str, valid_type(str, compt));
 		if (all_flag.compt == -1)
 			return (all_flag.compt);

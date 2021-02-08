@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/07 12:50:43 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/08 10:23:16 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ int				ft_precision_string(const char *str, t_flag all_flag,
 		char *user_str);
 void			error_case(t_flag *all_flag, const char **str);
 void			int_error_case(t_flag *all_flag, const char **str);
-void			str_error_case(t_flag *all_flag, const char **str);
+void			str_error_case(t_flag *all_flag, const char **str,
+		char *user_str);
 
 char			*ft_get_start(const char *str, t_flag *all_flag);
 int				ft_create_cara(int number_of_spaces, char c);

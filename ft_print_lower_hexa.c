@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:16 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/07 11:03:13 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:23:07 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	int_error_case(t_flag *all_flag, const char **str)
 {
+	//printf("str = %s\n", *str);
 	if ((all_flag->wildcard > 2) || (all_flag->dot > 1))
 		all_flag->compt = -1;
 	if (all_flag->wildcard_value1 < 0 &&
 			check_weird_combination(str, all_flag) == 0)
 		*str = replace_first_wildcard(*str, '-', all_flag);
-	if (all_flag->wildcard_value2 < 0)
+	if (all_flag->wildcard_value2 < 0 &&
+			check_weird_combination(str, all_flag) == 0)
 		*str = replace_second_wildcard(*str, '-', all_flag);
 	if (all_flag->minus > 1)
 		*str = ft_delete_multiple_cara(str, '-');
@@ -33,6 +35,8 @@ void	int_error_case(t_flag *all_flag, const char **str)
 		*str = ft_delete_cara(*str, '0', *all_flag);
 		all_flag->zero = 0;
 	}
+//	printf("wildcard = %d\n", all_flag->wildcard_value1);
+	//printf("str = %s\n", *str);
 	return ;
 }
 
@@ -78,7 +82,7 @@ void	ft_zero_int(const char *str, t_flag *all_flag, char *user_nbr)
 	int						i;
 	int						number_of_zero;
 
-	i = -1;
+	i = 0;
 	number_of_zero = 0;
 	if (ft_atoi(user_nbr) < 0 && all_flag->type != 'u')
 	{
@@ -87,8 +91,9 @@ void	ft_zero_int(const char *str, t_flag *all_flag, char *user_nbr)
 	}
 	while (str[i] == '0' || ft_isdigit(str[i]) != 1)
 	{
-		if (str[++i] == '\0')
+		if (str[i] == '\0')
 			break ;
+		i++;
 	}
 	if (all_flag->number > 0)
 		number_of_zero = number_of_zero + ft_extract_number(str, i) -
@@ -130,11 +135,11 @@ void	ft_space_minus_int(const char *str, t_flag *all_flag,
 	if (str[i] == '-' && ft_isdigit(str[i + 1]))
 		number_of_spaces = number_of_spaces + ft_extract_number(str, i) -
 			number_of_char;
-	if ((str[i] == '-' && str[i + 1] == '*') ||
-			(ft_extract_number(str, i) == 0))
+	if ((str[i] == '-' && str[i + 1] == '*'))
 		number_of_spaces = number_of_spaces + all_flag->wildcard_value1 -
 			number_of_char;
 	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
+//	printf("spaces = %d\n", number_of_spaces);
 	all_flag->compt = all_flag->compt + number_of_spaces + number_of_char;
 }
 

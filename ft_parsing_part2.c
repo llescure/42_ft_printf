@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 20:37:43 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/07 23:03:52 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:17:52 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char		*ft_delete_cara(const char *str, char cara, t_flag all_flag)
 	while (str[start] != '%')
 		start++;
 	end = start;
-	while (str[end] != '.')
+	while (str[end] != '.' && str[end] != '\0')
 		end++;
 	if (str[end] == '.' && str[end + 1] == '%' && all_flag.minus < 1)
 		return (NULL);
@@ -140,6 +140,15 @@ int			check_weird_combination(const char **str, t_flag *all_flag)
 	{
 		all_flag->wildcard_value1 = 0;
 		all_flag->dot = 0;
+		return (1);
+	}
+	else if (temp[i] == '.' && temp [i - 1] == '*' && temp[i + 1] == '*' &&
+			all_flag->wildcard_value2 < 0)
+	{
+		all_flag->wildcard_value2 = 0;
+		all_flag->dot = 0;
+		if (all_flag->wildcard_value1 < 0)
+			*str = replace_first_wildcard(*str, '-', all_flag);
 		return (1);
 	}
 	return (0);

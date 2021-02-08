@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/07 23:30:10 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:24:34 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int		main(void)
 {
 	//DEBUG
 //	char *test = "abc";
-//	const char *str = "%*.*s\n";
+//	const char *str = "%0*.*d\n";
 //	t_flag all_flag;
 //	ft_get_buf_start("%*.*s\n",  &all_flag);
 //	ft_initialisation(&all_flag);
 //	ft_parsing(str, &all_flag);
-//	all_flag.wildcard_value1 = -4;
-//	all_flag.wildcard_value2 = -4;
-//	str_error_case(&all_flag, &str);
+//	all_flag.wildcard_value1 = 4;
+//	all_flag.wildcard_value2 = -2;
+//	int_error_case(&all_flag, &str);
 	//printf("error%d\n", int_error_case(all_flag));
 	//printf("type%c\n", all_flag.type);
 	//printf("wildcard%d\n", all_flag.wildcard);
@@ -34,7 +34,7 @@ int		main(void)
 	//compt = ft_print_low_hexa("%.0x\n", all_flag, 42 ,&test);
 	//compt = ft_zero_int("%.0x\n", all_flag ,&test, "2a");
 	//compt = ft_print_int("%*dabc\n", all_flag, 1, &test);
-//	ft_space_string(str, &all_flag, test);
+//	ft_space_minus_int(str, &all_flag, "135");
 
 	//TEST p
 	/*int *address;
@@ -193,6 +193,19 @@ int		main(void)
 //	printf("%d\n", ft_printf("-->|%*c|<--\n", 0, 'c'));
 	//printf("%d\n", printf("-->|%*.c|<--\n", 10, 'c'));
 	//printf("%d\n", ft_printf("-->|%*.c|<--\n", 10, 'c'));
-	printf("%d\n", printf("-->|%*.*s|<--\n", 4, -2, "abc"));
-	printf("%d\n", ft_printf("-->|%*.*s|<--\n", 4, -2, "abc"));
+//	printf("%d\n", printf("-->|%-16.p|<--\n", test));
+//	printf("%d\n", ft_printf("-->|%-16.p|<--\n", test));
+//	printf("%d\n", printf("-->|%-4.4d|<--\n", 135));
+//	printf("%d\n", ft_printf("-->|%-4.4d|<--\n", 135));
+//	printf("%d\n", printf("-->|%00.*d|<--\n", -4, 135));
+//	printf("%d\n", ft_printf("-->|%00.*d|<--\n", -4, 135));
+//	printf("%d\n", printf("-->|%00.*d|<--\n", -3, 135));
+//	printf("%d\n", ft_printf("-->|%00.*d|<--\n", -3, 135));
+//	printf("%d\n", printf("-->|%*.*d|<--\n", -4, -4, 135));
+//	printf("%d\n", ft_printf("-->|%*.*d|<--\n", -4, -4, 135));
+//	printf("%d\n", printf("-->|%0*.*d|<--\n", 4, -8, 135));
+//	printf("%d\n", ft_printf("-->|%0*.*d|<--\n", 4, -2, 135));
+	printf("%d\n", printf("-->|%-.d|<--\n", 0));
+	printf("%d\n", ft_printf("-->|%-.d|<--\n", 0));
+
 }
