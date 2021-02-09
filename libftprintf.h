@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/09 16:32:27 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 23:02:39 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct	s_flag
 }				t_flag;
 
 int				ft_printf(const char *str, ...);
+void			process_type(const char **str, t_flag *all_flag,
+		va_list arguments);
 void			ft_print_cara(const char **str, t_flag *all_flag, char cara);
 void			ft_print_percent(const char **str, t_flag *all_flag);
 void			ft_print_string(const char **str, t_flag *all_flag,
@@ -47,6 +49,7 @@ void			print_unsign(const char **str, t_flag *all_flag,
 void			print_point(const char **str, t_flag *all_flag,
 		long unsigned user_nbr);
 
+int				start_printf(const char **str, t_flag *all_flag);
 void			ft_initialisation(t_flag *all_flag);
 int				ft_where_type_is(const char *str, int i);
 void			ft_parse_flag(const char *str, int start, int end,
@@ -107,6 +110,7 @@ int				ft_create_cara(int number_of_spaces, char c);
 char			*ft_convert_address(long unsigned user_nbr, t_flag all_flag);
 void			conv_wildcard(int arguments, int number_wildcard,
 		t_flag *all_flag);
+void			process_wildcard(t_flag *all_flag, va_list arguments);
 char			*ft_convert_hexa(long unsigned user_nbr, char *base);
 
 #endif

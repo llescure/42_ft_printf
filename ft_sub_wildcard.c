@@ -6,11 +6,23 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:48:24 by llescure          #+#    #+#             */
-/*   Updated: 2021/01/28 19:37:57 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 22:49:49 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	process_wildcard(t_flag *all_flag, va_list arguments)
+{
+	int number_wildcard;
+
+	number_wildcard = all_flag->wildcard;
+	while (number_wildcard > 0 && number_wildcard < 3)
+	{
+		conv_wildcard(va_arg(arguments, int), number_wildcard, all_flag);
+		number_wildcard--;
+	}
+}
 
 void	conv_wildcard(int arguments, int number_wildcard,
 		t_flag *all_flag)
