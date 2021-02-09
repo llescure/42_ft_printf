@@ -6,11 +6,24 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/07 10:30:49 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 16:52:34 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+char	*ft_cut_str(const char *str, int compt)
+{
+	char				*temp;
+	char				*str_cut;
+	int					i;
+
+	i = compt + 1;
+	temp = ft_strdup(str);
+	str_cut = ft_strdup(&temp[i]);
+	free(temp);
+	return (str_cut);
+}
 
 char	*ft_get_start(const char *str, t_flag *all_flag)
 {

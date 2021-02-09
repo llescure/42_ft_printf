@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 20:37:43 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/08 17:17:52 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 15:30:16 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char		*ft_delete_multiple_cara(const char **str, char cara)
 	end = start;
 	while (temp[end] == cara)
 		end++;
+	if (start == end)
+		return (temp);
 	first_str_trimmed = ft_trim(temp, 0, start);
 	second_str_trimmed = ft_trim(temp, end - 1, ft_strlen(temp));
 	temp = ft_strjoin(first_str_trimmed, second_str_trimmed);
@@ -113,8 +115,6 @@ char		*replace_second_wildcard(const char *str, char cara,
 	while (str[i] != '*')
 		rslt[j++] = str[i++];
 	rslt[j++] = str[i++];
-	//printf("i = %d\n", i);
-	//printf("j = %d\n", j);
 	while (str[i] != '\0')
 	{
 		if (str[i] == '*')
@@ -142,7 +142,7 @@ int			check_weird_combination(const char **str, t_flag *all_flag)
 		all_flag->dot = 0;
 		return (1);
 	}
-	else if (temp[i] == '.' && temp [i - 1] == '*' && temp[i + 1] == '*' &&
+	else if (temp[i] == '.' && temp[i - 1] == '*' && temp[i + 1] == '*' &&
 			all_flag->wildcard_value2 < 0)
 	{
 		all_flag->wildcard_value2 = 0;

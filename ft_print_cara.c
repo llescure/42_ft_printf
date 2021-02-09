@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/09 10:29:10 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 15:49:19 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	ft_space(const char *str, t_flag *all_flag, char cara)
 	number_of_spaces = 0;
 	while (ft_isdigit(str[i]) != 1 && str[i] != '.' && str[i] != '*')
 		i++;
-	//printf("i = %d\n", i);
-	//printf("wildcard = %d\n", all_flag->wildcard_value1);
 	if (str[i] == '.')
 		number_of_spaces = 0;
 	else if (str[i] == '*')
@@ -62,7 +60,6 @@ void	ft_space(const char *str, t_flag *all_flag, char cara)
 	else if (ft_isdigit(str[i]) == 1)
 		number_of_spaces = ft_extract_number(str, i) - 1;
 	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
-	//printf("spaces = %d\n", number_of_spaces);
 	ft_putchar_fd(cara, 1);
 	all_flag->compt = all_flag->compt + 1 + number_of_spaces;
 	return ;
@@ -94,7 +91,6 @@ void	ft_print_cara(const char **str, t_flag *all_flag, char cara)
 	error_case(all_flag, str);
 	if (all_flag->compt == -1)
 		return ;
-//	printf("str = %s\n", *str);
 	if ((all_flag->number > 0 || all_flag->wildcard > 0) &&
 			all_flag->minus == 0)
 		ft_space(*str, all_flag, cara);

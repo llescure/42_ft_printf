@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 19:38:22 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/09 10:47:36 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 15:27:22 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_zero_percent(const char *str, t_flag *all_flag, char cara)
 	while ((str[i] == '0' || ft_isdigit(str[i]) != 1) && str[i] != '*' &&
 			str[i] != '.' && str[i] != '\0')
 		i++;
-//	printf("i = %d\n", i);
 	if (ft_isdigit(str[i]) == 1)
 		number_of_zero = ft_extract_number(str, i) - 1;
 	else if (str[i] == '*')
@@ -38,7 +37,6 @@ void	ft_print_percent(const char **str, t_flag *all_flag)
 	int_error_case(all_flag, str);
 	if (all_flag->compt == -1)
 		return ;
-//	printf("str = %s\n", *str);
 	if ((all_flag->number > 0 || all_flag->wildcard > 0) &&
 			all_flag->minus == 0 && all_flag->zero == 0)
 		ft_space(*str, all_flag, '%');

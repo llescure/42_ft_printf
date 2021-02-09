@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/08 22:31:56 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 16:31:27 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ void	print_unsign(const char **str, t_flag *all_flag, int user_nbr)
 {
 	unsigned int						signed_to_unsigned;
 	char								*nbr_convert;
+	int									i;
 
+	i = 0;
 	signed_to_unsigned = (unsigned int)user_nbr;
 	nbr_convert = ft_itoa_unsigned(signed_to_unsigned);
 	int_error_case(all_flag, str);
@@ -83,12 +85,12 @@ void	print_unsign(const char **str, t_flag *all_flag, int user_nbr)
 		return ;
 	if ((all_flag->number > 0 || all_flag->wildcard > 0 || all_flag->dot > 0) &&
 			(all_flag->minus == 0) && (all_flag->zero == 0))
-		ft_space_int(*str, all_flag, nbr_convert);
+		ft_space_int(*str, all_flag, nbr_convert, i);
 	else if (all_flag->minus > 0 && all_flag->zero == 0)
-		ft_space_minus_int(*str, all_flag, nbr_convert);
+		ft_space_minus_int(*str, all_flag, nbr_convert, i);
 	else if (all_flag->zero > 0 && (all_flag->number > 0 ||
 				all_flag->wildcard > 0))
-		ft_zero_int(*str, all_flag, nbr_convert);
+		ft_zero_int(*str, all_flag, nbr_convert, i);
 	else
 	{
 		ft_putstr_fd(nbr_convert, 1);

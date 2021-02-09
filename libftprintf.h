@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/09 10:14:28 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 16:32:27 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				find_size(long unsigned n);
 int				valid_type(const char *str, int compt);
 char			*ft_cut_str(const char *str, int compt);
 char			*ft_strdup(const char *s1);
-void			ft_change_user_nbr(char **user_nbr, t_flag *all_flag);
+int				ft_change_user_nbr(char **user_nbr, t_flag *all_flag);
 char			*ft_delete_multiple_cara(const char **str, char cara);
 char			*ft_delete_cara(const char *str, char cara, t_flag all_flag);
 char			*replace_first_wildcard(const char *str, char cara, t_flag *all_flag);
@@ -83,15 +83,15 @@ void			ft_space_string(const char *str, t_flag *all_flag,
 void			ft_space_minus_string(const char *str, t_flag *all_flag,
 		char *user_str);
 void			ft_space_int(const char *str, t_flag *all_flag,
-		char *user_nbr);
+		char *user_nbr, int i);
 void			ft_space_minus_int(const char *str, t_flag *all_flag,
-		char *user_nbr);
+		char *user_nbr, int i);
 void			ft_space_pointer(const char *str, t_flag *all_flag,
 		char *user_nbr);
 void			ft_space_minus_pointer(const char *str, t_flag *all_flag,
 		char *user_nbr);
 void			ft_zero_int(const char *str, t_flag *all_flag,
-		char *user_nbr);
+		char *user_nbr, int i);
 void			ft_zero_percent(const char *str, t_flag *all_flag, char cara);
 int				ft_precision(const char *str, t_flag all_flag, char **user_nbr);
 int				ft_precision_string(const char *str, t_flag all_flag,
