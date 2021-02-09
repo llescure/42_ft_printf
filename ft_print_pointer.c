@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 12:36:12 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/08 11:46:42 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/08 22:48:09 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ void	ft_space_pointer(const char *str, t_flag *all_flag, char *user_nbr)
 
 	i = 0;
 	number_of_spaces = 0;
-	while (ft_isdigit(str[i]) != 1)
+	while (ft_isdigit(str[i]) != 1 && str[i] != '\0')
 		i++;
 	if (all_flag->number > 0 && ft_isdigit(str[i]) == 1)
 		number_of_spaces = ft_extract_number(str, i) - ft_strlen(user_nbr);
 	else if (all_flag->wildcard > 0)
 		number_of_spaces = all_flag->wildcard_value1 - ft_strlen(user_nbr);
 	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
+//	printf("number_of_spaces = %d\n", number_of_spaces);
 	ft_putstr_fd(user_nbr, 1);
 	all_flag->compt = all_flag->compt + ft_strlen(user_nbr) + number_of_spaces;
 	return ;
@@ -59,6 +60,7 @@ void	print_point(const char **str, t_flag *all_flag,
 	char *nbr_convert;
 
 	nbr_convert = ft_convert_address(user_nbr, *all_flag);
+	//printf("nbr_convert = %s\n", nbr_convert);
 	error_case(all_flag, str);
 	if (all_flag->compt == -1)
 		return ;

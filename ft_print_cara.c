@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:46:55 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/08 11:45:20 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 10:29:10 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,16 @@ void	ft_space(const char *str, t_flag *all_flag, char cara)
 	number_of_spaces = 0;
 	while (ft_isdigit(str[i]) != 1 && str[i] != '.' && str[i] != '*')
 		i++;
+	//printf("i = %d\n", i);
+	//printf("wildcard = %d\n", all_flag->wildcard_value1);
 	if (str[i] == '.')
 		number_of_spaces = 0;
-	else if (all_flag->wildcard == 1)
+	else if (str[i] == '*')
 		number_of_spaces = all_flag->wildcard_value1 - 1;
 	else if (ft_isdigit(str[i]) == 1)
 		number_of_spaces = ft_extract_number(str, i) - 1;
 	number_of_spaces = ft_create_cara(number_of_spaces, ' ');
+	//printf("spaces = %d\n", number_of_spaces);
 	ft_putchar_fd(cara, 1);
 	all_flag->compt = all_flag->compt + 1 + number_of_spaces;
 	return ;

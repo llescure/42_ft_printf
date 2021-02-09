@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 00:16:33 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/08 17:24:34 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 10:52:15 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 int		main(void)
 {
 	//DEBUG
-//	char *test = "abc";
-//	const char *str = "%0*.*d\n";
+//	char *test = NULL;
+//	const char *str = "%0*.%\n";
 //	t_flag all_flag;
 //	ft_get_buf_start("%*.*s\n",  &all_flag);
 //	ft_initialisation(&all_flag);
 //	ft_parsing(str, &all_flag);
-//	all_flag.wildcard_value1 = 4;
-//	all_flag.wildcard_value2 = -2;
+//	all_flag.wildcard_value1 = 2;
+//	all_flag.wildcard_value2 = -4;
 //	int_error_case(&all_flag, &str);
 	//printf("error%d\n", int_error_case(all_flag));
 	//printf("type%c\n", all_flag.type);
@@ -34,7 +34,7 @@ int		main(void)
 	//compt = ft_print_low_hexa("%.0x\n", all_flag, 42 ,&test);
 	//compt = ft_zero_int("%.0x\n", all_flag ,&test, "2a");
 	//compt = ft_print_int("%*dabc\n", all_flag, 1, &test);
-//	ft_space_minus_int(str, &all_flag, "135");
+//	ft_zero_percent(str, &all_flag, '%');
 
 	//TEST p
 	/*int *address;
@@ -205,7 +205,17 @@ int		main(void)
 //	printf("%d\n", ft_printf("-->|%*.*d|<--\n", -4, -4, 135));
 //	printf("%d\n", printf("-->|%0*.*d|<--\n", 4, -8, 135));
 //	printf("%d\n", ft_printf("-->|%0*.*d|<--\n", 4, -2, 135));
-	printf("%d\n", printf("-->|%-.d|<--\n", 0));
-	printf("%d\n", ft_printf("-->|%-.d|<--\n", 0));
+//	printf("%d\n", printf("-->|%*.*%|<--\n", 2, -4));
+//	printf("%d\n", ft_printf("-->|%*.*%|<--\n", 2, -4));
+//	printf("%d\n", printf("-->|%0.0%|<--\n"));
+//	printf("%d\n", ft_printf("-->|%0.0%|<--\n"));
+//	printf("%d\n", printf("-->|%0.*%|<--\n", 2));
+//	printf("%d\n", ft_printf("-->|%0.*%|<--\n", 2));
+//	printf("%d\n", printf("-->|%00.3%|<--\n"));
+//	printf("%d\n", ft_printf("-->|%00.3%|<--\n"));
+//	printf("%d\n", printf("-->|%0*.%|<--\n", 2));
+//	printf("%d\n", ft_printf("-->|%0*.%|<--\n", 2));
+	printf("%d\n", printf("%-90.*%%-*.169s%-129.46d%-26.100X%-57.36u\n" ,178,-108,"N(Z",-1790829278,1376263938u,1964629019u));
+	printf("%d\n", ft_printf("%-90.*%%-*.169s%-129.46d%-26.100X%-57.36u\n" ,178,-108,"N(Z",-1790829278,1376263938u,1964629019u));
 
 }

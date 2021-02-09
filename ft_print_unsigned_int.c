@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/08 15:51:02 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/08 22:31:56 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ void	print_unsign(const char **str, t_flag *all_flag, int user_nbr)
 	if ((all_flag->number > 0 || all_flag->wildcard > 0 || all_flag->dot > 0) &&
 			(all_flag->minus == 0) && (all_flag->zero == 0))
 		ft_space_int(*str, all_flag, nbr_convert);
-	else if (all_flag->minus > 0 && (all_flag->number > 0 ||
-				all_flag->wildcard > 0) && all_flag->zero == 0)
+	else if (all_flag->minus > 0 && all_flag->zero == 0)
 		ft_space_minus_int(*str, all_flag, nbr_convert);
 	else if (all_flag->zero > 0 && (all_flag->number > 0 ||
 				all_flag->wildcard > 0))

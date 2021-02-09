@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/08 10:23:16 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/09 10:14:28 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ int				check_weird_combination(const char **str, t_flag *all_flag);
 void			ft_space(const char *str, t_flag *all_flag, char cara);
 void			ft_space_minus(const char *str, t_flag *all_flag,
 		char cara);
-void			ft_space_percent(const char *str, t_flag *all_flag);
-void			ft_space_minus_percent(const char *str, t_flag *all_flag);
 void			ft_space_string(const char *str, t_flag *all_flag,
 		char *user_str);
 void			ft_space_minus_string(const char *str, t_flag *all_flag,
@@ -87,6 +85,10 @@ void			ft_space_minus_string(const char *str, t_flag *all_flag,
 void			ft_space_int(const char *str, t_flag *all_flag,
 		char *user_nbr);
 void			ft_space_minus_int(const char *str, t_flag *all_flag,
+		char *user_nbr);
+void			ft_space_pointer(const char *str, t_flag *all_flag,
+		char *user_nbr);
+void			ft_space_minus_pointer(const char *str, t_flag *all_flag,
 		char *user_nbr);
 void			ft_zero_int(const char *str, t_flag *all_flag,
 		char *user_nbr);
