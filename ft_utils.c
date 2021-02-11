@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer_allocation.c                             :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:34:25 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/09 16:52:34 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:22:20 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char	*ft_get_start(const char *str, t_flag *all_flag)
 		all_flag->compt = all_flag->compt + i;
 		str = ft_cut_str(str, i - 1);
 		ft_putstr_fd(buf, 1);
+		if (buf != NULL)
+			free(buf);
 	}
 	return ((char *)str);
 }
@@ -63,4 +65,26 @@ int		ft_create_cara(int number_of_cara, char c)
 	ft_putstr_fd(cara, 1);
 	free(cara);
 	return (number_of_cara);
+}
+
+char	*ft_trim(char *str, int start, int end)
+{
+	char		*new;
+	int			i;
+	int			j;
+
+	if (end <= start)
+		return (NULL);
+	if (!(new = malloc(sizeof(char) * (end - start) + 1)))
+		return (NULL);
+	i = start;
+	j = 0;
+	while (i < end)
+	{
+		new[j] = str[i];
+		i++;
+		j++;
+	}
+	new[end - start] = '\0';
+	return (new);
 }

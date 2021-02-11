@@ -6,7 +6,7 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:20:37 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/09 16:31:27 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:26:36 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void	print_unsign(const char **str, t_flag *all_flag, int user_nbr)
 
 	i = 0;
 	signed_to_unsigned = (unsigned int)user_nbr;
-	nbr_convert = ft_itoa_unsigned(signed_to_unsigned);
 	int_error_case(all_flag, str);
 	if (all_flag->compt == -1)
 		return ;
+	nbr_convert = ft_itoa_unsigned(signed_to_unsigned);
 	if ((all_flag->number > 0 || all_flag->wildcard > 0 || all_flag->dot > 0) &&
 			(all_flag->minus == 0) && (all_flag->zero == 0))
 		ft_space_int(*str, all_flag, nbr_convert, i);
@@ -96,5 +96,6 @@ void	print_unsign(const char **str, t_flag *all_flag, int user_nbr)
 		ft_putstr_fd(nbr_convert, 1);
 		all_flag->compt = all_flag->compt + ft_strlen(nbr_convert);
 	}
+	free(nbr_convert);
 	return ;
 }

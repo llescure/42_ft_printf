@@ -6,13 +6,13 @@
 #    By: llescure <llescure@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/22 17:06:48 by llescure          #+#    #+#              #
-#    Updated: 2021/02/03 22:47:01 by llescure         ###   ########.fr        #
+#    Updated: 2021/02/11 12:19:31 by llescure         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = ft_buffer_allocation.c \
+SRCS = ft_utils.c \
        ft_convert_hexa.c \
        ft_parsing.c \
        ft_parsing_part2.c \
@@ -26,7 +26,6 @@ SRCS = ft_buffer_allocation.c \
        ft_print_up_hexa.c \
        ft_printf.c \
        ft_sub_wildcard.c \
-       ft_trim.c \
 
 SUBDIR = libft
 

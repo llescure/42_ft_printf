@@ -6,7 +6,7 @@
 /*   By: llescure <llescure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:50:47 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/09 23:02:39 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:32:04 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void			print_unsign(const char **str, t_flag *all_flag,
 void			print_point(const char **str, t_flag *all_flag,
 		long unsigned user_nbr);
 
-int				start_printf(const char **str, t_flag *all_flag);
 void			ft_initialisation(t_flag *all_flag);
 int				ft_where_type_is(const char *str, int i);
 void			ft_parse_flag(const char *str, int start, int end,
@@ -65,7 +64,6 @@ char			*ft_itoa_unsigned(unsigned int n);
 char			*ft_strjoin(char const *s1, char const *s2);
 int				ft_extract_number(const char *str, int compt);
 char			*ft_trim(char *str, int start, int end);
-int				ft_isascii(int c);
 int				find_unsigned_size(unsigned int n);
 int				find_size(long unsigned n);
 int				valid_type(const char *str, int compt);
@@ -74,8 +72,10 @@ char			*ft_strdup(const char *s1);
 int				ft_change_user_nbr(char **user_nbr, t_flag *all_flag);
 char			*ft_delete_multiple_cara(const char **str, char cara);
 char			*ft_delete_cara(const char *str, char cara, t_flag all_flag);
-char			*replace_first_wildcard(const char *str, char cara, t_flag *all_flag);
-char			*replace_second_wildcard(const char *str, char cara, t_flag *all_flag);
+char			*replace_first_wildcard(const char *str, char cara,
+		t_flag *all_flag);
+char			*replace_second_wildcard(const char *str, char cara,
+		t_flag *all_flag);
 int				check_weird_combination(const char **str, t_flag *all_flag);
 
 void			ft_space(const char *str, t_flag *all_flag, char cara);

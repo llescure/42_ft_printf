@@ -6,23 +6,11 @@
 /*   By: llescure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:51:15 by llescure          #+#    #+#             */
-/*   Updated: 2021/02/09 23:05:42 by llescure         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:22:42 by llescure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-int			start_printf(const char **str, t_flag *all_flag)
-{
-	int compt;
-
-	*str = ft_get_start(*str, all_flag);
-	ft_initialisation(all_flag);
-	compt = ft_parsing(*str, all_flag);
-	if (compt == -1)
-		return (-1);
-	return (compt);
-}
 
 void		process_type(const char **str, t_flag *all_flag, va_list arguments)
 {
@@ -54,7 +42,10 @@ int			ft_printf(const char *str, ...)
 	all_flag.compt = 0;
 	while (str != NULL)
 	{
-		if ((compt = start_printf(&str, &all_flag)) == -1)
+		str = ft_get_start(str, &all_flag);
+		ft_initialisation(&all_flag);
+		compt = ft_parsing(str, &all_flag);
+		if (compt == -1)
 			break ;
 		if (all_flag.wildcard > 0)
 			process_wildcard(&all_flag, arguments);
